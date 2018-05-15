@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515113533) do
+ActiveRecord::Schema.define(version: 20180515124121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articlecommits", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "autor"
+    t.string "statut", default: "no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.string "photo"
+    t.string "statut", default: "no"
+    t.string "theme"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messagecommits", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "autor", null: false
+    t.string "statut", default: "no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "theme", null: false
+    t.string "statut", default: "no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "job", null: false
+    t.string "city", null: false
+    t.string "photo"
+    t.date "birthday", null: false
+    t.string "phone_number", null: false
+    t.string "statut", default: "no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
