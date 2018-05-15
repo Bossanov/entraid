@@ -1,0 +1,274 @@
+/*
+*
+* Lists
+* --------------------------------------------------
+*/
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list {
+  > li + li {
+    margin-top: 7px;
+  }
+  
+  &-md {
+    > li + li {
+      margin-top: 10px;
+    }
+  }
+  &-lg {
+    > li + li {
+      margin-top: 25px;
+    }
+  }
+}
+
+// List inline
+//
+
+.list-inline {
+  margin-left: -15px;
+  margin-bottom: -7px;
+  padding: 0;
+  > li {
+    padding: 0;
+    margin-left: 15px;
+    margin-bottom: 7px;
+  }
+  &-lg {
+    margin-left: -15px;
+    > li {
+      margin-left: 15px;
+    }
+  }
+}
+
+// Description Lists
+//
+
+dl {
+  margin: 0;
+}
+
+// List terms
+//
+
+.list-terms {
+  margin-top: 35px;
+  dt + dd { margin-top: 5px; }
+  dd + dt { margin-top: 25px; }
+}
+
+// List index
+//
+
+.list-index {
+  counter-reset: li;
+  li {
+    display: flex;
+    align-items: center;
+    .list-index-counter {
+      margin-right: 10px;
+      color: $snow;
+      &:before {
+        content: counter(li, decimal) ". ";
+        counter-increment: li;
+      }
+    }
+  }
+}
+
+/*
+* List info
+*/
+.list-info {
+  color: #787878;
+  
+  > li {
+    + li {
+      margin-top: 20px;
+    }
+  }
+  
+  &-title {
+    &:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: '';
+      width: 29px;
+      height: 3px;
+      background-color: $primary;
+      margin-right: 13px;
+    }
+    
+    & + * { margin-top: 12px; }
+  }
+  
+  @include custom-offset(30px);
+  
+  @media (min-width: $screen-lg-min) {
+    > li {
+      + li {
+        margin-top: 42px;
+      }
+    }
+  }
+}
+
+// List spreader
+//
+.list-spreader {
+  margin-left: -10px;
+  margin-right: -10px;
+  &,
+  &:last-child {
+    margin-bottom: -7px;
+  }
+  > li {
+    display: inline-block;
+    margin-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media (min-width: $screen-md-min) {
+    margin-left: -25px;
+    margin-right: -25px;
+    > li {
+      position: relative;
+      padding-left: 25px;
+      padding-right: 25px;
+      &:not(:last-child) {
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          width: 1px;
+          height: 70%;
+          background-color: $gray-light;
+          transform: translate(50%, -50%);
+        }
+      }
+    }
+  }
+  
+  &-xl {
+    @media (min-width: $screen-lg-min) {
+      margin-left: -46px;
+      margin-right: -46px;
+      > li {
+        padding-left: 46px;
+        padding-right: 46px;
+      }
+    }
+  }
+  
+}
+
+// List marked
+//
+
+.list-marked {
+  li {
+    position: relative;
+    left: 0;
+    display: flex;
+    align-items: center;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    transition: .3s ease-out all;
+    
+    // Non standard for webkit
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    &:before {
+      content: '\f105';
+      margin-right: 20px;
+      font-family: 'FontAwesome';
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      display: inline-block;
+      color: $snow;
+    }
+  }
+  
+  &-sm {
+    li {
+      &:before {
+        margin-right: 15px;
+      }
+    }
+  }
+  
+  &-primary {
+    li {
+      &:before {
+        color: $primary;
+      }
+    }
+  }
+}
+
+h4 + h4 { margin-top: 30px; }
+h4 + .list-marked { margin-top: 10px; }
+.list-marked + h4 { margin-top: 30px; }
+.list-marked + h4 + h4 { margin-top: 30px; }
+
+h5 + .list-marked { margin-top: 10px; }
+.list-marked + h5 { margin-top: 30px; }
+.list-marked + h5 + h5 { margin-top: 30px; }
+
+// List Check
+.list-check {
+  display: flex;
+  flex-wrap: wrap;
+  @include group(30px, 10px);
+  @include custom-offset(30px);
+  
+  li {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-basis: 43%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    &:before {
+      content: '\e005';
+      margin-right: 10px;
+      font-family: 'fl-flat-icons-set-2';
+      font-size: 13px;
+      display: inline-block;
+      color: $primary;
+      align-self: flex-start;
+    }
+  }
+  
+  & + .button {
+    @include custom-offset(50px);
+  }
+}
+
+.list-check-custom {
+  font-family: $font-family-sec;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: $text-spacing;
+  @include group(30px, 20px);
+  
+  > li {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    &:before {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}

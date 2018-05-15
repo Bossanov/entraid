@@ -1,0 +1,42 @@
+/*
+*
+* Breadcrumbs
+* --------------------------------------------------
+*/
+
+//== Breadcrumbs variables
+//
+//##
+
+$bread-color: $white;
+$bread-active-color: $primary;
+
+
+.breadcrumb-wrapper{
+  text-align: center;
+  .parallax-content {
+    position: relative;
+  }
+}
+
+.page-header + .section-breadcrumb.section-breadcrumb {
+  margin-top: 0;
+}
+
+.breadcrumb-custom{
+  padding: 15px 5px;
+  letter-spacing: $text-spacing-xs;
+  color: $gray-darker;
+  border-bottom: 1px solid $albus;
+  > li {
+    display: inline-block;
+    &:not(:last-child):after {
+      padding: 0 16px;
+      content: "\f105";
+      font-family: "FontAwesome", sans-serif;
+      font-size: 16px;
+      color: $gray-fay;
+      letter-spacing: .02em;
+    }
+  }
+}

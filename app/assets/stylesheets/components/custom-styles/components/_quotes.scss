@@ -1,0 +1,232 @@
+/**
+*
+* Quotes
+* =====================================================
+*/
+
+// Quote primary
+.quote-primary {
+  .cite {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: $font-family-sec;
+    color: $headings-color;
+    letter-spacing: $text-spacing;
+  }
+  
+  .q {
+    color: $gray-darker;
+  }
+  
+  * + & {
+    margin-top: 25px;
+  }
+  
+  @media (min-width: $screen-lg-min) {
+    * + & {
+      margin-top: 40px;
+    }
+  }
+  
+}
+
+.quote-primary-mark {
+  position: relative;
+  top: 6px;
+  display: block;
+  width: 37px;
+  height: 27px;
+  fill: $primary;
+  @include flex-shrink(0);
+}
+
+.quote-primary-body {
+  position: relative;
+  padding: 25px 0 35px;
+  border-top: 1px solid #eaeced;
+  
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 13px;
+    border-style: solid;
+    border-color: #eaeced;
+  }
+  
+  &:before {
+    left: 0;
+    width: 78px;
+    border-width: 1px 1px 0 0;
+  }
+  
+  &:after {
+    right: 0;
+    width: calc(100% - 85px - 5px);
+    border-width: 1px 0 0 1px;
+    transform-origin: 0 0;
+    transform: skew(-45deg);
+  }
+}
+
+.quote-primary-text {
+  padding-top: 20px;
+}
+
+.quote-primary-footer {
+  padding-left: 5px;
+}
+
+* + .quote-primary-footer {
+  margin-top: 8px;
+}
+
+@media (min-width: $screen-xs-min) {
+  .quote-primary-body {
+    @include display-flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    padding: 31px 14px 42px 26px;
+  }
+  .quote-primary-body-custom {
+    padding-bottom: 67px;
+  }
+  
+  .quote-primary-body-pre {
+    padding-bottom: 44px;
+  }
+  
+  .quote-primary-text {
+    padding-top: 0;
+    padding-left: 20px;
+  }
+  
+  .quote-primary-footer {
+    padding-left: 30px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .quote-primary-body-custom {
+    padding-right: 10px;
+  }
+  .quote-primary-body-pre {
+    padding-right: 40px;
+  }
+}
+
+// Quote demo
+.quote-demo {
+  position: relative;
+  max-width: 766px;
+  margin-left: 7%;
+  margin-right: auto;
+  padding: 15px 1px 25px;
+  text-align: center;
+  
+  &-title {
+    font-family: $font-family-base;
+    line-height: 2;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: $primary;
+  }
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(217, 217, 217) 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(217, 217, 217) 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: -ms-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(217, 217, 217) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+  
+  &:before { top: 0; }
+  &:after { bottom: 0; }
+  
+  * + & { margin-top: 30px; }
+  & + * { margin-top: 30px; }
+}
+
+
+.quote-testimonial {
+  $this : &;
+  
+  &-title,
+  &-cite {
+    font-family: $font-family-sec;
+    letter-spacing: $text-spacing;
+    @media (min-width: $screen-lg-min) {
+      font-size: $font-size-h5;
+    }
+  }
+  
+  &-title {
+  
+  }
+  
+  &-cite {
+    font-weight: 400;
+    color: $gray-darker;
+  
+    position: relative;
+    padding-left: 70px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      border-top: 4px solid $primary;
+      width: 52px;
+    }
+    
+    #{$this}-title + & {
+      margin-top: 30px;
+    }
+  }
+  
+  * + & { margin-top: 30px; }
+}
+
+.quote-testimonial-style-2 {
+  
+  
+  @media (min-width: $screen-lg-min) {
+    
+    &-title,
+    &-cite {
+      font-family: $font-family-sec;
+      letter-spacing: $text-spacing;
+    }
+    
+    &-title {
+      font-size: 18px;
+      
+      & + * { margin-top: 22px; }
+    }
+    
+    &-cite {
+      font-weight: 400;
+      text-transform: uppercase;
+      
+      * + & { margin-top: 22px; }
+    }
+    
+    &-divider {
+      display: block;
+      font-size: 0;
+      line-height: 0;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 87px;
+        height: 2px;
+        border-top: 2px solid $white;
+      }
+    }
+  }
+}

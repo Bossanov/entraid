@@ -1,0 +1,265 @@
+/**
+*
+* Blog and Posts
+* =====================================================
+*/
+
+// Blog Aside
+.blog-aside {
+  
+  &-item {
+    &-inner {
+      padding: 40px 25px;
+      background-color: $white-lighter;
+    }
+  }
+  
+  .rd-search {
+    .form-wrap {
+      position: relative;
+    }
+    .form-label,
+    .form-input {
+      font-size: 16px;
+      letter-spacing: .05em;
+    }
+    .form-input {
+      height: 70px;
+      padding: 12px 30px;
+      padding-right: 73px;
+      background-color: $white-lighter;
+    }
+    .form-label {
+      top: 35px;
+      left: 30px;
+    }
+    &-form-submit {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      padding: 0;
+      width: 70px;
+      font-size: 24px;
+      text-align: center;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      background-color: transparent;
+      transition: .3s ease-out all;
+      &, &:focus, &:active {
+        color: $gray-darker;
+      }
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+  
+  .rd-mailform {
+    .form-label,
+    .form-input {
+      color: $gray-light;
+      text-align: center;
+    }
+    .form-input {
+      background-color: $white;
+    }
+    .form-label {
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    * + .button { margin-top: 15px; }
+  }
+  
+  @media (min-width: $screen-md-min) {
+    padding-left: 20px;
+  }
+  
+  @media (min-width: $screen-xl-min) {
+    padding-left: 90px;
+  }
+}
+
+// Tags
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-left: -9px;
+  &,
+  &:last-child {
+    margin-bottom: -9px;
+  }
+  > * {
+    margin-left: 9px;
+    &,
+    &:last-child {
+      margin-bottom: 9px;
+    }
+  }
+  * + & {
+    margin-top: 22px;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 15px;
+  min-width: 77px;
+  min-height: 40px;
+  font-size: 12px;
+  letter-spacing: .05em;
+  font-weight: 400;
+  text-transform: uppercase;
+  
+  [class*='ie-'] & {
+    height: 40px;
+  }
+  
+  &, &:focus, &:active {
+    color: $gray-light;
+    background-color: $white;
+  }
+  &:hover {
+    color: $white;
+    background-color: $primary;
+  }
+}
+
+// Comments
+.comment {
+  
+  // Wrap
+  @at-root  &-wrap {
+    padding: 9% 7% 9% 5%;
+    background-color: $white-lighter;
+    @include custom-offset(80px);
+    
+    &-title {
+      text-align: center;
+      overflow: hidden;
+      > span {
+        position: relative;
+        padding: 0 15px;
+        display: inline-block;
+        &:before, &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100vw;
+          border-top: 1px solid #d6d6d6;
+        }
+        &:before {
+          right: 100%;
+        }
+        &:after {
+          left: 100%;
+        }
+      }
+    }
+    
+    > .comment:not(:last-child) {
+      > .comment-inner {
+        > .comment-body {
+          padding-bottom: 30px;
+          border-bottom: 1px solid #d6d6d6;
+        }
+      }
+    }
+    
+  }
+  
+  
+  &-inner {
+    // Main Style
+    @include group(10px, 15px);
+  }
+  
+  &-left {
+  }
+  
+  &-body {
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      @include group(10px, 5px);
+    }
+    
+    &-content {
+      @include custom-offset(15px);
+      .list-inline {
+        @include custom-offset(25px);
+      }
+    }
+  }
+  
+  &-name,
+  &-time {
+    color: $gray-darker;
+  }
+  
+  &-name {
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  &-time {
+    letter-spacing: 0;
+  }
+  
+  @include custom-offset(45px);
+  
+  // With next comment
+  .comment-body-content {
+    > .comment {
+      margin-top: 30px;
+      margin-left: 4%;
+      .comment-left {
+        padding-right: 10px;
+      }
+      .list-inline {
+        @include custom-offset(15px);
+      }
+    }
+  }
+  
+  
+  // Form style
+  .form-input {
+    background-color: $white;
+    border: 1px solid $albus;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    &-inner {
+      display: flex;
+    }
+    &-left {
+      flex-shrink: 0;
+      padding-right: 22px;
+    }
+    &-body {
+      flex-grow: 1;
+      position: relative;
+      top: -5px;
+      max-width: 100%;
+      width: 100%;
+    }
+    
+    .comment-body-content {
+    
+      > .comment {
+        .comment-left {
+          padding-right: 10px;
+        }
+      }
+    }
+    
+  }
+  
+}
