@@ -1,15 +1,19 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+              <div class="cell-xs-12">
+                <div class="block-center" style="max-width: 520px">
+                  <h3>Vous identifier</h3>
+                  <p>Pour pouvoir bénéficier des services de la plateforme, veuillez vous connecter.</p>
+                  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <form class="rd-mailform text-left">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :email, class: "form-input", id: "forms-login-name", required: false, autofocus: true %>
+                    </div>
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :password, class: "form-input", id: "forms-login-password", required: false %>
+                    </div>
+                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                    <button class="button button-effect-ujarak button-block button-square button-primary" type="submit">enter</button>
+                  </form>
+                  <%= render "devise/shared/links" %>
+                  <% end %>
+                </div>
+              </div>
