@@ -1,0 +1,196 @@
+
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1525248152312-434c15a82f37?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=278e9355f4294b036c0ad9d60750e752&auto=format&fit=crop&w=2880&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2 style="color: black;">Message de <%=@profile.pseudo.capitalize%></h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-40">
+            <div class="cell-md-6 cell-lg-7">
+              <div class="object">
+                <div class="object-left">
+
+                </div>
+
+              </div>
+              <div class="block-text-width">
+                <div class="block-text-width-divider-content">
+
+                  <div class="quote-demo">
+                    <h4 class="quote-demo-title"><%=@message.title%></h4>
+                  </div>
+                  <p class="text-spacing-0"><%=@message.content%></p>
+                  <div class="single-post-meta">
+                    <div class="single-post-meta-item">
+                      <ul class="list-inline list-inline-lg">
+                        <li>
+                          <div class="object-inline text-spacing-0 text-gray-darker"><span>Posté le <%=@message.created_at.strftime("%d.%m.%Y") %></span></div>
+                        </li>
+                        <li>
+                          <div class="object-inline text-spacing-0 text-gray-darker"><span><%=@profile.pseudo.capitalize%></span></div>
+                        </li>
+
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <%@messagecommits = Messagecommit.where(message_id: @message.id) %>
+              <div class="comment-wrap">
+                <div class="comment-wrap-title heading-4"><span><%=@messagecommits.length%> commentaire(s)</span></div>
+                <!-- Comment 1st level-->
+
+                <% @messagecommits.each do |commit|%>
+                   <% @user = User.where(email: commit.autor)%>
+                   <%@profilecommit = Profile.where(user_id: @user.last.id)%>
+                <div class="comment">
+                  <div class="comment-inner">
+                    <div class="comment-left">
+
+                      <% if @profilecommit.last.photo.nil? %>
+                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                      <% else %>
+                        <%= cl_image_tag @profilecommit.last.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                      <% end %>
+
+                      <img class="img-circle" src="images/blog-post-01-65x65.jpg" alt="" width="65" height="65"/>
+                    </div>
+                    <div class="comment-body">
+                      <div class="comment-body-header">
+                        <div class="comment-name"><%=@profilecommit.last.pseudo.capitalize%></div>
+                        <div class="comment-time"><%=commit.created_at.strftime("%d.%m.%Y") %></div>
+                      </div>
+                      <div class="comment-body-content">
+                        <p class="text-spacing-50"><%=commit.content%></p>
+                        <ul class="list-inline list-inline-lg">
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <!-- Comment 1st level-->
+
+
+                <% @messagecommit = Messagecommit.new %>
+                <%= simple_form_for [@message, @messagecommit], class: 'login-box' do |f| %>
+
+
+                <!-- Comment 1st level-->
+                <div class="comment">
+                  <div class="comment-inner">
+                    <div class="comment-left">
+                      <% if current_user.profile.photo.nil? %>
+                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                      <% else %>
+                        <%= cl_image_tag current_user.profile.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                      <% end %>
+                    </div>
+                    <div class="comment-body" style="width: 100%">
+                      <div class="comment-body-header">
+                        <div class="comment-name"><%=current_user.profile.pseudo.capitalize %></div>
+                      </div>
+                      <div class="comment-body-content">
+
+
+                        <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post">
+                          <div class="form-wrap form-wrap-validation">
+
+                            <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Contenu du message" %>
+
+                          </div>
+                          <div class="form-button">
+                            <button class="button button-effect-ujarak button-primary" type="submit">Poster</button>
+                          </div>
+                        </form>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<% end %>
+            <div class="cell-md-4 cell-lg-3">
+              <div class="blog-aside">
+                <div class="range range-40 range-lg-60">
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="rd-navbar-search">
+
+                    </div>
+                  </div>
+
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="blog-aside-item-inner">
+                      <h4 class="text-center">Derniers Messages</h4>
+                      <div class="post-minimal-wrap"><a class="post-minimal" href="#">
+                          <% @messages.where(statut: 'yes').order("created_at DESC").first(3).each do |message| %>
+                            <% @profile = Profile.find(message.profile_id)  %>
+                            <%@messagecommits = Messagecommit.where(message_id: message.id) %>
+
+                            <div class="unit unit-spacing-xs unit-horizontal">
+                              <div class="unit-left">
+                                <img src="https://images.unsplash.com/photo-1522074534099-45b66be3f193?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1120af654449ab8c8e2247989f0bff2f&auto=format&fit=crop&w=1234&q=80" alt="" width="92" height="78" class="img-responsive center-block"/>
+                              </div>
+                              <div class="unit-body">
+                                <p><%= link_to message.title, profile_message_path(@profile, message)%> <span><%= message.created_at.strftime("%d.%m.%Y")%> / <%=@messagecommits.length%> commentaire(s)</span></p>
+                              </div>
+                            </div>
+                          </a>
+                          <a class="post-minimal" href="#">
+                            <% end %>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cell-sm-5 cell-md-10 blog-aside-item text-center">
+                    <div class="blog-aside-item-inner">
+                        <button class="button button-effect-ujarak button-primary button-block" type="submit">Accueil</button>
+                        <button class="button button-effect-ujarak button-primary button-block" type="submit">Les messages</button>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+

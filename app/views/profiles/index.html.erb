@@ -1,0 +1,138 @@
+
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header-->
+
+      <!-- Clients-->
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1469510038946-6bf892bbe9d6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7e36e818e6298b397fbf864346fdf731&auto=format&fit=crop&w=2850&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2>Nos amis</h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!-- Why choose us-->
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-60">
+            <div class="cell-lg-8">
+              <div class="range range-35">
+
+
+
+                <% @profiles.each do |profile| %>
+
+
+                <div class="cell-xs-5 cell-sm-33 cell-md-25">
+                  <div class="vip">
+                    <div class="vip-image-block">
+
+                      <% if profile.photo_url.nil? %>
+                      <img src="http://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="268" height="216" />
+                      <% else %>
+                      <%= cl_image_tag profile.photo, width:"268", height: "216", alt:""%>
+                      <% end %>
+
+                    </div>
+                    <div class="vip-content">
+                      <h5><a href="doctor-profile.html"><%= profile.pseudo.capitalize %></a></h5>
+                      <div class="vip-cite"><span><%=profile.job.upcase%></span></div>
+                      <div class="vip-divider"></div>
+                      <% now = Date.current %>
+                      <% age = now.year - profile.birthday.year %>
+                      <% age -= 1 if now.yday < profile.birthday.yday %>
+                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#"><%= age%> ans</a></div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- Page Footer-->
+      <section class="section section-sm bg-white-lighter">
+        <div class="shell shell-out">
+          <div class="range range-30">
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Derniers inscrits</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
+                      <div class="unit-body"><a class="link-gray-darker" href="tel:#">+1 (409) 987–5874</a></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-email-outline"></span></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><a class="link-gray-darker" href="mailto:#">info@demolink.org</a></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+
+                <ul class="list list-md">
+
+
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="preffix-xl-70" style="max-width: 433px">
+
+
+                <ul class="list-inline list-inline-lg">
+                  <button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button>
+                  <br/>
+                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Mon profil</button>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+
+
+
+
+
+
+
+
+
+

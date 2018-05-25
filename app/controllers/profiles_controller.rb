@@ -3,6 +3,17 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+    @articles = Article.where(profile_id: @profile.id, statut: 'yes')
+    @messages = Message.where(profile_id: @profile.id, statut: 'yes')
+  end
+
+  def index
+    @profiles = Profile.all
+  end
+
+
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
@@ -33,6 +44,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-  params.require(:profile).permit(:first_name, :last_name, :job, :city, :phone_number, :birthday, :photo, :photo_cache, :statut)
+  params.require(:profile).permit(:first_name, :last_name, :job, :city, :phone_number, :birthday, :photo, :photo_cache, :statut, :pseudo, :biography)
   end
 end

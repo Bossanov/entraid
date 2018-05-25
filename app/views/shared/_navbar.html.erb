@@ -14,65 +14,42 @@
                 <div class="rd-navbar-nav-wrap">
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li><a href="./">Accueil</a></li>
-                    <li><a href="about.html">About us</a></li>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="about.html">Pourquoi?</a></li>
                     <li><a href="departments.html">Infos</a><li>
-                      <%= link_to destroy_user_session_path, method: :delete do %>
-                        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                      <% end %>
 
-                    <li><a href="timetable.html">Timetable</a></li>
+                    <% if current_user.present?%>
+
                     <li class="active"><a href="#">Mon compte</a>
                       <!-- RD Navbar Megamenu-->
                       <ul class="rd-navbar-megamenu">
-                        <li class="rd-navbar-megamenu-item">
-                          <div class="rd-navbar-megamenu-item-inner">
-                            <h6 class="rd-navbar-megamenu-title">Pages 1</h6>
-                            <div class="rd-navbar-megamenu-divider"></div>
-                            <ul>
-                              <li><a href="our-doctors.html">Our Doctors</a></li>
-                              <li><a href="doctor-profile.html">Doctor Profile</a></li>
-                              <li><a href="news.html">News</a></li>
-                              <li><a href="news-page.html">News Page</a></li>
-                              <li><a href="careers.html">Careers</a></li>
-                              <li><a href="faq.html">FAQ</a></li>
-                              <li><a href="clients.html">Clients</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="rd-navbar-megamenu-item">
-                          <div class="rd-navbar-megamenu-item-inner">
-                            <h6 class="rd-navbar-megamenu-title">Pages 2</h6>
-                            <div class="rd-navbar-megamenu-divider"></div>
-                            <ul>
-                              <li><a href="coming-soon.html">Coming Soon</a></li>
-                              <li><a href="503-page.html">503</a></li>
-                              <li><a href="404-page.html">404</a></li>
-                              <li><a href="site-map.html">Site Map</a></li>
-                              <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                              <li><a href="terms-of-use.html">Terms of Use</a></li>
-                              <li><a href="maintenance.html">Maintenance</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="rd-navbar-megamenu-item">
-                          <div class="rd-navbar-megamenu-item-inner">
-                            <h6 class="rd-navbar-megamenu-title">elements</h6>
-                            <div class="rd-navbar-megamenu-divider"></div>
-                            <ul>
-                              <li><a href="typography.html">Typography</a></li>
-                              <li><a href="tabs-and-accordions.html">Tabs and accordions</a></li>
-                              <li><a href="progress-bars.html">Progress Bars</a></li>
-                              <li><a href="forms.html">Forms</a></li>
-                              <li><a href="tables.html">Tables</a></li>
-                              <li><a href="grid.html">Grid</a></li>
-                              <li><a href="buttons.html">Buttons</a></li>
 
+                        <li class="rd-navbar-megamenu-item">
+                          <div class="rd-navbar-megamenu-item-inner">
+                            <h6 class="rd-navbar-megamenu-title">Mes options</h6>
+                            <div class="rd-navbar-megamenu-divider"></div>
+                            <ul>
+                              <li><%= link_to 'Mon profil', profile_path(current_user.profile.id)%></li>
+                              <li><%= link_to 'Le forum', messages_path%></li>
+                              <li><%= link_to 'Les articles', articles_path%></li>
+                              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                                <% end %>
+                              </li>
                             </ul>
                           </div>
                         </li>
+
+
+
+
+
                       </ul>
                     </li>
+                    <% else %>
+                    <li><a href="<%=new_user_session_path %>">Se connecter</a></li>
+
+                    <% end%>
                     <li><a href="contacts.html">Liens utiles</a></li>
                   </ul>
                 </div>

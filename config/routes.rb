@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :profiles do
     resources :articles
     resources :messages
+
   end
   resources :messages do
     resources :messagecommits
@@ -12,4 +13,5 @@ Rails.application.routes.draw do
   resources :articles do
     resources :articlecommits
   end
+  resources :contacts
 end
