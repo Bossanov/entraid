@@ -10,9 +10,9 @@
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Enfin un site fait par et pour des professionels de santé.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
                     <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
                     <% else %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
                     <% end %>
                   </div>
@@ -26,9 +26,9 @@
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Une philosophie simple pour sortir la tête de l'eau.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
                     <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
                     <% else %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
                     <% end %>
                   </div>
@@ -42,9 +42,9 @@
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Ne restez pas seul(e), venez nous rejoindre !!!</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical entraid'</h1>
                     <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
                     <% else %>
-                    <a class="button button-primary button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
                     <% end %>
                   </div>
@@ -99,23 +99,29 @@
                 <div class="block-classic-title">
                   <h4>Nous poser une question</h4>
                 </div>
+                <% @contact = Contact.new %>
+                <%= simple_form_for [@contact] do |f| %>
+
                 <form class="rd-mailform rd-mailform-mini" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                   <div class="rd-mailform-mini-left">
                     <div class="form-wrap form-wrap-validation">
-                      <label class="form-label" for="forms-message-footer">Your Message</label>
-                      <textarea class="form-input" id="forms-message-footer" name="message" data-constraints="@Required"></textarea>
+
+                      <%= f.input :content , id:"forms-message-footer", type:"text", name:"Votre message", required: true, class: "form-input", label:"Votre message"%>
+
                     </div>
                   </div>
                   <div class="rd-mailform-mini-right">
                     <div class="form-wrap form-wrap-validation">
-                      <label class="form-label" for="forms-email-footer">E-mail</label>
-                      <input class="form-input" id="forms-email-footer" type="email" name="email" data-constraints="@Email @Required">
+                      <%= f.input :email , id:"forms-email-footer", type:"string", name:"Votre email", required: true, label:"Votre email"%>
+
+
                     </div>
                     <div class="form-button">
                       <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">envoyer</button>
                     </div>
                   </div>
                 </form>
+                <% end %>
               </div>
             </div>
           </div>
@@ -500,43 +506,34 @@
               <div>
                 <h6 class="text-spacing-200 text-uppercase font-base">Une question ? Contactez nous !</h6>
                 <div class="divider-default"></div>
+                <% @contact = Contact.new %>
+                <%= simple_form_for [@contact] do |f| %>
                 <form class="rd-mailform rd-mailform-mini" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                   <div class="rd-mailform-mini-left">
                     <div class="form-wrap form-wrap-validation">
-                      <label class="form-label" for="forms-message-footer">Your Message</label>
-                      <textarea class="form-input" id="forms-message-footer" name="message" data-constraints="@Required"></textarea>
+
+                      <%= f.input :content , id:"forms-message-footer", type:"text", name:"Votre message", required: true, class: "form-input", label:"Votre message"%>
+
                     </div>
                   </div>
                   <div class="rd-mailform-mini-right">
                     <div class="form-wrap form-wrap-validation">
-                      <label class="form-label" for="forms-email-footer">E-mail</label>
-                      <input class="form-input" id="forms-email-footer" type="email" name="email" data-constraints="@Email @Required">
+
+                      <%= f.input :email , id:"forms-email-footer", type:"string", name:"Votre email", required: true, label:"Votre email", class:"form-input"%>
+
                     </div>
                     <div class="form-button">
                       <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">envoyer</button>
                     </div>
                   </div>
                 </form>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer class="page-footer-full section section-full-width">
-        <div class="shell">
-          <div class="range range-15">
-            <div class="cell-sm-5">
-              <p class="copyright">Antoine STAUMONT &#169; <span class="copyright-year"></span>. <a href="privacy-policy.html">Privacy Policy</a>
-              </p>
-            </div>
-            <div class="cell-sm-5 text-sm-right">
-              <ul class="list-inline">
 
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
     <!-- PANEL-->
     <!-- END PANEL-->

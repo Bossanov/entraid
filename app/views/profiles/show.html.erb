@@ -1,0 +1,196 @@
+
+    <!-- Page-->
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+
+            </svg>
+          </div>
+        </div>
+      </div>
+
+
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-30">
+            <div class="cell-sm-5">
+              <% if @profile.photo_url.nil? %>
+              <img src="http://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="720" height="529"/>
+              <% else %>
+              <%= cl_image_tag @profile.photo, width:"320", height: "320", alt:"", class:"img-responsive center-block"%>
+              <% end %>
+              <div class="block-text-width-divider">
+                <div class="block-text-width-divider-content">
+                  <p class="text-gray-darker"><%= @profile.biography %></p>
+
+                </div>
+              </div>
+            </div>
+            <div class="cell-sm-5">
+              <div class="single-block">
+                <% if current_user.id == @profile.user_id %>
+                <h3>Profil de  <%= @profile.first_name.capitalize%> <%= @profile.last_name.upcase%></h3>
+                <% else %>
+                <h3>Profil de <%= @profile.pseudo.capitalize %> </h3>
+                <% end %>
+                <p><%=@profile.job.capitalize%></p>
+
+                <% if current_user.id == @profile.user_id %>
+
+
+                <ul class="list-inline">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body"><i class="link-gray-darker" >Tél: <%=@profile.phone_number%></i></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Mail: <%= current_user.email%></i></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Ville: <%= @profile.city.upcase%></i></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Pseudo: <%= @profile.pseudo%></i></div>
+                    </div>
+                  </li>
+                  <% now = Date.current %>
+                  <% age = now.year - @profile.birthday.year %>
+                  <% age -= 1 if now.yday < @profile.birthday.yday %>
+
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Age: <%= age%> ans</i></div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="group group-xl group-middle group-center">
+
+                  <%= link_to 'Modifier', edit_profile_path(current_user.profile.id) , class:"button button-effect-ujarak button-primary button-shadow button-circle"%>
+                  <%= link_to 'Accueil', root_path , class:"button button-effect-ujarak button-white button-shadow button-circle"%>
+
+                </div>
+
+
+                <% else %>
+
+                 <ul class="list-inline">
+
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Ville: <%= @profile.city.upcase%></i></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Pseudo: <%= @profile.pseudo%></i></div>
+                    </div>
+                  </li>
+                  <% now = Date.current %>
+                  <% age = now.year - @profile.birthday.year %>
+                  <% age -= 1 if now.yday < @profile.birthday.yday %>
+
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker text-spacing-0" >Age: <%= age%> ans</i></div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="group group-xl group-middle group-center">
+                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button>
+                  <button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button>
+                </div>
+
+
+
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Footer-->
+      <section class="section section-sm bg-white-lighter">
+        <div class="shell shell-out">
+          <div class="range range-30">
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Derniers articles du membre <%= @profile.last_name.capitalize%></h6>
+
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                <% @lastarticles = Article.where(profile_id: @profile.id)%>
+                <% @lastarticles.where(statut: 'yes').order("created_at DESC").first(3).each do |article| %>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
+                      <div class="unit-body"><%= link_to article.title, profile_article_path(article.profile_id,article.id), class:"link-gray-darker"%></div>
+                    </div>
+                  </li>
+                  <%end%>
+
+
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Derniers messages du membre <%= @profile.last_name.capitalize%></h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                <% @lastmessages = Message.where(profile_id: @profile.id)%>
+                <% @lastmessages.where(statut: 'yes').order("created_at DESC").first(3).each do |message| %>
+
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal">
+                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
+                      <div class="unit-body" style="position: relative; top: -4px;"><a class="link-default" href="#"><%= link_to message.title, profile_message_path(message.profile_id, message.id), class:"link-default"%></a></div>
+
+                    </div>
+                  </li>
+
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+                <% if current_user.id == @profile.user_id %>
+
+            <div class="cell-sm-4">
+              <div class="preffix-xl-70" style="max-width: 433px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Effacer mon compte</h6>
+                <div class="divider-modern"></div>
+                <p>Vous pouvez à tout moment effacer votrte compte ainsi que vos posts. Attention car cette manoeuvre est irréversible!!!</p>
+              </br>
+                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Effacer</button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+

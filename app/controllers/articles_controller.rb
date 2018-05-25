@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.status = "yes"
+    @article.statut = "yes"
     @profile = current_user.profile
     @article.profile = @profile
 

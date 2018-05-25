@@ -4,6 +4,15 @@ class MessagesController < ApplicationController
     @profile = current_user.profile
   end
 
+  def show
+    @message = Message.find(params[:id])
+    @messages = Message.all
+    @profile = Profile.find(@message.profile_id)
+  end
+  def index
+    @messages =Message.all
+  end
+
   def create
     @message = Message.new(message_params)
     @profile = current_user.profile

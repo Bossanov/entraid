@@ -10,8 +10,10 @@ class ArticlecommitsController < ApplicationController
     @article = Article.find(params[:article_id])
     @articlecommit.article = @article
     @article.statut = "yes"
+    @articlecommit.autor = current_user.email
 
-    if @article.save
+
+    if @articlecommit.save
       flash[:notice] = 'Votre message a été posté !'
       redirect_to root_path
 

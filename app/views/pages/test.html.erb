@@ -1,0 +1,16 @@
+<% @booking = Booking.new %>
+
+<%= simple_form_for [@house, @booking], class: 'login-box' do |f| %>
+  <h4 class="margin-bottom-1x">€<%= @house.price_cents.to_i / 100 %> / month</h4>
+  <% booking = Booking.where({house_id: @house.id, status: ["validates","paid"]}) %>
+  <% num = booking.count %>
+  <p>Remaining Capacity: <%= @house.capacity - num %> <i class="fa fa-bed" aria-hidden="true"></i></p>
+  <hr>
+  <%= f.input :start_date, as: :date, html5: true, label: false, input_html: {style: 'width: 100%;'} %>
+  <p>
+    <%= link_to 'call me back', contacts_path, class: 'btn btn-outline-secondary btn-block' %>
+  </p>
+  <p>
+    <%= f.submit "I WANT TO BOOK IT !", class: "btn btn-danger btn-block" %>
+  </p>
+<%end%>
