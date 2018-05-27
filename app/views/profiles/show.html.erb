@@ -82,7 +82,11 @@
 
                   <%= link_to 'Modifier', edit_profile_path(current_user.profile.id) , class:"button button-effect-ujarak button-primary button-shadow button-circle"%>
                   <%= link_to 'Accueil', root_path , class:"button button-effect-ujarak button-white button-shadow button-circle"%>
+                  <a href="<%=profiles_path%>"><button class="button button-effect-ujarak button-white button-shadow button-circle">Les inscrits</button></a>
 
+                  <% if current_user && current_user.profile && current_user.profile.admin == "yes" %>
+                  <%= link_to 'Interface Admin', pages_admin_path , class:"button button-effect-ujarak button-white button-shadow button-circle"%>
+                  <% end %>
                 </div>
 
 
@@ -114,8 +118,10 @@
                   </li>
                 </ul>
                 <div class="group group-xl group-middle group-center">
-                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button>
-                  <button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button>
+                  <a href=""%><button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button></a>
+                  <a href="<%=root_path%>"><button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button></a>
+                  <a href="<%=profiles_path%>"><button class="button button-effect-ujarak button-white button-shadow button-circle">Les inscrits</button></a>
+
                 </div>
 
 

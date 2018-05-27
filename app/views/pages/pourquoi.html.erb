@@ -1,0 +1,168 @@
+
+    <!-- Page-->
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-40">
+            <div class="cell-md-6 cell-lg-7">
+              <div class="object">
+                <div class="object-left">
+                  <div class="image-skew">
+                    <div class="image-skew-inner">
+                      <div class="image-skew-inner-img"><img src="images/blog-post-01-599x458.jpg" alt="" width="599" height="458"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="object-right">
+                  <h2>Our Definitive Guide to Cold and Flu</h2>
+                  <p>So you’ve come down with a nasty bug that’s been making the rounds.</p>
+                  <p>If you think you have an upper respiratory infection (URI) — which includes the common cold, sinus infections, chest colds (bronchitis) — there’s a lot you can do at home to feel better faster.</p>
+                </div>
+              </div>
+              <div class="block-text-width-divider">
+                <div class="block-text-width-divider-content">
+                  <p>You’ll have infections like these many times throughout your life, so learning what helps the most (and the least) is worth your time. What to Expect with an Upper Respiratory Infection?</p>
+                  <p>More than 90 percent of upper respiratory infections are caused by viruses. These infections create different symptoms at each stage. Most colds and flus go away in about a week, although some symptoms (like coughing) can take two or three weeks to go away completely.</p>
+                  <div class="quote-demo">
+                    <h4 class="quote-demo-title">“Taking one to two grams a day of vitamin C during cold season can lessen the severity and duration of your colds“</h4>
+                  </div>
+                  <p class="text-spacing-0">Your immune system’s job is to eradicate viral and bacterial infections from your body. It’s very effective as long as you provide it with the proper support. The best way to do that is to rest. Being stressed out or not getting enough sleep releases hormones that suppress your immune system.</p>
+                  <div class="single-post-meta">
+                    <div class="single-post-meta-item">
+
+                    </div>
+                    <div class="single-post-meta-item">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cell-md-4 cell-lg-3">
+              <div class="blog-aside">
+                <div class="range range-40 range-lg-60">
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="rd-navbar-search">
+
+                    </div>
+                  </div>
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="blog-aside-item-inner">
+                      <div class="post-minimal-wrap"><a class="post-minimal" href="#">
+                          <div class="unit unit-spacing-xs unit-horizontal">
+
+                            <div class="unit-body">
+                            <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                            </div>
+                          </div></a><a class="post-minimal" href="#">
+                          <div class="unit unit-spacing-xs unit-horizontal">
+
+                            <div class="unit-body">
+                              <% if current_user %>
+
+                              <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+                              <% else %>
+                              <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
+                              <% end %>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Footer-->
+      <section class="section section-sm bg-white-lighter">
+        <div class="shell shell-out">
+          <div class="range range-30">
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Contact us</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
+                      <div class="unit-body"><a class="link-gray-darker" href="tel:#">+1 (409) 987–5874</a></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-email-outline"></span></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><a class="link-gray-darker" href="mailto:#">info@demolink.org</a></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">clinic address</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal">
+                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
+                      <div class="unit-body" style="position: relative; top: -4px;"><a class="link-default" href="#">10 Firs Avenue, Muswell Hill, London N10</a></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="preffix-xl-70" style="max-width: 433px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Our departments</h6>
+                <div class="divider-modern"></div>
+                <ul class="list-inline list-inline-lg">
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Dentistry</a></li>
+                      <li><a class="link-default" href="#">Cardiology</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Neurology</a></li>
+                      <li><a class="link-default" href="#">Traumatology</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Pediatric</a></li>
+                      <li><a class="link-default" href="#">Ophthalmology</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+
