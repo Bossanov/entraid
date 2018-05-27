@@ -102,18 +102,22 @@
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
                 <h6 class="text-spacing-200 text-uppercase font-base">Dernier article posté</h6>
-                <% @lastarticle = @articles.where(statut: 'yes').last(1) %>
-                <% @lastprofile = Profile.find(@lastarticle.last.profile_id)  %>
 
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
                   <li>
+                <% if @articles.length > 0 %>
+                <% @lastarticle = @articles.where(statut: 'yes').last(1) %>
+                <% @lastprofile = Profile.find(@lastarticle.last.profile_id)  %>
                     <div class="unit unit-spacing-xs unit-horizontal">
                       <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
                       <div class="unit-body" style="position: relative; top: -4px;"><%= link_to "#{@lastarticle.last.title} par #{@lastprofile.pseudo.capitalize}", profile_article_path(@lastprofile.id, @lastarticle.last.id), class:"link-default"%></div>
 
 
                     </div>
+                  <% else %>
+                  <i>Aucun article</i>
+                  <% end %>
                   </li>
                 </ul>
               </div>

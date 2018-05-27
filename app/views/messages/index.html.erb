@@ -89,16 +89,21 @@
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
                 <h6 class="text-spacing-200 text-uppercase font-base">Dernier message posté</h6>
-                <% @lastmessage = @messages.where(statut: 'yes').last(1) %>
-                <% @lastprofile = Profile.find(@lastmessage.last.profile_id)  %>
 
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
                   <li>
+                <% if @messages.length > 0 %>
+
+                <% @lastmessage = @messages.where(statut: 'yes').last(1) %>
+                <% @lastprofile = Profile.find(@lastmessage.last.profile_id)  %>
                     <div class="unit unit-spacing-xs unit-horizontal">
                       <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
                       <div class="unit-body" style="position: relative; top: -4px;"><a class="link-default" href="<%=profile_message_path(@lastprofile.id,@lastmessage.last.id) %>"><%= @lastmessage.last.title%> par <%=@lastprofile.pseudo.capitalize %></a></div>
                     </div>
+                <% else %>
+                <i>Aucun message</i>
+                <% end %>
                   </li>
                 </ul>
               </div>
