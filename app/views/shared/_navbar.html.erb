@@ -8,15 +8,15 @@
                 <!-- RD Navbar Toggle-->
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img src="images/logo-79x92.png" alt="" width="79" height="92"/></a></div>
+                <div class="rd-navbar-brand"><a class="brand-name" href="<%=root_path%>"><img src="https://images.unsplash.com/photo-1501740326664-5571ff5e30a6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ffd320d3a7164849c771410682f3959&auto=format&fit=crop&w=2853&q=80" alt="" width="79" height="92"/></a></div>
               </div>
               <div class="rd-navbar-aside-right">
                 <div class="rd-navbar-nav-wrap">
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
                     <li><a href="/">Accueil</a></li>
-                    <li><a href="about.html">Pourquoi?</a></li>
-                    <li><a href="departments.html">Infos</a><li>
+                    <li><a href="<%=pages_pourquoi_path%>">Pourquoi?</a></li>
+                    <li><a href="<%=pages_info_path%>">Infos</a><li>
 
                     <% if current_user.present?%>
 
@@ -32,25 +32,21 @@
                               <li><%= link_to 'Mon profil', profile_path(current_user.profile.id)%></li>
                               <li><%= link_to 'Le forum', messages_path%></li>
                               <li><%= link_to 'Les articles', articles_path%></li>
+                              <li><%= link_to 'Les inscrits', profiles_path%></li>
                               <li> <%= link_to destroy_user_session_path, method: :delete do %>
-                              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                                <%= t(".sign_out", default: "Log out") %>
                                 <% end %>
                               </li>
                             </ul>
                           </div>
                         </li>
-
-
-
-
-
                       </ul>
                     </li>
                     <% else %>
-                    <li><a href="<%=new_user_session_path %>">Se connecter</a></li>
+                    <li><a href="<%=new_user_session_path%>">Se connecter</a></li>
 
                     <% end%>
-                    <li><a href="contacts.html">Liens utiles</a></li>
+                    <li><a href="<%=pages_liens_path%>">Liens utiles</a></li>
                   </ul>
                 </div>
               </div>

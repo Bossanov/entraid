@@ -1,4 +1,5 @@
 
+
     <div class="text-left page">
       <!-- Page preloader-->
       <div class="page-loader">
@@ -49,13 +50,13 @@
 
                     </div>
                     <div class="vip-content">
-                      <h5><a href="doctor-profile.html"><%= profile.pseudo.capitalize %></a></h5>
+                      <h5><a href="<%=profile_path(profile.id)%>"><%= profile.pseudo.capitalize %></a></h5>
                       <div class="vip-cite"><span><%=profile.job.upcase%></span></div>
                       <div class="vip-divider"></div>
                       <% now = Date.current %>
                       <% age = now.year - profile.birthday.year %>
                       <% age -= 1 if now.yday < profile.birthday.yday %>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#"><%= age%> ans</a></div>
+                      <div class="vip-link"><span class="fas fa-birthday-cake"></span> <%= age%> ans</div>
                     </div>
                   </div>
                 </div>
@@ -78,20 +79,20 @@
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
                 <h6 class="text-spacing-200 text-uppercase font-base">Derniers inscrits</h6>
+
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
+                  <% @profiles.where(statut: 'yes').order("created_at DESC").first(3).each do |profile| %>
+
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal unit-custom">
-                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
-                      <div class="unit-body"><a class="link-gray-darker" href="tel:#">+1 (409) 987–5874</a></div>
+                      <div class="unit-left"><span class="far fa-address-card"></span></div>
+                      <div class="unit-body"><a class="link-gray-darker" href="<%=profile_path(profile.id) %>"><%=profile.pseudo.capitalize%> inscrit le <%=profile.created_at.strftime("%d.%m.%Y") %></a></div>
                     </div>
                   </li>
-                  <li>
-                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
-                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-email-outline"></span></div>
-                      <div class="unit-body" style="position: relative; top: 1px"><a class="link-gray-darker" href="mailto:#">info@demolink.org</a></div>
-                    </div>
-                  </li>
+                  <% end %>
+
+
                 </ul>
               </div>
             </div>
@@ -109,9 +110,10 @@
 
 
                 <ul class="list-inline list-inline-lg">
-                  <button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button>
+                  <a href="<%=root_path%>"><button  class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button></a>
                   <br/>
-                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Mon profil</button>
+                  <br/>
+                  <a href="<%=profile_path(current_user.profile.id)%>"><button class="button button-effect-ujarak button-primary button-shadow button-circle">Mon profil</button></a>
 
                 </ul>
               </div>

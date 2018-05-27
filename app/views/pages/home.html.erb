@@ -1,4 +1,5 @@
 <!-- Page-->
+
     <div class="text-left page">
       <section class="swiper-modern section section-full-width">
         <div class="swiper-container swiper-slider" data-clickable="true" data-slide-effect="fade" data-autoplay="4000" data-simulate-touch="false">
@@ -9,8 +10,8 @@
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Enfin un site fait par et pour des professionels de santé.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
-                    <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <% if  current_user  %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -25,8 +26,8 @@
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Une philosophie simple pour sortir la tête de l'eau.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
-                    <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <% if  current_user  %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id) %>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -41,8 +42,8 @@
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Ne restez pas seul(e), venez nous rejoindre !!!</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical entraid'</h1>
-                    <% if  current_user == nil %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer</a>
+                    <% if  current_user %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -53,8 +54,8 @@
             </div>
           </div>
           <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"><div class="fas fa-angle-double-left"></div></div>
+          <div class="swiper-button-next"><div class="fas fa-angle-double-right"></div></div>
         </div>
       </section>
       <!-- Opening Hours-->
@@ -64,9 +65,10 @@
             <div class="cell-sm-5 cell-lg-3 reveal-sm-flex">
               <div class="block-classic">
                 <div class="block-classic-title">
+
                   <h4>En cas d'urgence</h4>
                 </div>
-                <div class="block-classic-link"><a href="tel:#">0 805 23 23 36</a></div>
+                <div class="block-classic-link"><a class="fas fa-phone" href="tel:#">  0 805 23 23 36</a></div>
                 <div class="block-classic-divider"></div>
                 <p>L’association Soins aux Professionnels de Santé (SPS) a mis à disposition un numéro vert gratuit, disponible 24h/24 et 7j/7, pour aider les soignants qui souffrent.</p>
               </div>
@@ -87,8 +89,9 @@
                       <dd>40 %</dd>
                     </dl>
                     <dl>
+                      <% @totaluser = User.all.length %>
                       <dt>Nombre d'inscrits au site</dt>
-                      <dd>9.30 – 15.00</dd>
+                      <dd><%=@totaluser%></dd>
                     </dl>
                   </div>
                 </div>
@@ -98,6 +101,7 @@
               <div class="block-classic">
                 <div class="block-classic-title">
                   <h4>Nous poser une question</h4>
+                  <p>Vos messages seront supprimés automatiquement après lecture .</p>
                 </div>
                 <% @contact = Contact.new %>
                 <%= simple_form_for [@contact] do |f| %>
@@ -258,24 +262,35 @@
               </div>
               <div class="divider-default"></div>
               <div class="owl-carousel" data-items="1" data-sm-items="3" data-md-items="3" data-lg-items="4" data-stage-padding="0" data-loop="false" data-autoplay="true" data-margin="30" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-1">
+
                 <div class="item wow fadeInUp" data-wow-delay=".4s">
-                  <div class="thumb-default"><a href="#"><img src="https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6768885e6bbb2cef343010ce679b6d0&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/></a>
-                    <h4 class="thumb-default-title"><a href="#"> Un forum</a></h4>
+                  <div class="thumb-default"><img src="https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6768885e6bbb2cef343010ce679b6d0&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
+                    <h4 class="thumb-default-title">Un forum</h4>
                     <p>Un forum de discussion moderne et sécurisé avec différents thèmes</p>
                   </div>
                 </div>
+
                 <div class="item wow fadeInUp" data-wow-delay=".6s">
-                  <div class="thumb-default"><a href="#"><img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c58a85b749adc0e09b49a2133a33e264&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/></a>
-                    <h4 class="thumb-default-title"><a href="#"> Des articles</a></h4>
+                  <div class="thumb-default"><img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c58a85b749adc0e09b49a2133a33e264&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
+                    <h4 class="thumb-default-title">Des articles</h4>
                     <p>Aux thèmes variés. Pouvant nous informer, nous aider, nous protéger . Chacun pourra proposer son récit et ainsi en faire profiter les autres .</p>
                   </div>
                 </div>
+
                 <div class="item wow fadeInUp" data-wow-delay=".8s">
-                  <div class="thumb-default"><a href="#"><img src="https://images.unsplash.com/photo-1515612417973-971318387e05?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e25894789e586fa704f1aebb5e39cbeb&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/></a>
-                    <h4 class="thumb-default-title"><a href="#"> et ensuite ?</a></h4>
+                  <div class="thumb-default"><img src="https://images.unsplash.com/photo-1525939815185-7b25b346d3db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ade9edb8af4682ca862a6241ea31b39&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
+                    <h4 class="thumb-default-title">La sécurité</h4>
+                    <p>Vos échanges seront anonymes, seul un pseudo sera visible par les autres. Vous pourrez également à tout moment  effacer en un click de souris tout votre compte ainsi que vos messages afin de respecter vos droits.  </p>
+                  </div>
+                </div>
+
+                <div class="item wow fadeInUp" data-wow-delay="1.2s">
+                  <div class="thumb-default"><img src="https://images.unsplash.com/photo-1515612417973-971318387e05?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e25894789e586fa704f1aebb5e39cbeb&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
+                    <h4 class="thumb-default-title">et ensuite ?</h4>
                     <p>De part vos doléances, construisons le site qui nous ressemble. </p>
                   </div>
                 </div>
+
               </div>
             </div>
 
@@ -291,7 +306,7 @@
             <div class="item">
               <div class="item-inner">
                 <div class="block-info">
-                  <div class="block-info-inner"><img class="img-circle" src="images/clients-01-91x91.jpg" alt="" width="91" height="91"/>
+                  <div class="block-info-inner"><img class="img-circle" src="http://res.cloudinary.com/dz83jh064/image/upload/v1527430114/Unknown_gvauo3.jpg" alt="" width="91" height="91"/>
                     <p>"Le burn out des médecins et paramédicaux, une réalité et un tabou.[...]Près d'un professionnel de santé sur deux menacé par l'épuisement professionnel." </p>
                     <p class="heading-5">solutionsmedicales.fr</p>
                   </div>
@@ -301,7 +316,7 @@
             <div class="item">
               <div class="item-inner">
                 <div class="block-info">
-                  <div class="block-info-inner"><img class="img-circle" src="images/clients-02-91x91.jpg" alt="" width="91" height="91"/>
+                  <div class="block-info-inner"><img class="img-circle" src="http://res.cloudinary.com/dz83jh064/image/upload/v1527430173/logo-20minutes-bleucertis_h93pk6.png" alt="" width="91" height="91"/>
                     <p>"Dépression, burn out, suicide... Une enquête inédite pointe la grande souffrance des jeunes médecins.[...] Anxiété, épuisement professionnel, idées noires… Des symptômes qu’ils reconnaissent bien chez leurs patients… mais pas forcément chez eux.[...] On nous apprend à soigner, mais pas à prendre soin de nous."</p>
                     <p class="heading-5">20 minutes</p>
                   </div>
@@ -311,7 +326,7 @@
             <div class="item">
               <div class="item-inner">
                 <div class="block-info">
-                  <div class="block-info-inner"><img class="img-circle" src="images/clients-03-91x91.jpg" alt="" width="91" height="91"/>
+                  <div class="block-info-inner"><img class="img-circle" src="http://res.cloudinary.com/dz83jh064/image/upload/v1527429909/Unknown-2_ozz95h.png" alt="" width="91" height="91"/>
                     <p>"Burn out : 40% des professionnels de santé « en danger ». [...] Inquiétant. Affolant même. Voilà le mot qui m’est venu à l’esprit en entendant le Dr Max-André Doppia présenter les résultats de son étude sur le niveau d’épuisement des médecins et des cadres de santé en France.[...] Car, de fait, un médecin épuisé est un médecin qui travaille moins bien – et ce, quelle que soit sa bonne volonté par ailleurs. " </p>
                     <p class="heading-5">L'express</p>
                   </div>
@@ -321,7 +336,7 @@
             <div class="item">
               <div class="item-inner">
                 <div class="block-info">
-                  <div class="block-info-inner"><img class="img-circle" src="images/clients-04-91x91.jpg" alt="" width="91" height="91"/>
+                  <div class="block-info-inner"><img class="img-circle" src="http://res.cloudinary.com/dz83jh064/image/upload/v1527430002/Unknown-3_yz9wvh.png" alt="" width="91" height="91"/>
                     <p>"Burn-out médical : mal du siècle ou éveil des consciences ? [...] Au sein de notre corps de métier est véhiculée l'image du professionnel idéal, celui qui ne connait ni fatigue, ni hésitations. [...] on ne soigne bien que lorsqu'on est soi-même bien et l'épuisement est pourvoyeur d'erreurs médicales." </p>
                     <p class="heading-5">Le journal du médecin</p>
                   </div>
@@ -339,6 +354,7 @@
               <div class="box">
                 <div class="box-left">
                   <h2>Notre équipe</h2>
+                  <p>L'équipe sera uniquement constituée de professionels de santé bénévoles inscrits sur ce site afin de veiller au respect de notre philosophie, à savoir la bienveillance, le partage, la tolérance et bien sûr l'écoute .</p>
                 </div>
                 <div class="box-right">
                   <div class="owl-outer-navigation" id="owl-carousel-nav">
@@ -348,107 +364,29 @@
               </div>
               <div class="divider-default"></div>
               <div class="owl-carousel" data-items="1" data-sm-items="3" data-md-items="3" data-lg-items="4" data-stage-padding="0" data-loop="true" data-autoplay="true" data-margin="30" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav">
+                <% @admins = Profile.where(admin: "yes")%>
+                <% @admins.each do |admin|%>
+
                 <div class="item wow fadeInUp" data-wow-delay=".4s">
                   <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-01-268x216.jpg" alt="" width="268" height="216"/>
+                    <div class="vip-image-block">
+                      <%= cl_image_tag admin.photo, width:"268", height: "216", alt:""%>
                     </div>
                     <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Julia Jameson</a></h5>
-                      <div class="vip-cite"><span>Pediatrics</span></div>
+                      <h5><a href="doctor-profile.html"><%=admin.pseudo.capitalize%></a></h5>
+                      <div class="vip-cite"><span><%=admin.job.upcase%></span></div>
                       <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
+                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span> <%=admin.city.upcase%></div>
                     </div>
                   </div>
                 </div>
-                <div class="item wow fadeInUp" data-wow-delay=".6s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-02-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Rodney Stratton</a></h5>
-                      <div class="vip-cite"><span>Pulmonary</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay=".8s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-03-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Amy Adams</a></h5>
-                      <div class="vip-cite"><span>Ophthalmology</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay="1s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-04-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Max Turner</a></h5>
-                      <div class="vip-cite"><span>Cardiology</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay=".4s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-05-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Peter Wilson</a></h5>
-                      <div class="vip-cite"><span>Traumatology</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay=".6s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-06-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Jason Clark</a></h5>
-                      <div class="vip-cite"><span>Head Doctor, Neurology</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay=".8s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-07-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Helen Wilson</a></h5>
-                      <div class="vip-cite"><span>Diagnostics</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item wow fadeInUp" data-wow-delay="1s">
-                  <div class="vip">
-                    <div class="vip-image-block"><img src="images/diagnostics-08-268x216.jpg" alt="" width="268" height="216"/>
-                    </div>
-                    <div class="vip-content">
-                      <h5><a href="doctor-profile.html">Dr. Sam Smith</a></h5>
-                      <div class="vip-cite"><span>Dentistry</span></div>
-                      <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span><a href="tel:#">+1 (409) 987–5874</a></div>
-                    </div>
-                  </div>
-                </div>
+                <% end%>
+
               </div>
             </div>
             <div class="cell-lg-2 wow fadeIn" data-wow-delay="1.2s">
-              <div class="demo-image-block"><a class="demo-image-block-link" href="timetable.html"><img src="images/about-02-268x483.jpg" alt="" width="268" height="483"/>
-                  <div class="demo-image-block-link-text"><span class="heading-4">Make an Appointment</span><span>Let us help you deal with health concerns.</span></div></a></div>
+              <div class="demo-image-block"><img src="https://images.unsplash.com/photo-1526030071064-432feadf1c44?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a8caa51e02139c6e47a9bd0baecf730&auto=format&fit=crop&w=2850&q=80" alt="" width="268" height="483"/>
+                  <div class="demo-image-block-link-text"></div></div>
             </div>
           </div>
         </div>
@@ -465,20 +403,20 @@
                 <ul class="list list-lg">
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal unit-custom unit-middle">
-                      <div class="unit-left"><span class="icon icon-md-big icon-primary mdi-phone"></span></div>
-                      <div class="unit-body"><a class="link-footer big text-spacing-75 font-sec" href="tel:#">Antoine STAUMONT</a></div>
+                      <div class="unit-left"><span class="far fa-address-card"></span></div>
+                      <div class="unit-body">Antoine STAUMONT</div>
                     </div>
                   </li>
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal unit-custom unit-middle">
-                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-email-outline"></span></div>
-                      <div class="unit-body" style="position: relative; top: -1px"><a class="link-footer" href="mailto:#">staumont.antoine@me.com</a></div>
+                      <div class="unit-left"><span class="fas fa-at"></span></div>
+                      <div class="unit-body" style="position: relative; top: -1px">staumont.antoine@me.com</div>
                     </div>
                   </li>
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal">
-                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
-                      <div class="unit-body" style="position: relative; top: -4px;"><a class="link-footer" href="#">Hardelot</a></div>
+                      <div class="unit-left"><span class="fas fa-home"></span></div>
+                      <div class="unit-body" style="position: relative; top: -4px;">Hardelot</div>
                     </div>
                   </li>
                 </ul>
@@ -486,25 +424,28 @@
             </div>
             <div class="cell-lg-3 cell-sm-5">
               <div style="max-width: 283px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Dernières infos</h6>
+                <h6 class="text-spacing-200 text-uppercase font-base"></h6>
                 <div class="divider-default"></div>
                 <ul class="list list-lg">
+
+
+                  <% if current_user %>
                   <li>
-                    <article class="news-mini">
-                      <h6 class="news-mini-title"><a href="news-page.html">Stress at Work – How to Reduce?</a></h6><a class="news-mini-time" href="news-page.html">January 12, 2018</a>
-                    </article>
+                    <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+
                   </li>
+                  <% else %>
                   <li>
-                    <article class="news-mini">
-                      <h6 class="news-mini-title"><a href="news-page.html">Helping Children Deal With Trauma</a></h6><a class="news-mini-time" href="news-page.html">January 23, 2018</a>
-                    </article>
+                    <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
                   </li>
+                    <% end %>
                 </ul>
               </div>
             </div>
             <div class="cell-lg-4">
               <div>
                 <h6 class="text-spacing-200 text-uppercase font-base">Une question ? Contactez nous !</h6>
+                <p>Vos messages seront supprimés automatiquement après lecture .</p>
                 <div class="divider-default"></div>
                 <% @contact = Contact.new %>
                 <%= simple_form_for [@contact] do |f| %>
