@@ -370,7 +370,7 @@
                 <div class="item wow fadeInUp" data-wow-delay=".4s">
                   <div class="vip">
                     <div class="vip-image-block">
-                      <% if profile.photo_url.nil? %>
+                      <% if admin.photo_url.nil? %>
                       <img src="http://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="268" height="216" />
                       <% else %>
                       <%= cl_image_tag admin.photo, width:"268", height: "216", alt:""%>
