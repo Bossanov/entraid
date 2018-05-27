@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :articlecommits
   end
   resources :contacts
+
   get 'pages/pourquoi'
   get 'pages/info'
   get 'pages/liens'
