@@ -9,7 +9,7 @@
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Enfin un site fait par et pour des professionels de santé.</p>
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' Entraid'</h1>
                     <% if  current_user  %>
                     <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
@@ -25,7 +25,7 @@
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Une philosophie simple pour sortir la tête de l'eau.</p>
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical Entraid'</h1>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' Entraid'</h1>
                     <% if  current_user  %>
                     <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id) %>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
@@ -41,7 +41,7 @@
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Ne restez pas seul(e), venez nous rejoindre !!!</p>
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Médical entraid'</h1>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' entraid'</h1>
                     <% if  current_user %>
                     <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
                     <% else %>
@@ -68,7 +68,7 @@
 
                   <h4>En cas d'urgence</h4>
                 </div>
-                <div class="block-classic-link"><a class="fas fa-phone" href="tel:#">  0 805 23 23 36</a></div>
+                <div class="block-classic-link"><div class="fas fa-phone" >  0 805 23 23 36</div></div>
                 <div class="block-classic-divider"></div>
                 <p>L’association Soins aux Professionnels de Santé (SPS) a mis à disposition un numéro vert gratuit, disponible 24h/24 et 7j/7, pour aider les soignants qui souffrent.</p>
               </div>
@@ -380,7 +380,7 @@
                       <h5><a href="<%=profile_path(admin.id)%>"><%=admin.pseudo.capitalize%></a></h5>
                       <div class="vip-cite"><span><%=admin.job.upcase%></span></div>
                       <div class="vip-divider"></div>
-                      <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span> <%=admin.city.upcase%></div>
+                      <div class="vip-link"><span class="fas fa-home"></span> <%=admin.city.upcase%></div>
                     </div>
                   </div>
                 </div>
@@ -429,6 +429,7 @@
             <div class="cell-lg-3 cell-sm-5">
               <div style="max-width: 283px">
                 <h6 class="text-spacing-200 text-uppercase font-base"></h6>
+                <br/>
                 <div class="divider-default"></div>
                 <ul class="list list-lg">
 
