@@ -377,7 +377,7 @@
                       <% end %>
                     </div>
                     <div class="vip-content">
-                      <h5><a href="doctor-profile.html"><%=admin.pseudo.capitalize%></a></h5>
+                      <h5><a href="<%=profile_path(admin.id)%>"><%=admin.pseudo.capitalize%></a></h5>
                       <div class="vip-cite"><span><%=admin.job.upcase%></span></div>
                       <div class="vip-divider"></div>
                       <div class="vip-link"><span class="icon icon-md icon-primary mdi-phone"></span> <%=admin.city.upcase%></div>
