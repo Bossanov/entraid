@@ -23,6 +23,18 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:contactid])
+    @contact.destroy
+    redirect_to pages_admin_path
+
+  end
+
+  def effacer_contact
+    @contatc = Contact.find(params[:contactid])
+    @contatc.destroy
+    redirect_to pages_admin_path
+  end
   private
 
   def contact_params

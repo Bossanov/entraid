@@ -4,14 +4,23 @@
       <section class="swiper-modern section section-full-width">
         <div class="swiper-container swiper-slider" data-clickable="true" data-slide-effect="fade" data-autoplay="4000" data-simulate-touch="false">
           <div class="swiper-wrapper">
+
             <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2a800725f4e9dbc5c246e2f15b83b4b4&auto=format&fit=crop&w=2874&q=80">
               <div class="swiper-slide-caption">
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Enfin un site fait par et pour des professionels de santé.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' Entraid'</h1>
-                    <% if  current_user  %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
+
+                    <% elsif  current_user && current_user.profile.nil?%>
+                        <a class="button button-primary button-effect-ujarak" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
+
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -20,14 +29,22 @@
                 </div>
               </div>
             </div>
+
             <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2a800725f4e9dbc5c246e2f15b83b4b4&auto=format&fit=crop&w=2874&q=80">
               <div class="swiper-slide-caption">
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Une philosophie simple pour sortir la tête de l'eau.</p>
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' Entraid'</h1>
-                    <% if  current_user  %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id) %>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
+                    <% elsif  current_user && current_user.profile.nil?%>
+                        <a class="button button-primary button-effect-ujarak" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
+
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -36,14 +53,22 @@
                 </div>
               </div>
             </div>
+
             <div class="swiper-slide" data-slide-bg="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2a800725f4e9dbc5c246e2f15b83b4b4&auto=format&fit=crop&w=2874&q=80">
               <div class="swiper-slide-caption">
                 <div class="section-lg">
                   <div class="shell">
                     <p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Ne restez pas seul(e), venez nous rejoindre !!!</p>
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' entraid'</h1>
-                    <% if  current_user %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Méd' Entraid'</h1>
+                    <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
+                    <% elsif  current_user && current_user.profile.nil?%>
+                        <a class="button button-primary button-effect-ujarak" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
+
                     <% else %>
                     <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
@@ -52,6 +77,8 @@
                 </div>
               </div>
             </div>
+
+
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"><div class="fas fa-angle-double-left"></div></div>
@@ -434,10 +461,23 @@
                 <ul class="list list-lg">
 
 
-                  <% if current_user %>
+                  <% if current_user &&  current_user.profile &&  current_user.profile.statut == "yes" %>
                   <li>
                     <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
 
+                  </li>
+                  <% elsif current_user &&  current_user.profile &&  current_user.profile.statut == "no" %>
+                  <li>
+                    <i>Profil en cours de validation</i>
+                  </li>
+
+                  <% elsif current_user &&  current_user.profile &&  current_user.profile.statut == "bloqué" %>
+                  <li>
+                    <i>Votre compte est bloqué, veuillez contacter l'équipe</i>
+                  </li>
+                  <%elsif current_user &&  current_user.profile.nil? %>
+                  <li>
+                    <%= link_to "Créer mon profil", new_profile_path, class:"button button-effect-ujarak button-primary button-block"%>
                   </li>
                   <% else %>
                   <li>

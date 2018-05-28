@@ -58,6 +58,14 @@
                       <% age -= 1 if now.yday < profile.birthday.yday %>
                       <div class="vip-link"><span class="fas fa-birthday-cake"></span> <%= age%> ans</div>
                     </div>
+                    <% if current_user && current_user.profile && current_user.profile.admin == "yes" && profile.admin != "yes"%>
+                      <%= link_to 'Bloquer', bloquer_profile_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+
+                      <%= link_to 'Supprimer', supprimer_profile_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+
+
+                    <% end %>
+
                   </div>
                 </div>
                 <% end %>
