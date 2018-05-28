@@ -185,7 +185,9 @@
                 <div class="divider-modern"></div>
                 <p>Vous pouvez à tout moment effacer votre compte ainsi que vos posts. Attention car cette manoeuvre est irréversible!!!</p>
               </br>
-                  <button class="button button-effect-ujarak button-primary button-shadow button-circle">Effacer</button>
+
+                      <%= link_to 'Effacer', supprimer_profile_path(profileid: current_user.id), class:"button button-effect-ujarak button-primary button-shadow button-circle"%>
+
               </div>
             </div>
             <% end %>

@@ -15,7 +15,7 @@ class ArticlecommitsController < ApplicationController
 
     if @articlecommit.save
       flash[:notice] = 'Votre message a été posté !'
-      redirect_to root_path
+      redirect_to article_path(@article.id)
 
     else
       render :new
@@ -28,6 +28,5 @@ class ArticlecommitsController < ApplicationController
 
   def article_params
     params.require(:articlecommit).permit(:title, :theme, :content, :statut)
-
   end
 end

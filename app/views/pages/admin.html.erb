@@ -1,0 +1,272 @@
+
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header-->
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cf56dd62f7e28facff79eaf6e7a78df4&auto=format&fit=crop&w=3074&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2>Bienvenue <%=current_user.profile.first_name.capitalize%> sur votre page Admin</h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-lg bg-white text-center">
+        <div class="shell">
+          <h3>Interface ADMIN</h3>
+          <p class="large block-md-big">Dans cette page vous pourrez accepter ou non une demande d'inscription, la diffusion d'un article. Vous pourrez également voir les messages envoyés par les non-inscrits.</p>
+
+          <div class="range range-xs-center">
+            <div class="cell-sm-10 cell-lg-9 cell-xl-8">
+
+              <div class="divider-edgewise"></div>
+
+
+              <h4>Les demandes d'inscriptions en attente</h4>
+                    <% @profileattempts = Profile.where(statut: "no")%>
+              <% if @profileattempts.length == 0 %>
+              <i>Pas de demande en attente </i>
+              <% else %>
+
+              <div class="table-custom-responsive">
+                <table class="table-custom table-custom-primary">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Nom - Prénom</th>
+                      <th>e-mail</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @profileattempts.each do |profile|%>
+                    <% @userattempt = User.where(id: profile.user_id)%>
+                    <tr>
+                      <td><%= profile.created_at.strftime("%d.%m.%Y") %></td>
+                      <td><%=profile.last_name.upcase%> <%=profile.first_name.capitalize%></td>
+                      <td><%=@userattempt.last.email%></td>
+                      <td>
+                         <%= link_to 'Accepter',  valider_profile_path(profileid: profile.id) , class:"button button-effect-ujarak button-primary button-block"%>
+                        <%= link_to 'Refuser', refuser_profile_path(profileid: profile.id) , class:"button button-effect-ujarak button-primary button-block"%>
+                      </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+
+                </table>
+              </div>
+
+              <% end %>
+
+
+              <div class="divider-edgewise"></div>
+
+              <h4>Les demandes de parution d'articles</h4>
+                    <% @articleattempts = Article.where(statut: "no")%>
+              <% if @articleattempts.length == 0 %>
+              <i>Pas de demande en attente </i>
+              <% else %>
+
+              <div class="table-custom-responsive">
+                <table class="table-custom table-custom-primary">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Auteur</th>
+                      <th>Titre</th>
+                      <th>Contenu</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @articleattempts.each do |article|%>
+                    <% @profilearticle = Profile.where(id: article.profile_id)%>
+                    <tr>
+                      <td><%= article.created_at.strftime("%d.%m.%Y") %></td>
+                      <td><%=@profilearticle.last.last_name.upcase%> <%=@profilearticle.last.first_name.capitalize%></td>
+                      <td><%=article.title%></td>
+                      <td><%=article.content%></td>
+                      <td>
+                         <%= link_to 'Accepter', valider_article_path(articleid: article.id), class:"button button-effect-ujarak button-primary button-block"%>
+                        <%= link_to 'Refuser', refuser_article_path(articleid: article.id) , class:"button button-effect-ujarak button-primary button-block"%>
+                      </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+
+                </table>
+              </div>
+
+              <% end %>
+
+
+              <div class="divider-edgewise"></div>
+
+
+
+              <h4>Les demandes de contact externes</h4>
+                    <% @contacts = Contact.all%>
+              <% if @contacts.length == 0 %>
+              <i>Pas de demande en ce moment </i>
+              <% else %>
+
+              <div class="table-custom-responsive">
+                <table class="table-custom table-custom-primary">
+                  <thead>
+                    <tr>
+
+                      <th>Email</th>
+                      <th>Message</th>
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @contacts.each do |contact|%>
+
+                    <tr>
+
+                      <td><%=contact.email%></td>
+                      <td><%=contact.content%></td>
+
+                      <td>
+                         <%= link_to 'Effacer', effacer_contact_path(contactid: contact.id), class:"button button-effect-ujarak button-primary button-block"%>
+
+                      </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+
+                </table>
+              </div>
+            <% end %>
+              <div class="divider-edgewise"></div>
+
+             <h4>Les comptes bloqués</h4>
+                    <% @comptes = Profile.where(statut: "bloqué")%>
+              <% if @comptes.length == 0 %>
+              <i>Pas de compte bloqué en ce moment </i>
+              <% else %>
+
+              <div class="table-custom-responsive">
+                <table class="table-custom table-custom-primary">
+                  <thead>
+                    <tr>
+
+                      <th>Nom - Prenom</th>
+
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @comptes.each do |compte|%>
+
+                    <tr>
+
+                      <td><%=compte.last_name.upcase%> <%=compte.first_name.capitalize%></td>
+
+
+                      <td>
+                         <%= link_to 'Débloquer', debloquer_profile_path(profileid: compte.id), class:"button button-effect-ujarak button-primary button-block"%>
+
+                      </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+
+                </table>
+              </div>
+            <% end %>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page Footer-->
+      <section class="section section-sm bg-white-lighter">
+        <div class="shell shell-out">
+          <div class="range range-30">
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Contact us</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
+                      <div class="unit-body"><a class="link-gray-darker" href="tel:#">+1 (409) 987–5874</a></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-email-outline"></span></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><a class="link-gray-darker" href="mailto:#">info@demolink.org</a></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">clinic address</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal">
+                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
+                      <div class="unit-body" style="position: relative; top: -4px;"><a class="link-default" href="#">10 Firs Avenue, Muswell Hill, London N10</a></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="preffix-xl-70" style="max-width: 433px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Our departments</h6>
+                <div class="divider-modern"></div>
+                <ul class="list-inline list-inline-lg">
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Dentistry</a></li>
+                      <li><a class="link-default" href="#">Cardiology</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Neurology</a></li>
+                      <li><a class="link-default" href="#">Traumatology</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class="list list-marked list-marked-sm list-marked-primary" style="line-height: 1.2">
+                      <li><a class="link-default" href="#">Pediatric</a></li>
+                      <li><a class="link-default" href="#">Ophthalmology</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
