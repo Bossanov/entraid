@@ -139,7 +139,7 @@
           <div class="range range-30">
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Derniers articles du membre <%= @profile.last_name.capitalize%></h6>
+                <h6 class="text-spacing-200 text-uppercase font-base">Derniers articles du membre <%= @profile.pseudo.capitalize%></h6>
 
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
@@ -159,7 +159,7 @@
             </div>
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Derniers messages du membre <%= @profile.last_name.capitalize%></h6>
+                <h6 class="text-spacing-200 text-uppercase font-base">Derniers messages du membre <%= @profile.pseudo.capitalize%></h6>
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
                 <% @lastmessages = Message.where(profile_id: @profile.id)%>
