@@ -5,7 +5,6 @@
         <div>
           <div class="page-loader-body">
             <svg x="0" y="0" width="258" height="258">
-
               <clippath id="clip-path">
 
               </clippath>
@@ -32,9 +31,7 @@
             <div class="cell-md-6 cell-lg-7">
               <div class="object">
                 <div class="object-left">
-
                 </div>
-
               </div>
               <div class="block-text-width">
                 <div class="block-text-width-divider-content">
@@ -52,10 +49,8 @@
                         <li>
                           <div class="object-inline text-spacing-0 text-gray-darker"><span><%=@profile.pseudo.capitalize%></span></div>
                         </li>
-
                       </ul>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -63,20 +58,17 @@
               <div class="comment-wrap">
                 <div class="comment-wrap-title heading-4"><span><%=@messagecommits.length%> commentaire(s)</span></div>
                 <!-- Comment 1st level-->
-
                 <% @messagecommits.each do |commit|%>
                    <% @user = User.where(email: commit.autor)%>
                    <%@profilecommit = Profile.where(user_id: @user.last.id)%>
                 <div class="comment">
                   <div class="comment-inner">
                     <div class="comment-left">
-
                       <% if @profilecommit.last.photo.nil? %>
                         <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
                       <% else %>
                         <%= cl_image_tag @profilecommit.last.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
                       <% end %>
-
                       <img class="img-circle" src="images/blog-post-01-65x65.jpg" alt="" width="65" height="65"/>
                     </div>
                     <div class="comment-body">
@@ -87,7 +79,6 @@
                       <div class="comment-body-content">
                         <p class="text-spacing-50"><%=commit.content%></p>
                         <ul class="list-inline list-inline-lg">
-
                         </ul>
                       </div>
                     </div>
