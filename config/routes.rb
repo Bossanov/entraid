@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :profiles do
     resources :articles
     resources :messages
+    resources :conversations
 
   end
   resources :messages do
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
     resources :articlecommits
   end
   resources :contacts
-
+resources :conversations do
+    resources :conversationcommits
+  end
   get 'pages/pourquoi'
   get 'pages/info'
   get 'pages/liens'
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
   get 'bloquer_profile', to: 'profiles#bloquer_profile'
   get 'supprimer_profile', to: 'profiles#supprimer_profile'
   get 'debloquer_profile', to: 'profiles#debloquer_profile'
+  get 'supprimer_conversation', to: 'conversations#supprimer_conversation'
 
 
 end

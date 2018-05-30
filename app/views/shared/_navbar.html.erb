@@ -35,6 +35,8 @@
                               <li><%= link_to 'Le forum', messages_path%></li>
                               <li><%= link_to 'Les articles', articles_path%></li>
                               <li><%= link_to 'Les inscrits', profiles_path%></li>
+                              <li><%= link_to 'Ma messagerie interne', conversations_path%></li>
+
                               <li> <%= link_to destroy_user_session_path, method: :delete do %>
                                 <%= t(".sign_out", default: "Se déconnecter") %>
                                 <% end %>

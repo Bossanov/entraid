@@ -117,8 +117,9 @@
                     </div>
                   </li>
                 </ul>
+                <% @user = User.where(id: @profile.user_id)%>
                 <div class="group group-xl group-middle group-center">
-                  <a href=""%><button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button></a>
+                  <a href="<%=new_profile_conversation_path(current_user.profile.id, dest: @user.last.email)%>"%><button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button></a>
                   <a href="<%=root_path%>"><button class="button button-effect-ujarak button-white button-shadow button-circle">Accueil</button></a>
                   <a href="<%=profiles_path%>"><button class="button button-effect-ujarak button-white button-shadow button-circle">Les inscrits</button></a>
 
