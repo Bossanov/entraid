@@ -15,8 +15,8 @@ class ConversationsController < ApplicationController
     @conversationcommits = Conversationcommit.where(conversation_id: @conversation.id)
   end
   def index
-    @conversationsrecues = Conversation.where(dest: current_user.email)
-    @conversationsenvoyees = Conversation.where(autor: current_user.email)
+    @conversations = Conversation.all
+
   end
 
   def create

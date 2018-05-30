@@ -29,6 +29,11 @@
         <div class="shell bg-white-lighter block-info-wrap">
 <h4>Mes messages reçus </h4>
 <br/>
+
+<% @conversationsrecues = Conversation.where(dest: current_user.email)%>
+
+<% @conversationsenvoyees = Conversation.where(autor: current_user.email) %>
+
 <% if @conversationsrecues.length == 0 %>
 <i> Aucun message </i>
 <% else %>
