@@ -41,8 +41,8 @@
                 <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                   <div class="range range-xs-center range-20 range-narrow">
                     <div class="cell-sm-5">
-                      <div class="form-wrap form-wrap-validation">
-                         <%= f.input :dest, class: "form-control form-control-last-child", label:"Choisissez votre Thème" %>
+                      <div style="visibility:hidden;" class="form-wrap form-wrap-validation">
+                         <%= f.input :dest, class: "form-control form-control-last-child", label:"Destinataire" %>
                       </div>
                     </div>
                     <div class="cell-sm-10">
