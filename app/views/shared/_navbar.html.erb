@@ -37,7 +37,7 @@
                               <li><%= link_to 'Les inscrits', profiles_path%></li>
                               <li><%= link_to 'Ma messagerie interne', conversations_path%></li>
 
-                              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                              <li> <%= link_to destroy_user_session_path, method: :get do %>
                                 <%= t(".sign_out", default: "Se déconnecter") %>
                                 <% end %>
                               </li>
@@ -55,7 +55,7 @@
                             <ul>
                               <li><i>Votre profil a été bloqué, veuillez contacter l'équipe.</i></li>
 
-                              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                              <li> <%= link_to destroy_user_session_path, method: :get do %>
                                 <%= t(".sign_out", default: "Se déconnecter") %>
                                 <% end %>
                               </li>
@@ -72,7 +72,7 @@
                             <div class="rd-navbar-megamenu-divider"></div>
                             <ul>
                               <li><%= link_to 'créer mon profil', new_profile_path%></li>
-                              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                             <li> <%= link_to destroy_user_session_path, method: :get do %>
                                 <%= t(".sign_out", default: "Se déconnecter") %>
                                 <% end %>
                               </li>
@@ -91,7 +91,7 @@
                             <ul>
                               <li><i>Votre profil n'a pas encore été validé pour profiter des services.</i></li>
 
-                              <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                              <li> <%= link_to destroy_user_session_path, method: :get do %>
                                 <%= t(".sign_out", default: "Se déconnecter") %>
                                 <% end %>
                               </li>
