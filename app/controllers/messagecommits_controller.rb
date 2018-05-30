@@ -15,7 +15,7 @@ class MessagecommitsController < ApplicationController
 
     if @messagecommit.save
       flash[:notice] = 'Votre message a été posté !'
-      redirect_to root_path
+      redirect_to message_path(@message.id)
 
     else
       render :new
