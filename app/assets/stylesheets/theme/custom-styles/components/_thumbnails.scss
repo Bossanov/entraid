@@ -1,0 +1,121 @@
+/*
+*
+* Thumbnails
+* --------------------------------------------------
+*/
+
+
+.thumbnail-type-1{
+
+}
+
+
+// Thumb
+//
+
+.thumb{
+  position: relative;
+  display: inline-block;
+
+  // Bg overlay
+  &:before{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgba($primary, .4);
+    z-index: 1;
+    content: '';
+    will-change: opacity;
+  }
+
+  // Icon
+  &:after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: $white;
+    font-family: FontAwesome;
+    font-size: 34px;
+
+    content: "\f065";
+    z-index: 1;
+    will-change: transform, opacity;
+  }
+
+  &:before,
+  &:after{
+    transition: .3s ease;
+    opacity: 0;
+  }
+
+  &:hover{
+    &:before,
+    &:after{
+      opacity: 1;
+    }
+  }
+}
+
+.thumb-default {
+  $this : &;
+  max-width: 267px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  &-title {
+    position: relative;
+    display: flex;
+    padding-right: 20px;
+    align-items: center;
+    font-weight: 400;
+  
+    
+    
+    a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+ 
+    &:before {
+      content: '';
+      flex-shrink: 0;
+      display: inline-block;
+      width: 15%;
+      height: 4px;
+      margin-right: 9%;
+      background-color: $primary;
+      transition: .3s ease-out all;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+        background-image: -moz-linear-gradient( 0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 0%, rgb(255,255,255) 66%);
+        background-image: -webkit-linear-gradient( 0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 0%, rgb(255,255,255) 66%);
+        background-image: -ms-linear-gradient( 0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 0%, rgb(255,255,255) 66%);
+     
+  
+    }
+  }
+  
+  &:hover {
+    #{$this}-title{
+      
+      &:before {
+        width: 32%;
+      }
+    }
+  }
+  
+}

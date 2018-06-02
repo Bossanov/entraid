@@ -1,0 +1,406 @@
+//
+// Nav custom
+// --------------------------------------------------
+
+// Tabs
+//--------------------------------------
+// Corporate style
+$tabs-corporate-color: $gray-darker;
+$tabs-corporate-background: transparent;
+$tabs-corporate-active-color: $white;
+$tabs-corporate-active-background: $primary;
+$tabs-corporate-border: #e5e7e9;
+
+// Base styles
+.tabs-custom {
+  text-align: left;
+  .nav-tabs {
+    font-size: 0;
+    line-height: 0;
+    word-spacing: 0;
+    border: 0;
+    
+    &:before,
+    &:after {
+      display: none;
+    }
+    
+    li {
+      float: none;
+      border: 0;
+      cursor: pointer;
+      transition: .33s all ease;
+    }
+    
+    li.active {
+      cursor: default;
+    }
+    
+    a {
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+.page .tabs-custom.tabs-centered {
+  .nav-tabs,
+  .tab-content {
+    text-align: center;
+  }
+}
+
+// Offsets
+* + .tabs-horizontal.tabs-corporate { margin-top: 25px; }
+* + .tabs-vertical.tabs-corporate { margin-top: 40px; }
+
+@media (min-width: $screen-sm-min) {
+  * + .tabs-vertical.tabs-corporate { margin-top: 60px; }
+}
+
+@media (min-width: $screen-lg-min) {
+  * + .tabs-vertical.tabs-corporate { margin-top: 80px; }
+}
+
+// Tabs inline
+.tabs-custom.tabs-inline {
+  .nav-tabs {
+    
+    > li {
+      display: inline-block;
+      background-color: transparent;
+    }
+    
+    > li a {
+      display: inline-block;
+      padding: 0;
+      border: 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: $gray;
+      background-color: transparent;
+    }
+    
+    > li.active a,
+    > li a:hover {
+      color: $primary;
+    }
+  }
+  
+  * + .tab-content { margin-top: 30px; }
+  
+  @media (min-width: $screen-md-min) {
+    * + .tab-content { margin-top: 60px; }
+  }
+  
+  @media (min-width: $screen-xl-min) {
+    .nav-tabs {
+    
+    }
+  }
+}
+
+// Tabs line
+.tabs-custom.tabs-line {
+  .nav-tabs {
+    position: relative;
+    
+    li a {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  
+  * + .tab-content {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: $screen-xs-max) {
+    .nav-tabs {
+      max-width: 100%;
+      
+      
+      li {
+        margin: -1px;
+      }
+      
+      li a {
+        padding: 7px 10px;
+        color: $tabs-corporate-color;
+        background: $tabs-corporate-background;
+      }
+      
+      li a:hover,
+      li.active a {
+        color: $tabs-corporate-active-color;
+        background: $primary;
+        border-color: $primary;
+      }
+    }
+  }
+}
+
+// Tabs corporate style
+.tabs-corporate {
+  .nav-tabs {
+    position: relative;
+    
+    li {
+      margin: -1px;
+    }
+    
+    li a {
+      padding: 10px 10px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: $tabs-corporate-color;
+      background: $tabs-corporate-background;
+      text-align: center;
+      vertical-align: middle;
+  
+    }
+    
+    li a:hover,
+    li.active a {
+      color: $tabs-corporate-active-color;
+      background: $tabs-corporate-active-background;
+      border-color: $tabs-corporate-active-background;
+    }
+  }
+  
+  .tab-content {
+    padding: 30px 0 0;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .tabs-custom {
+    .nav-tabs {
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  // Horizontal tabs
+  // ----------------------
+  .tabs-horizontal {
+    &.tabs-corporate {
+      .nav-tabs {
+        position: relative;
+        width: 100%;
+        display: block;
+        @include justify-content(flex-start);
+        text-align: left;
+  
+        border: 1px solid $albus;
+  
+        will-change: transform;
+        
+        li {
+          display: inline-block;
+          will-change: transform;
+          @include flex-grow(1);
+          @include flex-shrink(0);
+          
+          a {
+            display: block;
+            position: relative;
+            z-index: 1;
+            min-width: 130px;
+            letter-spacing: .1em;
+            padding: 20px 20px;
+            
+            
+            &,
+            &::before {
+              transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+            }
+            
+            &::before {
+              content: '';
+              position: absolute;
+              top: -1px;
+              left: -1px;
+              width: calc(100% + 2px);
+              height: calc(100% + 2px);
+              z-index: -1;
+              opacity: 0;
+              transform: scale3d(0.7, 1, 1);
+              transition: transform 0.4s, opacity 0.4s;
+              transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+              background: $tabs-corporate-active-background;
+            }
+          }
+          
+          &.active a,
+          a:hover {
+            color: $tabs-corporate-active-color;
+            border-color: $tabs-corporate-active-background;
+            background-color: transparent;
+            
+            &::before {
+              opacity: 1;
+              transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+            }
+          }
+        }
+      }
+    }
+    &.tabs-line {
+      .nav-tabs {
+        border: 0;
+        
+        
+        li {
+          display: inline-block;
+          
+          &:not(:last-child) {
+            margin-right: 52px;
+          }
+        }
+        
+        li a {
+          position: relative;
+          padding: 0 0 15px 0;
+          background-color: transparent;
+          color: $gray;
+          border: 0;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            height: 4px;
+            width: 0;
+            background: $primary;
+            transition: .22s ease;
+          }
+        }
+        
+        li.active a,
+        li a:hover {
+          color: $gray-darker;
+        }
+        
+        li.active a {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+      
+      * + .tab-content {
+        margin-top: 30px;
+      }
+    }
+  }
+  
+  // Vertical tabs
+  // ----------------------
+  .tabs-vertical {
+    @include display-flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include align-items(flex-start);
+    
+    .nav-tabs {
+      @include display-flex;
+      @include flex-direction(column);
+      @include flex-wrap(nowrap);
+      @include align-items(stretch);
+      @include flex-shrink(0);
+      max-width: 50%;
+      
+      li {
+        border: 0;
+        width: 100%;
+        text-align: left;
+      }
+      
+      li.active a,
+      a:hover {
+        box-shadow: 0 9px 21px 0 rgba(#1e1e1e, .13);
+      }
+    }
+    
+    .tab-content {
+      @include flex-grow(1);
+    }
+    
+    // Tabs corporate
+    &.tabs-corporate {
+      .nav-tabs {
+        width: auto;
+        min-width: 120px;
+        border: 0;
+        
+        li {
+          margin: 0;
+        }
+        
+        li a {
+          position: relative;
+          padding: 17px 30px;
+          border: 0;
+          overflow: hidden;
+          text-align: left;
+        }
+        
+        > li + li {
+          margin-top: 2px;
+        }
+      }
+      
+      .tab-content {
+        padding: 0 0 0 30px;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  // Horizontal tabs
+  // ----------------------
+  .tabs-horizontal {
+    
+    // Tabs corporate
+    &.tabs-corporate {
+      .tab-content {
+        padding-top: 45px;
+      }
+    }
+  }
+  
+  // Vertical tabs
+  // ----------------------
+  .tabs-vertical {
+    
+    // Tabs corporate
+    &.tabs-corporate {
+      .tab-content {
+        padding: 0 0 0 45px;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  // Horizontal tabs
+  // ----------------------
+  .tabs-horizontal {
+    &.tabs-modern {
+    }
+  }
+}
