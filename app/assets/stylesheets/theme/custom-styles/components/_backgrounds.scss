@@ -1,0 +1,50 @@
+/*
+*
+* Backgrounds
+* ==================================================
+*/
+// bg-behaviour() off padding top if two section with same bg that are beside
+
+.bg-white {
+  @include bg-behaviour($white);
+  &.bg-white-transparent {
+    background-color: transparent;
+  }
+}
+
+.bg-gray-bright {
+  @include bg-behaviour($gray-bright);
+}
+
+.bg-secondary {
+  @include bg-behaviour($secondary);
+}
+
+.bg-white-lighter {
+  @include bg-behaviour($white-lighter);
+}
+
+.bg-white-lighter {
+  @include bg-behaviour($white-lighter);
+  
+  .divider-modern {
+    color: $gray-alto;
+  }
+}
+
+.bg-primary {
+  @include bg-behaviour($primary);
+}
+
+.bg-image {
+  background-size: cover;
+  background-position: center center;
+}
+
+html.desktop {
+  .bg-fixed {
+    @media (min-width: $screen-md-min) {
+      background-attachment: fixed;
+    }
+  }
+}

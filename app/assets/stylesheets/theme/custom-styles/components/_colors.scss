@@ -1,0 +1,17 @@
+/*
+*
+* Colors
+* ==================================================
+*/
+
+.text-gray-darker {
+  @include text-var($gray-darker, $primary);
+}
+
+.text-snow {
+  @include text-var($snow, $primary);
+}
+
+.text-default {
+  @include text-var($text-color, $primary);
+}

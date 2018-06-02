@@ -1,0 +1,188 @@
+/*
+*
+* Table custom
+*/
+
+$table-head-padding: 35px 28px;
+$table-cell-padding: 17px 24px;
+$table-condensed-cell-padding: 5px;
+
+$table-bg: $white;
+$table-bg-accent: $white-lighter;
+$table-bg-hover: $secondary;
+$table-bg-active: $table-bg-hover;
+
+$table-border-color: #d9d9d9;
+
+.table-custom {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+  background: $table-bg;
+  border-collapse: collapse;
+  
+  th,
+  td {
+    color: $gray-base;
+    background: $table-bg;
+  }
+  
+  th {
+    padding: $table-head-padding;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    background: $white-lighter;
+    
+    @media (max-width: $screen-xs-max) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  
+  td {
+    padding: $table-cell-padding;
+  }
+  
+  tbody tr:first-child {
+    td {
+      border-top: 0;
+    }
+  }
+  
+  tr td {
+    border-bottom: 1px solid $table-border-color;
+  }
+  
+  tfoot {
+    td {
+      font-weight: 400;
+    }
+  }
+}
+
+/*
+* Table Custom Styles
+*/
+.table-custom.table-custom-primary {
+  thead th {
+    color: $white;
+    background: $primary;
+    border: 0;
+  }
+  tbody tr:hover td {
+    background: $table-bg-accent;
+  }
+}
+
+.table-custom.table-custom-secondary {
+  thead th {
+    color: $white;
+    background: $secondary;
+    border: 0;
+  }
+  tbody tr:hover td {
+    background: $table-bg-accent;
+  }
+}
+
+.table-custom.table-custom-bordered {
+  tr {
+    td:first-child {
+      border-left: 0;
+    }
+    
+    td:last-child {
+      border-right: 0;
+    }
+  }
+  td {
+    border: 1px solid $table-border-color;
+  }
+  
+  tbody > tr:first-of-type > td {
+    border-top: 0;
+  }
+}
+
+.table-custom.table-custom-striped {
+  tbody tr:nth-of-type(odd) td {
+    background: transparent;
+  }
+  
+  tbody tr:nth-of-type(even) td {
+    background: $table-bg-accent;
+  }
+  
+  tbody td {
+    border: 0;
+  }
+  
+  tfoot td {
+    border-top: 0;
+  }
+  
+  tfoot td:not(:first-child) {
+    border-left: 0;
+  }
+}
+
+.table-custom.table-custom-outline {
+  th, td {
+    width: 20%;
+  }
+  th {
+    padding: 28px 19px;
+    font-size: 18px;
+    letter-spacing: 0;
+    background: transparent;
+    border-top: 6px solid $albus;
+    border-bottom: 1px solid $albus;
+    text-transform: none;
+    font-weight: 400;
+  }
+  tr {
+    td {
+      &:first-child {
+        color: $primary;
+      }
+      padding: 17px 20px;
+      color: $gray-light;
+      border-bottom: 1px solid $albus;
+    }
+  }
+}
+
+/*
+* Table Custom Mods
+*/
+.table-custom-responsive {
+  overflow-x: auto;
+  min-height: 0.01%;
+  @include custom-offset(30px, 'h3');
+  
+  @media screen and (max-width: $screen-xs-max) {
+    width: 100%;
+    margin-bottom: 10px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid $table-border-color;
+    
+    // Tighten up spacing
+    > .table-custom {
+      // Ensure the content doesn't wrap
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th,
+          > td {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}

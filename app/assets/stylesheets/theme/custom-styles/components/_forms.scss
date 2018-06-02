@@ -1,0 +1,450 @@
+/*
+*
+* Form styles
+* --------------------------------------------------
+*/
+
+//== Forms variables
+//
+
+$input-height: 50px;
+
+$form-wrap-offset: 15px;
+
+$textarea-default-height: 135px;
+$textarea-default-min-height: $textarea-default-height * 0.8;
+$textarea-default-max-height: $textarea-default-height * 1.7;
+
+$input-color: $gray-light;
+$input-color-placeholder: $input-color;
+
+$input-bg: #f5f5f5;
+
+$input-border: $input-bg;
+$input-border-radius: 0;
+
+$input-font-size: 14px;
+$input-line-height: 22px;
+$input-font-weight: 400;
+
+$input-padding-vertical: 12px;
+$input-padding-horizontal: 20px;
+
+$error-color: #d9534f;
+$success-color: #5cb85c;
+
+.form-divider {
+  position: relative;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    width: 33%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    border-top: 1px solid $gray-porce-light;
+  }
+  
+  &:before {
+    left: 0;
+  }
+  
+  &:after {
+    right: 0;
+  }
+  
+}
+
+.rd-mailform {
+  position: relative;
+  text-align: left;
+}
+
+.rd-mailform-inline {
+  &#{&} {
+    @include display-flex();
+    flex-wrap: wrap;
+    @include group(30px, 20px);
+    
+    .form-wrap {
+      @include flex-grow(1);
+      @media (min-width: 480px) {
+        min-width: 282px;
+      }
+    }
+    
+    .button {
+      margin-top: 0;
+      flex: none;
+    }
+    
+    @at-root  .parallax-container & {
+      
+      .form-input,
+      .form-label,
+      .form-validation{
+        color: $white;
+      }
+      
+      .form-input {
+        background-color: rgba($white, .47);
+        border: none;
+      }
+    }
+    
+    @at-root  .parallax-container-modern & {
+      
+      .form-input,
+      .form-label {
+        color: $gray-light;
+      }
+      
+      .form-input {
+        background-color: $white;
+        border: none;
+      }
+      
+      .form-validation {
+				color: $error-color;
+      }
+    }
+    
+  }
+}
+
+.recaptcha {
+  transform: scale(0.9);
+  transform-origin: left center;
+}
+
+// Form input
+// -------------------------
+
+.form-input {
+  display: block;
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  border: 1px solid $input-border;
+  border-radius: $input-border-radius;
+  letter-spacing: $text-spacing;
+  -webkit-appearance: none;
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:-webkit-autofill ~ label,
+  &:-webkit-autofill ~ .form-validation {
+    color: $gray-base !important;
+  }
+}
+
+textarea.form-input {
+  height: $textarea-default-height;
+  min-height: $textarea-default-min-height;
+  max-height: $textarea-default-max-height;
+  resize: vertical;
+}
+
+// Form wrapper
+// -------------------------
+
+.form-wrap {
+  position: relative;
+}
+
+.form-wrap + .form-wrap {
+  margin-top: $form-wrap-offset;
+}
+
+* + .form-button,
+.form-wrap + .button {
+  margin-top: 30px;
+}
+
+// Form labels
+// -------------------------
+
+.form-label {
+  position: absolute;
+  top: $input-height / 2;
+  left: $input-padding-horizontal;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  color: $input-color-placeholder;
+  pointer-events: none;
+  z-index: 9;
+  transition: .3s;
+  transform: translateY(-50%);
+  letter-spacing: $text-spacing;
+  
+  &.focus {
+    opacity: 0;
+  }
+  
+  &.auto-fill {
+    color: $input-color;
+  }
+}
+
+.form-label-outside {
+  @media (min-width: $screen-sm-min) {
+    position: static;
+    &, &.focus, &.auto-fill {
+      opacity: 1;
+      transform: none;
+      color: $input-color-placeholder;
+      font-size: $input-font-size;
+    }
+    
+    & + .form-input + .form-validation {
+      top: 32px;
+    }
+  }
+}
+
+// Form validation
+// -------------------------
+
+.form-validation {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  font-size: 11px;
+  line-height: 11px;
+  color: $error-color;
+  margin-top: 3px;
+  transition: .3s;
+  z-index: 11;
+}
+
+.form-validation-left {
+  .form-validation {
+    right: auto;
+    top: 100%;
+    left: 0;
+  }
+}
+
+// Form output
+// -------------------------
+
+#form-output-global {
+  position: fixed;
+  bottom: 0;
+  visibility: hidden;
+  transform: translateY(calc(100% + 30px));
+  transition: .3s all ease;
+  z-index: 9999999;
+  margin: 15px;
+  
+  &.active {
+    transform: translateY(0);
+    visibility: visible;
+  }
+  
+  a {
+    &:hover {
+      color: $white;
+    }
+  }
+  
+  @media (min-width: $screen-sm) {
+    margin: 30px;
+  }
+}
+
+.form-output {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 2px;
+  transition: .3s;
+  opacity: 0;
+  visibility: hidden;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &.error {
+    color: $error-color;
+  }
+  
+  &.success {
+    color: $success-color;
+  }
+}
+
+// Radio and Checkbox Custom
+// -------------------------
+
+// Base Styles
+//
+
+.radio .radio-custom,
+.radio-inline .radio-custom,
+.checkbox .checkbox-custom,
+.checkbox-inline .checkbox-custom {
+  opacity: 0;
+  
+  &, &-dummy {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-left: -20px;
+    margin-top: 5px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  &-dummy {
+    pointer-events: none;
+    background: $gray-lighter;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.15);
+    
+    &:after {
+      position: absolute;
+      opacity: 0;
+    }
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+.radio-custom:checked + .radio-custom-dummy:after,
+.checkbox-custom:checked + .checkbox-custom-dummy:after {
+  opacity: 1;
+}
+
+// Custom Radio Styles
+//
+
+.radio,
+.radio-inline {
+  .radio-custom-dummy {
+    border-radius: 50%;
+    
+    &:after {
+      content: '';
+      top: 3px;
+      right: 3px;
+      bottom: 3px;
+      left: 3px;
+      background: $gray-darker;
+      border-radius: 50%;
+    }
+  }
+}
+
+// Custom Checkbox Styles
+//
+
+.checkbox,
+.checkbox-inline {
+  padding-left: 20px;
+  .checkbox-custom-dummy {
+    pointer-events: none;
+    border-radius: 3px;
+    margin-left: 0;
+    left: 0;
+    
+    &:after {
+      content: '\f222';
+      font-family: "Material Design Icons";
+      font-size: 20px;
+      line-height: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $gray-darker;
+    }
+  }
+}
+
+* + .rd-mailform { margin-top: 20px; }
+* + .rd-mailform-inline { margin-top: 20px; }
+
+@media (min-width: $screen-lg-min) {
+  * + .rd-mailform { margin-top: 30px; }
+  h4 + .rd-mailform { margin-top: 40px; }
+  * + .rd-mailform-inline { margin-top: 30px; }
+  h4 + .rd-mailform-inline { margin-top: 40px; }
+}
+
+.form-block {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: $white-lighter;
+  
+  .form-input {
+    background-color: $white;
+  }
+  @media (min-width: $screen-md-min) {
+    padding: 50px;
+  }
+}
+
+.rd-mailform-mini {
+ 
+  
+  &-left + &-right {
+    margin-top: 23px;
+  }
+  
+  * + .form-button {
+    margin-top: 23px;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    display: flex;
+    justify-content: space-between;
+  
+    &-left,
+    &-right {
+      display: flex;
+      flex-wrap: wrap;
+      > * {
+        @include flex-basis(100%);
+      }
+    }
+  
+    &-left {
+      @include flex-basis(52.63%);
+    }
+    &-right {
+      @include flex-basis(43.5%);
+    }
+  
+    &-left + &-right {
+      margin-top: 0;
+    }
+    
+    textarea.form-input {
+      height: 100%;
+      min-height: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+.gel-1 {
+
+}

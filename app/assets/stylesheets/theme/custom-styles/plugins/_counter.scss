@@ -1,0 +1,69 @@
+/*
+*
+* Counter
+* --------------------------------------------------
+*/
+
+.section-counter {
+  position: relative;
+  @media (min-width: $screen-md-min) {
+    .cell-md-2 + .cell-md-2{
+        border-left: 1px solid $gray-shuttle;
+    }
+  }
+}
+
+.counter-wrap {
+  .heading-1 {
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+  .small {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: $font-family-base;
+    letter-spacing: $text-spacing;
+    text-transform: uppercase;
+  }
+  * + p {
+    margin-top: 0;
+  }
+}
+
+.counter-plus {
+  &:after {
+    content: '+';
+  }
+}
+
+.section-counter-decoration {
+  @media (min-width: $screen-md-min) {
+    position: absolute;
+    top: 50%;
+    width: 8%;
+    transform: translateY(-50%);
+    border-top: 1px solid $gray-shuttle;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      background-color: $primary;
+    }
+    &:nth-child(1) {
+      left: 20px;
+      &:before {
+        right: 0;
+      }
+    }
+    &:nth-child(2) {
+      right: 20px;
+      &:before {
+        left: 0;
+      }
+    }
+  }
+}

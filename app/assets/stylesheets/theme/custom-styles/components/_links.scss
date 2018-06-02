@@ -1,0 +1,52 @@
+// Links
+
+a {
+	transition: .3s ease-out all;
+	
+	&, &:focus, &:active, &:hover { text-decoration: none; }
+	
+	@include link($link-color, $link-hover-color);
+	
+	&[href*='callto'],
+	&[href*='mailto'] {
+		white-space: nowrap;
+	}
+}
+
+.link-demo,
+.link-hover,
+.link-press {
+	&, &:focus, &:active {
+		color: $gray-darker;
+	}
+	&:hover {
+		color: $gray-darker;
+	}
+}
+
+// Alternative Link
+.link-default {
+	@include link($text-color, $primary);
+}
+
+.link-gray-darker {
+	@include link($gray-darker, $primary);
+}
+
+.unit-link-with-icon {
+	a {
+		font-size: 18px;
+		font-family: $font-family-sec;
+		color: $gray-darker;
+		&:hover { color: $primary; }
+	}
+}
+
+.unit-link-with-icon-1 {
+	a {
+		display: inline-block;
+		max-width: 160px;
+		color: $gray-darker;
+		&:hover { color: $primary; }
+	}
+}

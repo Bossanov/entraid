@@ -1,0 +1,170 @@
+/*
+*
+* Icons
+* --------------------------------------------------
+*/
+
+// Base styles
+// --------------------------------------------------
+
+.icon {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+
+  &:before {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  // Icon Size
+  
+  &-xxs {
+    font-size: 13px;
+  }
+  
+  &-xs {
+    font-size: 14px;
+  }
+  
+  &-md {
+    font-size: 18px;
+  }
+  &-md-biger {
+    font-size: 22px;
+  }
+
+  &-md-big {
+    font-size: 24px;
+    &.icon-circle {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      line-height: 46px;
+      text-align: center;
+
+      &:before {
+        line-height: inherit;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 2px solid;
+        border-radius: inherit;
+        transform: scale(1);
+        opacity: 0;
+        transition: .3s ease-out all;
+      }
+
+      &:hover {
+        &:after {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+      }
+
+      &.icon-primary {
+        color: $primary;
+        background-color: $white-lighter;
+      }
+
+    }
+  }
+
+  &-xl {
+    font-size: 50px;
+  }
+
+  // Alternative Style
+  &-primary {
+    color: $primary;
+  }
+  &-shaft {
+    color: $gray-shaft;
+  }
+  &-gray-darker {
+    color: $gray-darker;
+    @at-root  a#{&} {
+      &, &:focus, &:active {
+        color: $gray-darker;
+      }
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+  
+  &-white-lighter-block {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    &:before {
+      line-height: inherit;
+    }
+  
+    &, &:focus, &:active {
+      color: $gray;
+      background-color: $white-lighter;
+    }
+    
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  // Icon Shapes
+  &-circle {
+    border-radius: 50%;
+  }
+
+  // Custom Component
+  &-block-demo {
+    text-align: center;
+    &-title {
+      font-weight: 400;
+    }
+  }
+}
+
+
+
+.icon-unit {
+  display: flex;
+  flex-direction: column;
+  &-body {
+    margin-top: 15px;
+  }
+  h5 + p { margin-top: 5px; }
+  
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+    align-items: center;
+    &-body {
+      margin-top: 0;
+      margin-left: 25px;
+    }
+  }
+  @media (min-width: $screen-md-min) {
+    &-body {
+      margin-left: 15px;
+    }
+  }
+  @media (min-width: $screen-xl-min) {
+    &-body {
+      margin-left: 25px;
+    }
+  }
+}

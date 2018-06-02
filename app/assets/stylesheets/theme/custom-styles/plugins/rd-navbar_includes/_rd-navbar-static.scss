@@ -1,0 +1,63 @@
+/*
+* Static Layout
+*/
+
+.rd-navbar-static {
+  display: block;
+
+  .rd-navbar-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    transition: .3s ease-out all;
+  }
+
+  .rd-navbar-aside-right{
+    display: flex;
+  }
+
+  .rd-navbar-top-panel{
+    text-align: left;
+  }
+
+  .rd-navbar-nav{
+    > li {
+      & + li{
+        margin-left: 25px;
+      }
+    }
+  }
+  
+  .brand-name {
+    width: 79px;
+    transition: .3s ease-out all;
+  }
+
+  &.rd-navbar--is-stuck,
+  &.rd-navbar--is-clone{
+    .rd-navbar-inner{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+    .brand-name {
+      width: 42px;
+    }
+  }
+  
+  
+  @media (min-width: $screen-xl-min) {
+    .rd-navbar-nav{
+      > li {
+        & + li{
+          margin-left: $navbar-static-nav-indent;
+        }
+      }
+    }
+  }
+  
+}
+

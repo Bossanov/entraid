@@ -1,0 +1,56 @@
+/*
+*
+* Element groups
+* --------------------------------------------------
+*/
+
+.group {
+  @include group(15px, 20px);
+  
+  h4 + & { margin-top: 40px; }
+}
+
+.group-sm {
+  @include group(8px, 20px);
+}
+
+.group-xl {
+  @include group(20px, 20px);
+  @media (min-width: $screen-lg-min) {
+    @include group(40px, 20px);
+  }
+  @media (min-width: $screen-xl-min) {
+    @include group(120px, 40px);
+  }
+  * + & {
+    margin-top: 20px;
+    @media (min-width: $screen-lg-min) {
+      margin-top: 40px;
+    }
+  }
+  
+}
+
+.group-top {
+  > *, > *:first-child {
+    vertical-align: top;
+  }
+}
+
+.group-middle {
+  @include display-flex();
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+}
+
+.group-center {
+  justify-content: center;
+}
+
+.group-bottom {
+  > *, > *:first-child {
+    vertical-align: bottom;
+  }
+}
+

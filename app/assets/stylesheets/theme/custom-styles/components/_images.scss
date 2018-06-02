@@ -1,0 +1,123 @@
+/**
+*
+* Images
+* =====================================================
+*/
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.image-skew {
+  display: block;
+  max-width: 600px;
+  overflow: hidden;
+  &-inner {
+    overflow: hidden;
+    margin-right: -160px;
+    margin-left: -160px;
+    transform: skewX(44deg);
+    &-img {
+      margin-left: 160px;
+      transform: skewX(-44deg);
+    }
+  }
+}
+
+.image-wrap {
+  margin-bottom: -10px;
+  > * {
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: $screen-md-min - 1px) {
+    text-align: center;
+  }
+  
+  @media (min-width: $screen-md-min) {
+    position: relative;
+    padding-bottom: 60px;
+    &-item {
+      &:nth-child(1) {
+        position: relative;
+        z-index: 2;
+        max-width: 70%;
+      }
+      &:nth-child(2) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15%;
+        z-index: 3;
+      }
+      &:nth-child(3) {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        z-index: 1;
+      }
+    }
+  }
+  
+  @media (min-width: $screen-xl-min) {
+    &-item {
+      &:nth-child(1) {
+        max-width: 100%;
+      }
+      &:nth-child(2) {
+        left: 20%;
+        top: 70%;
+        right: auto;
+      }
+      &:nth-child(3) {
+        top: 50px;
+        right: 70px;
+      }
+    }
+  }
+}
+
+.image-wrap-modern {
+  margin-bottom: -10px;
+  > * {
+    margin-bottom: 10px;
+  }
+  
+  @media (min-width: $screen-md-min) {
+    position: relative;
+    padding-bottom: 55px;
+    text-align: right;
+    &-item {
+      &:nth-child(1) {
+        margin-left: auto;
+        max-width: 80%;
+      }
+      &:nth-child(2) {
+        position: absolute;
+        left: 0;
+        right: 80px;
+        top: 60px;
+        bottom: 0;
+      }
+    }
+  }
+  @media (min-width: $screen-xl-min) {
+    &-item {
+      &:nth-child(1) {
+        max-width: 100%;
+      }
+      &:nth-child(2) {
+        text-align: left;
+        
+        position: absolute;
+        left: 70px;
+        right: 0;
+        top: 120px;
+        bottom: 0;
+      }
+    }
+  }
+}
+
