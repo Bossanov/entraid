@@ -1,20 +1,23 @@
-              <div class="cell-xs-12">
-                <div class="block-center" style="max-width: 520px">
-                  <h3>Vous inscrire</h3>
-                  <p>Votre inscription vous permettera de profiter des services de la plateforme.</p>
-                  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                  <%= f.error_notification %>
-                  <form class="rd-mailform text-left">
-                    <div class="form-wrap form-wrap-validation">
-                      <%= f.input :email, class: "form-input", id: "forms-login-name", required: true, autofocus: true %>
-                    </div>
-                    <div class="form-wrap form-wrap-validation">
-                      <%= f.input :password,  class: "form-input", id: "forms-login-password",required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                      <%= f.input :password_confirmation, class: "form-input", id: "forms-login-password", required: true %>
-                    </div>
-                    <button class="button button-effect-ujarak button-block button-square button-primary" type="submit">enter</button>
-                  </form>
-                  <%= render "devise/shared/links" %>
-                  <% end %>
-                </div>
-              </div>
+<div class="container" style="height: 835px;">
+  <div class="cell-xs-12">
+    <div class="block-center" style="max-width: 520px">
+      <h3>Vous inscrire</h3>
+      <p>Votre inscription vous permettera de profiter des services de la plateforme.</p>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <form class="rd-mailform text-left">
+          <div class="form-wrap form-wrap-validation">
+            <%= f.input :email,label:"Votre email", class: "form-input", id: "forms-login-name", required: true, autofocus: true %>
+          </div>
+          <div class="form-wrap form-wrap-validation">
+            <%= f.input :password,label:"Votre mot de passe",  class: "form-input", id: "forms-login-password",required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            <%= f.input :password_confirmation, label:"Confirmez votre mot de passe", class: "form-input", id: "forms-login-password", required: true %>
+          </div>
+          <button class="button button-effect-ujarak button-block button-square button-primary" type="submit">entrer</button>
+        </form>
+        <%= render "devise/shared/links" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
