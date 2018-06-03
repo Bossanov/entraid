@@ -1,4 +1,5 @@
 class ConversationcommitsController < ApplicationController
+
   def new
     @conversationcommit = Conversationcommit.new
     @conversation = Message.find(params[:conversation_id])

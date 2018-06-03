@@ -1,4 +1,5 @@
 class ArticlecommitsController < ApplicationController
+
   def new
     @articlecommit = Articlecommit.new
     @article = Article.find(params[:article_id])
