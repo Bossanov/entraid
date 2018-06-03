@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+
   def new
     @conversation = Conversation.new(dest: params[:dest])
     @userdestinataire = User.where(email: params[:dest])

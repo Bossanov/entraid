@@ -1,4 +1,5 @@
 class MessagecommitsController < ApplicationController
+
   def new
     @messagecommit = Messagecommit.new
     @message = Message.find(params[:message_id])
