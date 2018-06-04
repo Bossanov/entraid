@@ -68,8 +68,8 @@ class ProfilesController < ApplicationController
 
   def supprimer_profile
     @profile = Profile.find(params[:profileid])
-    @user = User.where(id: @profile.user_id)
-    @user.last.destroy
+    @user = User.find(@profile.user_id)
+    @user.destroy
     flash[:alert] = "Le profil a été effacé de la base de donnée ainsi que son contenu."
     redirect_to pages_admin_path
   end
