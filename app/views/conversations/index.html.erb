@@ -21,7 +21,12 @@
         </div>
       </div>
     </section>
-
+    <br/>
+    <br/>
+    <div class="container">
+<i>Sur cette page vous verrez les messages que vous avez envoyés en privé à un des membres inscrits, mais ceux que vous avez reçus. Pour joindre un membre en privé, veuillez vous rendre sur la page "les inscrits" ( cf menu de la barre de navigation "mon compte" ou sur la page de votre profil) puis une fois sur celle-ci cliquez sur le bouton "contacter" en bas du membre que vous voulez joindre en privé. Tous ces messages seront privés et invisibles pour les autres inscrits. </i>
+ <div class="divider"></div>
+</div>
     <section class="section section-lg bg-white">
       <% @conversationsrecues = Conversation.where(dest: current_user.email)%>
       <% @conversationsenvoyees = Conversation.where(autor: current_user.email) %>
