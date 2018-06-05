@@ -19,7 +19,7 @@ user = User.create!(
     first_name: "Elodie",
     last_name: "STAUMONT",
     job: "Chirurgien dentiste",
-    phone_number: "0687107748,
+    phone_number: "0687107748",
     birthday: "17/07/1979",
     city: "Hardelot",
     pseudo: "Elegrine",
