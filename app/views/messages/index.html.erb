@@ -48,7 +48,8 @@
                       <% end %>
                   <i>Thème : <%=message.theme.capitalize%></i>
                   <H5><%=message.title%></H5>
-                  <p><%= message.content %></p>
+
+                  <p><%= message.content.first(150) %> ...</p>
                   <p class="heading-5">Posté le <%=message.created_at.strftime("%d.%m.%Y") %> par <%= @profile.pseudo.capitalize %></p>
                   <% @comments = Messagecommit.where(message_id: message.id).length%>
                   <i>Nombre de commentaires : <%=@comments%></i>
