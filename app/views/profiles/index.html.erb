@@ -26,7 +26,12 @@
         </div>
 
       </section>
-      <!-- Why choose us-->
+
+       <br/>
+    <br/>
+    <div class="container">
+<i>Sur cette page vous aurez la possibilité de voir la liste des inscrits . Pour voir leur profil, veuillez cliquer sur leur pseudo. Pour les contacter en privé, veuillez cliquer sur le bouton "contacter" en bas du membre choisi. Les messages envoyés seront vivibles dans la rubrique "messagerie interne" du menu "mon compte" de la barre de navigation . </i>
+ <div class="divider"></div>
       <section class="section section-lg bg-white text-left">
         <div class="shell">
           <div class="range range-60">
@@ -37,7 +42,7 @@
 
                 <% @profiles.each do |profile| %>
 
-
+                <% userprofile = User.where(id: profile.user_id)%>
                 <div class="cell-xs-5 cell-sm-33 cell-md-25">
                   <div class="vip">
                     <div class="vip-image-block">
@@ -58,6 +63,8 @@
                       <% age -= 1 if now.yday < profile.birthday.yday %>
                       <div class="vip-link"><span class="fas fa-birthday-cake"></span> <%= age%> ans</div>
                     </div>
+                    <br/>
+                    <a href="<%=new_profile_conversation_path(current_user.profile.id, dest: userprofile.last.email)%>"%><button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button></a>
                     <% if current_user && current_user.profile && current_user.profile.admin == "yes" && profile.admin != "yes"%>
                       <%= link_to 'Bloquer', bloquer_profile_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
 

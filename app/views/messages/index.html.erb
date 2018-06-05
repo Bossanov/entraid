@@ -24,7 +24,12 @@
           </div>
         </div>
       </section>
-      <!-- Why choose us-->
+            <br/>
+      <br/>
+
+<div class="container">
+<i>Sur cette page de forum, vous verrez la liste des sujets de discussion postés par les inscrits . Pour pouvoir discuter sur un de ceux-ci, cliquez sur le bouton "voir" du sujet voulu, vous pourrez alors voir le contenu complet de celui-ci et commenter à votre guise, n'oubliez pas que c'est en participant que nous avancerons et ferons de ce site une plateforme bénéfique, incontournable et bienveillante . Pour poster un nouveau sujet, veuillez vous rendre en bas de cette page et cliquez sur le bouton "poster un nouveau sujet".</i>
+ <div class="divider"></div>
       <section class="section section-lg bg-white">
 
         <div class="shell bg-white-lighter block-info-wrap">
@@ -88,7 +93,7 @@
             </div>
             <div class="cell-sm-3 cell-xs-5">
               <div class="preffix-xl-70" style="max-width: 274px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Dernier message posté</h6>
+                <h6 class="text-spacing-200 text-uppercase font-base">Dernier sujet posté</h6>
 
                 <div class="divider-modern"></div>
                 <ul class="list list-md">
@@ -111,7 +116,7 @@
             <div class="cell-sm-4">
               <div class="preffix-xl-70" style="max-width: 433px">
                 <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
-                <%= link_to 'Poster un message', new_profile_message_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+                <%= link_to 'Poster un nouveau sujet', new_profile_message_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
               </div>
             </div>
           </div>
