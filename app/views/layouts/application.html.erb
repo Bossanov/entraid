@@ -1,48 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= meta_title %></title>
-<meta name="description" content="<%= meta_description %>">
-<meta name="keywords" content="burnout, fatigue, médecin, kiné, kinésitherapeute, pharmacien, chirurgien-dentiste, dentiste, chirurgien, surmenage, épuisement, aide, infirmière, infirmier, sage-femme, vétérinaire, aide-soignante, aide-soignant, santé">
-
-<!-- Facebook Open Graph data -->
-<meta property="og:title" content="<%= meta_title %>" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="<%= request.original_url %>" />
-<meta property="og:image" content="<%= meta_image %>" />
-<meta property="og:description" content="<%= meta_description %>" />
-<meta property="og:site_name" content="<%= meta_title %>" />
-
-<!-- Twitter Card data -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-<meta name="twitter:title" content="<%= meta_title %>">
-<meta name="twitter:description" content="<%= meta_description %>">
-<meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-<meta name="twitter:image:src" content="<%= meta_image %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120233575-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-120233575-1');
-</script>
-
-
-
-  </head>
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-  </body>
-</html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title><%= meta_title %></title>
+      <meta name="description" content="<%= meta_description %>">
+      <meta name="keywords" content="burnout, fatigue, médecin, kiné, kinésitherapeute, pharmacien, chirurgien-dentiste, dentiste, chirurgien, surmenage, épuisement, aide, infirmière, infirmier, sage-femme, vétérinaire, aide-soignante, aide-soignant, santé">
+      <meta property="og:title" content="<%= meta_title %>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="<%= request.original_url %>" />
+      <meta property="og:image" content="<%= meta_image %>" />
+      <meta property="og:description" content="<%= meta_description %>" />
+      <meta property="og:site_name" content="<%= meta_title %>" />
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:title" content="<%= meta_title %>">
+      <meta name="twitter:description" content="<%= meta_description %>">
+      <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+      <meta name="twitter:image:src" content="<%= meta_image %>">
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120233575-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120233575-1');
+      </script>
+    </head>
+    <body>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+    </body>
+  </html>
