@@ -19,7 +19,7 @@
           <div class="range range-30">
             <div class="cell-sm-5">
               <% if @profile.photo_url.nil? %>
-              <img src="http://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="720" height="529"/>
+              <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="720" height="529"/>
               <% else %>
               <%= cl_image_tag @profile.photo, width:"320", height: "320", alt:"", class:"img-responsive center-block"%>
               <% end %>
@@ -187,7 +187,7 @@
                 <p>Vous pouvez à tout moment effacer votre compte ainsi que vos posts. Attention car cette manoeuvre est irréversible!!!</p>
               </br>
 
-                      <%= link_to 'Effacer', supprimer_profile_path(profileid: current_user.id), class:"button button-effect-ujarak button-primary button-shadow button-circle"%>
+              <%= link_to 'Effacer', supprimer_profile_path(profileid: current_user.id), class:"button button-effect-ujarak button-primary button-shadow button-circle"%>
 
               </div>
             </div>
