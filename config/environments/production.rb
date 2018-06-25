@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
 config.webpacker.check_yarn_integrity = false
 
@@ -33,6 +33,13 @@ config.webpacker.check_yarn_integrity = false
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+
+
+  # ...
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
+  config.action_mailer.default_url_options = { host: "www.medentraid.com" }
+  # or your custom domain name eg. "www.yourdomain.com"
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
