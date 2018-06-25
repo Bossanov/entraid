@@ -8,25 +8,30 @@
 #Conversation.destroy_all
 #Conversationcommit.destroy_all
 
-puts "***--- ADMIN #1 CREATION ---***"
-user = User.create!(
-    email: "staumont.elodie@icloud.com",
-    password: "Bossanova1",
+#puts "***--- ADMIN #1 CREATION ---***"
+#user = User.create!(
+#    email: "staumont.elodie@icloud.com",
+#    password: "Bossanova1",
 
 
-)
-  prof = Profile.create!(
-    first_name: "Elodie",
-    last_name: "STAUMONT",
-    job: "Chirurgien dentiste",
-    phone_number: "0687107748",
-    birthday: "17/07/1979",
-    city: "Hardelot",
-    pseudo: "Elegrine",
-    statut: "yes",
-    admin: "yes",
-    biography: "",
+#)
+#  prof = Profile.create!(
+#    first_name: "Elodie",
+#    last_name: "STAUMONT",
+#    job: "Chirurgien dentiste",
+#    phone_number: "0687107748",
+#    birthday: "17/07/1979",
+#    city: "Hardelot",
+#    pseudo: "Elegrine",
+#    statut: "yes",
+#    admin: "yes",
+#    biography: "",
 
-    user_id: user.id,
-  )
+#    user_id: user.id,
+#  )
+
+@users = User.all
+@users.each do |user|
+  SubscribeToNewsletterService.new(user).call
+end
 
