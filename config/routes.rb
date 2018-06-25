@@ -23,6 +23,7 @@ resources :conversations do
   get 'pages/liens'
   get 'pages/admin'
   get 'pages/mention'
+  get 'pages/test'
   get 'valider_profile', to: 'profiles#valider_profile'
   get 'refuser_profile', to: 'profiles#refuser_profile'
   get 'valider_article', to: 'articles#valider_article'

@@ -26,7 +26,6 @@
 #    statut: "yes",
 #    admin: "yes",
 #    biography: "",
-
 #    user_id: user.id,
 #  )
 result = []
