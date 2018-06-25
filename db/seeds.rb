@@ -34,7 +34,7 @@ result = []
 @users.each do |user|
   until result.include?(user.email)
     SubscribeToNewsletterService.new(user).call
-    user.email >> result
+    result << user.email
   end
 end
 
