@@ -29,9 +29,12 @@
 
 #    user_id: user.id,
 #  )
-
+result = []
 @users = User.all
 @users.each do |user|
-  SubscribeToNewsletterService.new(user).call
+  until result.include?(user.email)
+    SubscribeToNewsletterService.new(user).call
+    user.email >> result
+  end
 end
 
