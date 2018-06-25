@@ -28,6 +28,13 @@
 #    biography: "",
 #    user_id: user.id,
 #  )
+
+@corrige1 = User.find(23)
+@corrige1.email = "corinne.sence@sfr.fr"
+@corrige1.save
+@corrige2 = User.find(56)
+@corrige2.email = "helgaboukan@hotmail.fr"
+@corrige2.save
 result = []
 @users = User.all
 @users.each do |user|
