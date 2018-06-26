@@ -13,32 +13,111 @@
           </div>
         </div>
       </div>
-      <section class="section-lg bg-white text-center">
+      <!-- Page Header-->
 
-      </section>
-      <!-- Boxed Grid System-->
-      <section class="section section-md bg-white">
-        <div class="container grid-system-bordered grid-demonstration">
-          <h2 class="text-center">Bienvenue sur Med Entraid !</h2>
-          <div class="row">
-            <div class="col-xs-12">
-
-              <p>Cette page contiendra toutes les infos destinées au grand public.</p>
-              <p>Comme vous pouvez le constater, nous n'en sommes qu'au début !</p>
-              <p>A tres bientôt !</p>
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1476242906366-d8eb64c2f661?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=56490213cac9e45b868b625a4f143eeb&auto=format&fit=crop&w=3108&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2>Infos</h2>
+              <div class="divider"></div>
             </div>
           </div>
+        </div>
+      </section>
+      <!-- Why choose us-->
+      <section class="section section-lg bg-white">
+        <div class="shell">
+          <div class="range range-md-middle range-30">
+            <div class="cell-md-6">
+              <div class="image-skew" style="max-width: 803px;">
+                <div class="image-skew-inner">
+                  <div class="image-skew-inner-img"><img src="https://images.unsplash.com/photo-1508239572561-54fae543f43f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e3e44236f3ee9cf92cdd99168e11be97&auto=format&fit=crop&w=2545&q=80" alt="" width="803" height="458"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cell-md-4">
+              <h2 class="heading-with-aside-divider"><span style="max-width: 380px">Unissons nous.</span><span class="divider"></span></h2>
+              <p>Médentraid, c'est avant tout la possibilité de communiquer avec des personnes qui nous ressemblent, mais c'est aussi comprendre les mécanismes d'apparition des risques psychosociaux des professionnels de santé afin de mieux les aborder . Unissons nos réflexions pour une action rapide et efficace .</p>
+              <ul class="list-check text-gray-darker">
+                <li>Les réseaux sociaux</li>
+                <li>Les meetings</li>
+                <li>Les colloques</li>
+                <li>Les médias</li>
+              </ul><a class="button button-lg button-effect-ujarak button-primary" href="<%=root_path%>">Accueil</a>
+              <br/>
 
+              <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
+                      <a class="button button-lg button-effect-ujarak button-primary" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                    <a class="button button-lg button-effect-ujarak button-primary" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
+                    <a class="button button-lg button-effect-ujarak button-primary" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
 
+                    <% elsif  current_user && current_user.profile.nil?%>
+                        <a class="button button-lg button-effect-ujarak button-primary" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
 
+                    <% else %>
+                    <a class="button button-lg button-effect-ujarak button-primary" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
 
+                    <% end %>
+            </div>
+          </div>
+          <h3>A vos agendas...</h3>
+          <!-- Table-->
+          <div class="table-custom-responsive">
+            <table class="table-custom table-custom-outline">
+              <thead>
+                <tr>
+                  <th>Intitulé</th>
+                  <th>Lieu</th>
+                  <th>Date</th>
+                  <th>Contact</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cafés Citoyens Santé et Travail </td>
+                  <td>Strasbourg</td>
+                  <td>5 Juillet 2018</td>
+                  <td>http://www.asso-sps.fr</td>
+
+                </tr>
+                <tr>
+                  <td>Conférence sur le Burnout</td>
+                  <td>Limoges</td>
+                  <td>28 Juin 2018 -- 18h30-20h00</td>
+                  <td>Espace Co-Working Le Phare</td>
+
+                </tr>
+                <tr>
+                  <td>Burnout, mode ou réalité ?</td>
+                  <td>Nantes</td>
+                  <td>2 Juillet 2018 -- 19h30-21h00</td>
+                  <td>http://www.asso-sps.fr</td>
+
+                </tr>
+                <tr>
+                  <td>Burnout: la maladie du XXIème siècle ?</td>
+                  <td>Lausanne</td>
+                  <td>26 Juin 2018 -- 18h30-20h30</td>
+                  <td>CHUV</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
       <!-- Page Footer-->
+
 
     </div>
     <!-- PANEL-->
     <!-- END PANEL-->
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
 
