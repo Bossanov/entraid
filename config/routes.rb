@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :conversations
 
   end
+
+
   resources :messages do
     resources :messagecommits
   end
