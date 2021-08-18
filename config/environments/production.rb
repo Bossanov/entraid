@@ -38,7 +38,7 @@ config.webpacker.check_yarn_integrity = false
   # ...
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: "www.medentraid.com" }
+  config.action_mailer.default_url_options = { host: "https://entraid.herokuapp.com" }
   # or your custom domain name eg. "www.yourdomain.com"
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
