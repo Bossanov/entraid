@@ -1,0 +1,83 @@
+/*
+*
+* Page Loaders
+* --------------------------------------------------
+*/
+
+
+// Base styles
+// -------------------------
+
+.page-loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999999;
+  background: #fff;
+  transition: .3s all ease;
+
+  &.loaded {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+
+  &.ending {
+    display: none;
+  }
+
+  .page-loader-body {
+    text-align: center;
+    span {
+      display: none;
+      @media (min-width: $screen-xs-min) {
+        display: inline-block;
+      }
+    }
+    * + span {
+      margin-left: .45em;
+    }
+  }
+  
+  
+  svg {
+    display:block;
+    width:258px;
+    height:258px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+  }
+  
+  .tree {
+    fill: $primary;
+  }
+  
+  .circle-mask {
+    transform-origin: 50% 90%;
+    animation: scale 2s infinite ease-out;
+  }
+  
+  @keyframes scale {
+    0%, 100% {
+      transform: scale(0.0);
+    }
+    7%, 90% {
+      transform: scale(0.4);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+}
+
+// Custom Styles
+// -------------------------

@@ -1,31 +1,35 @@
 source 'https://rubygems.org'
-ruby '2.3.5'
+ruby '2.6.8'
 
-
+gem 'gibbon'
+gem "letter_opener", group: :development
+gem 'postmark-rails'
 gem 'devise'
 gem 'figaro'
-gem 'jbuilder', '~> 2.0'
-gem 'pg', '~> 0.21'
+gem 'jbuilder'
+gem 'pg'
 gem 'puma'
-gem 'rails', '5.1.6'
+gem 'sassc-rails'
+gem 'font-awesome-sass'
+gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'rails'
 gem 'redis'
 gem 'cloudinary'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3'
-gem 'font-awesome-sass', '~> 5.0.9'
-gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave'
+
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
 end
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end

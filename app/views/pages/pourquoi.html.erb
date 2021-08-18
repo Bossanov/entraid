@@ -1,0 +1,106 @@
+
+    <!-- Page-->
+    <div class="text-left page">
+      <!-- Page preloader-->
+
+
+
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-40">
+            <div class="cell-md-6 cell-lg-7">
+              <div class="object">
+                <div class="object-left">
+                  <div class="image-skew">
+                    <div class="image-skew-inner">
+                      <div class="image-skew-inner-img"><img src="https://res.cloudinary.com/dz83jh064/image/upload/v1607362052/122387781_10223631771002960_3351462271136532029_n_whdiwm.jpg" alt="" width="300" height="200"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="object-right">
+                  <h2>Il ne faut plus culpabiliser...</h2>
+                  <p>C'est dur de se lever le matin encore plus fatigué qu'au coucher.</p>
+                  <p>Et ces angoisses permanentes qui vous bouffent la vie, vous deshumanisent et vous privent de ce qui vous est le plus cher à vos yeux. Le pire, c'est que vous vous sentez obligé d'en faire plus au travail, une force inconnue sans autre alternative . Jusqu'au jour où vous ne savez plus vous lever .  </p>
+                </div>
+              </div>
+              <div class="block-text-width-divider">
+                <div class="block-text-width-divider-content">
+                  <p>Tout ceci je l'ai vécu. Et dans ces moments, si votre entourage ne comprend pas ou si celui ci n'existe pas, il est très difficile de remonter la pente.  </p>
+                  <p>Et là commence le parcours du combattant. Gérer les urgences (fermeture du cabinet, assurances, trouver un remplaçant, gérér la vie familiale) devient impossible, et la culpabilité vous gagne peu à peu, car vous vous sentez responsable de la situation. En France il est encore compliqué d'être professionnel soignant souffrant, voire impossible quand on est en libéral.</p>
+                  <div class="quote-demo">
+                    <h4 class="quote-demo-title">“Ce qui m'a beaucoup aidé, c'est pouvoir échanger avec des personnes qui me ressemblent.“</h4>
+                  </div>
+                  <p class="text-spacing-0">Partant de ce constat, il me semblait évident grâce à mes compétences en développement web de créer une plateforme web d'entraide permettant à mes consoeurs et confrères professionnels de santé souffrants de pouvoir communiquer en toute quiétude avec des personnes qui leur ressemblent, le but étant de recouvrer une certaine fierté, de se sentir compris et de pouvoir à nouveau se projeter dans l'avenir. Le site sera amélioré au fur et à mesure du temps grâce à vous et vos bonnes idées que vous pourrez nous soumettre .</p>
+                  <div class="single-post-meta">
+                    <div class="single-post-meta-item">
+
+                    </div>
+                    <div class="single-post-meta-item">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cell-md-4 cell-lg-3">
+              <div class="blog-aside">
+                <div class="range range-40 range-lg-60">
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="rd-navbar-search">
+
+                    </div>
+                  </div>
+                  <div class="cell-md-10 blog-aside-item">
+                    <div class="blog-aside-item-inner">
+                      <div class="post-minimal-wrap"><a class="post-minimal" href="#">
+                          <div class="unit unit-spacing-xs unit-horizontal">
+
+                            <div class="unit-body">
+                            <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                            </div>
+                          </div></a><a class="post-minimal" href="#">
+                          <div class="unit unit-spacing-xs unit-horizontal">
+
+                            <div class="unit-body">
+                              <% if current_user %>
+
+                              <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+                              <% else %>
+                              <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
+                              <% end %>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Footer-->
+
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+

@@ -3,15 +3,27 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+    @articles = Article.where(profile_id: @profile.id, statut: 'yes')
+    @messages = Message.where(profile_id: @profile.id, statut: 'yes')
+  end
+
+  def index
+    @profiles = Profile.where(statut: "yes")
+  end
+
+
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    @profile.statut = "no"
     if @profile.save
-      flash[:notice] = 'Votre profil a correctement été créé. Merci.'
-      redirect_to profile_path(@profile)
+      flash[:notice] = 'Votre profil a correctement été créé. Il sera validé par un admin, merci.'
+      redirect_to root_path
     else
       flash[:notice] = 'Un problème est survenu lors de la création de votre profil.'
-      redirect_to root_path
+      redirect_to new_profile_path
     end
   end
 
@@ -30,9 +42,48 @@ class ProfilesController < ApplicationController
     end
   end
 
+ def valider_profile
+    @profile = Profile.find(params[:profileid])
+    @profile.statut = "yes"
+    @profile.save
+    flash[:notice] = "Le profil a été validé. Merci."
+    redirect_to pages_admin_path
+  end
+
+  def refuser_profile
+    @profile = Profile.find(params[:profileid])
+    @user = User.where(id: @profile.user_id)
+    @user.last.destroy
+    flash[:alert] = "Le profil a été refusé et effacé de la base de donnée."
+    redirect_to pages_admin_path
+  end
+
+  def bloquer_profile
+    @profile = Profile.find(params[:profileid])
+    @profile.statut = "bloqué"
+    @profile.save
+    flash[:notice] = "Le profil a été bloqué. Merci."
+    redirect_to profiles_path
+  end
+
+  def supprimer_profile
+    @profile = Profile.find(params[:profileid])
+    @user = User.find(@profile.user_id)
+    @user.destroy
+    flash[:alert] = "Le profil a été effacé de la base de donnée ainsi que son contenu."
+    redirect_to pages_admin_path
+  end
+
+  def debloquer_profile
+    @profile = Profile.find(params[:profileid])
+    @profile.statut = "yes"
+    @profile.save
+    flash[:notice] = "Le profil a été débloqué. Merci."
+    redirect_to pages_admin_path
+  end
   private
 
   def profile_params
-  params.require(:profile).permit(:first_name, :last_name, :job, :city, :phone_number, :birthday, :photo, :photo_cache, :statut)
+  params.require(:profile).permit(:first_name, :last_name, :job, :city, :phone_number, :birthday, :photo, :photo_cache, :statut, :pseudo, :biography)
   end
 end

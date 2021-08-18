@@ -1,0 +1,6 @@
+meta_product_name: "Méd Entraid"
+meta_title: "MédEntraid: plateforme d'entraide pour professionnels de santé"
+meta_description: "Vous êtes professionnel de santé, vous souffrez de votre travail, vous vous sentez abandonné(e), incompris(e), venez nous rejoindre !"
+meta_image: "burnout.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
+facebook_account: "@product_facebook_account"

@@ -1,0 +1,97 @@
+  <div class="text-left page">
+    <div class="page-loader">
+      <div>
+        <div class="page-loader-body">
+          <svg x="0" y="0" width="258" height="258">
+            <clippath id="clip-path">
+
+            </clippath>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <section class="section section-breadcrumb">
+      <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1525248152312-434c15a82f37?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=278e9355f4294b036c0ad9d60750e752&auto=format&fit=crop&w=2880&q=80">
+        <div class="parallax-content section-lg context-dark">
+          <div class="shell context-dark">
+            <h2 style="color: black;">Ma messagerie interne</h2>
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br/>
+    <br/>
+    <div class="container">
+<i>Sur cette page vous verrez les messages que vous avez envoyés en privé à un des membres inscrits, mais ceux que vous avez reçus. Pour joindre un membre en privé, veuillez vous rendre sur la page "les inscrits" ( cf menu de la barre de navigation "mon compte" ou sur la page de votre profil) puis une fois sur celle-ci cliquez sur le bouton "contacter" en bas du membre que vous voulez joindre en privé. Tous ces messages seront privés et invisibles pour les autres inscrits. </i>
+ <div class="divider"></div>
+</div>
+    <section class="section section-lg bg-white">
+      <% @conversationsrecues = Conversation.where(dest: current_user.email)%>
+      <% @conversationsenvoyees = Conversation.where(autor: current_user.email) %>
+      <h4>Mes messages reçus </h4>
+      <br/>
+      <% if @conversationsrecues.length == 0 %>
+        <i> Aucun message </i>
+      <% else %>
+          <div class="shell bg-white-lighter block-info-wrap">
+            <div class="block-info-wrap-inner">
+              <% @conversationsrecues.each do |conversation| %>
+              <% @profile = Profile.find(conversation.profile_id)  %>
+              <div class="block-info-wrap-item">
+                <div class="block-info">
+                  <div class="block-info-inner">
+                    <% if @profile.photo.nil? %>
+                      <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="91" height="91"/>
+                    <% else %>
+                      <%= cl_image_tag @profile.photo, width:"91", height: "91", alt:"", class:"img-circle"%>
+                    <% end %>
+                    <H5>Message venant de <%=@profile.pseudo.capitalize%></H5>
+                    <p><%= conversation.content %></p>
+                    <p class="heading-5">Posté le <%=conversation.created_at.strftime("%d.%m.%Y") %> </p>
+                      <%= link_to 'voir la discussion', profile_conversation_path(conversation.profile_id, conversation.id), class:"button button-effect-ujarak button-primary button-block"%>
+                      <%= link_to 'Supprimer', supprimer_conversation_path(conversationid: conversation.id), class:"button button-effect-ujarak button-primary button-block"%>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </section>
+      <section class="section section-lg bg-white">
+        <h4>Mes messages envoyés </h4>
+        <br/>
+       <% if @conversationsenvoyees.length == 0 %>
+         <i> Aucun message </i>
+       <% else %>
+            <div class="shell bg-white-lighter block-info-wrap">
+              <div class="block-info-wrap-inner">
+          <% @conversationsenvoyees.each do |conversation| %>
+                <% @userdest = User.where(email: conversation.dest) %>
+                <% @profile = Profile.where(user_id: @userdest.last.id)  %>
+                <div class="block-info-wrap-item">
+                  <div class="block-info">
+                    <div class="block-info-inner">
+                      <% if @profile.last.photo.nil? %>
+                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="91" height="91"/>
+                      <% else %>
+                        <%= cl_image_tag @profile.last.photo, width:"91", height: "91", alt:"", class:"img-circle"%>
+                      <% end %>
+                      <H5>Message envoyé à <%=@profile.last.pseudo.capitalize%></H5>
+                      <p><%= conversation.content %></p>
+                      <p class="heading-5">Posté le <%=conversation.created_at.strftime("%d.%m.%Y") %> </p>
+                      <%= link_to 'voir la discussion', profile_conversation_path(conversation.profile_id, conversation.id), class:"button button-effect-ujarak button-primary button-block"%>
+                      <%= link_to 'Supprimer', supprimer_conversation_path(conversationid: conversation.id), class:"button button-effect-ujarak button-primary button-block"%>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+

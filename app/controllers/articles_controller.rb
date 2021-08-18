@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
+
   def index
-    @articles =Article.all
+    @articles =Article.where(statut: "yes")
   end
 
   def new
@@ -10,13 +11,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.status = "yes"
+    @article.statut = "no"
     @profile = current_user.profile
     @article.profile = @profile
 
     if @article.save
       redirect_to root_path
-      flash[:notice] = "L'article a été sauvegardé !"
+      flash[:notice] = "L'article a été sauvegardé et sera validé par un Admin avant affichage."
 
     else
       render :new
@@ -26,7 +27,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @articles = Article.all
+    @articles = Article.where(statut: "yes")
     @profile = Profile.find(@article.profile_id)
   end
 
@@ -45,9 +46,26 @@ class ArticlesController < ApplicationController
     flash[:notice] = "L'article a été édité, merci !"
   end
 
-  def all
-    @articles = Article.where(status: 'yes')
+  def valider_article
+    @article = Article.find(params[:articleid])
+    @article.statut = "yes"
+    if @article.save
+      flash[:notice] = "L'article a été validé et sera automatiquement affiché . Merci."
+      redirect_to pages_admin_path
+     else
+      flash[:notice] = "Oops, une erreur est survenue . "
+      redirect_to pages_admin_path
+    end
   end
+
+  def refuser_article
+    @article = Article.find(params[:articleid])
+    @article.destroy_all
+    flash[:alert] = "L'article a été refusé et sera effacé de la base de donnée."
+    redirect_to pages_admin_path
+  end
+
+
 
 
   #def valider_article

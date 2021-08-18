@@ -1,0 +1,95 @@
+
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header-->
+
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1500444974567-9f77135bd688?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=236b3a59ccb0050a52a345ce30e5125b&auto=format&fit=crop&w=2516&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2>Proposer un article</h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!-- Get in Touch-->
+      <section class="section section-lg bg-white">
+        <div class="shell">
+          <div class="range range-30">
+            <div class="cell-md-5">
+              <div class="form-block">
+                <h3>Mon article</h3>
+                <p>Vous pouvez rédiger votre texte ci dessous et merci d'y ajouter une photo de votre choix.<br class="veil reveal-lg-block"> Celui ci sera validé par l'équipe avant publication.
+                </p>
+                <%= simple_form_for [@profile, @article] do |f| %>
+
+                <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                  <div class="range range-xs-center range-20 range-narrow">
+                    <div class="cell-sm-5">
+                      <div class="form-wrap form-wrap-validation">
+                         <%= f.input :theme, collection: ["Travail", "Famille", "Mes difficultés", "Mes solutions", "Culture", "Vie associative"], class: "form-control form-control-last-child", label:"Choisissez votre Thème" %>
+                      </div>
+                    </div>
+                    <div class="cell-sm-5">
+                      <div class="form-wrap form-wrap-validation">
+
+                        <%= f.input :title , id:"contacts-last-name", type:"text", name:"Adresse", required: true, class: "form-control form-control-last-child", label:"Titre de l'article"%>
+
+                      </div>
+                    </div>
+                    <div class="cell-sm-10">
+                      <div class="form-wrap form-wrap-validation">
+                    <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Contenu de l'article" %>
+
+                      </div>
+                    </div>
+
+
+                    <div class="cell-sm-5">
+                      <div class="form-wrap form-wrap-validation">
+                        <%= f.input :photo, class: "form-control", label:"Pièce jointe"%>
+                      <%= f.input :photo_cache, as: :hidden %>
+                      </div>
+                    </div>
+                    <div class="cell-sm-5">
+                      <div class="form-button">
+                        <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">Soumettre</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <% end %>
+              </div>
+            </div>
+            <div class="cell-md-5 gm-contact-wrap">
+              <div class="gm-contact-inner">
+
+               <img class="img-responsive center-block" src="http://res.cloudinary.com/dz83jh064/image/upload/c_scale,w_700/v1527151617/photo-1462642109801-4ac2971a3a51_zjfuf6.jpg" alt=""  />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+

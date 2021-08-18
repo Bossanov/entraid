@@ -1,4 +1,5 @@
 class ArticlecommitsController < ApplicationController
+
   def new
     @articlecommit = Articlecommit.new
     @article = Article.find(params[:article_id])
@@ -10,10 +11,12 @@ class ArticlecommitsController < ApplicationController
     @article = Article.find(params[:article_id])
     @articlecommit.article = @article
     @article.statut = "yes"
+    @articlecommit.autor = current_user.email
 
-    if @article.save
+
+    if @articlecommit.save
       flash[:notice] = 'Votre message a été posté !'
-      redirect_to root_path
+      redirect_to article_path(@article.id)
 
     else
       render :new
@@ -26,6 +29,5 @@ class ArticlecommitsController < ApplicationController
 
   def article_params
     params.require(:articlecommit).permit(:title, :theme, :content, :statut)
-
   end
 end

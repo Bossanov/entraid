@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516085941) do
+ActiveRecord::Schema.define(version: 20180604135535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,30 @@ ActiveRecord::Schema.define(version: 20180516085941) do
     t.datetime "updated_at", null: false
     t.bigint "profile_id"
     t.index ["profile_id"], name: "index_articles_on_profile_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.text "content"
+  end
+
+  create_table "conversationcommits", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "conversation_id"
+    t.string "autor"
+    t.index ["conversation_id"], name: "index_conversationcommits_on_conversation_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.text "content"
+    t.string "autor"
+    t.string "dest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_conversations_on_profile_id"
   end
 
   create_table "messagecommits", force: :cascade do |t|
@@ -69,6 +93,11 @@ ActiveRecord::Schema.define(version: 20180516085941) do
     t.string "statut", default: "no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pseudo", null: false
+    t.bigint "user_id"
+    t.text "biography"
+    t.string "admin", default: "no", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,6 +119,9 @@ ActiveRecord::Schema.define(version: 20180516085941) do
 
   add_foreign_key "articlecommits", "articles"
   add_foreign_key "articles", "profiles"
+  add_foreign_key "conversationcommits", "conversations"
+  add_foreign_key "conversations", "profiles"
   add_foreign_key "messagecommits", "messages"
   add_foreign_key "messages", "profiles"
+  add_foreign_key "profiles", "users"
 end

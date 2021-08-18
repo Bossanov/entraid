@@ -1,0 +1,147 @@
+
+    <div class="text-left page">
+      <!-- Page preloader-->
+      <div class="page-loader">
+        <div>
+          <div class="page-loader-body">
+            <svg x="0" y="0" width="258" height="258">
+
+              <clippath id="clip-path">
+
+              </clippath>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header-->
+
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1505664063603-28e48ca204eb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9e4a2667054af80d03d376a9f28640ea&auto=format&fit=crop&w=2850&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+              <h2>Tous les articles</h2>
+              <div class="divider"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br/>
+      <br/>
+
+<div class="container">
+<i>Sur cette page vous verrez les articles qui ont été ecrits par les inscrits après validation par l'équipe. Ces articles auront pour but de témoigner, de proposer des solutions ou des aides et même de divertir . Si vous voulez lire l'article, cliquez sur l'image ou sur le titre et vous pourrez alors voir tout son contenu et vous aurez également la possibilité de commenter ! Pour proposer un article, veuillez vous rendre en bas de cette page et cliquez sur "écrire un article" .</i>
+ <div class="divider"></div>
+      <section class="section section-lg bg-white text-left">
+        <div class="shell">
+          <div class="range range-60 range-xs-center">
+
+
+            <% @articles.where(statut: 'yes').each do |article| %>
+              <% @profile = Profile.find(article.profile_id)  %>
+            <div class="cell-md-7 cell-lg-5">
+              <article class="post">
+                <div class="post-header">
+                  <div class="post-header-inner">
+                    <div class="post-header-inner-img"><a href="<%= profile_article_path(@profile.id, article.id) %>">
+                      <img src="images/news-01-719x246.jpg" alt="" width="719" height="246"/>
+                      <% if article.photo.nil? %>
+                        <img src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="719" height="246"/>
+                      <% else %>
+                        <%= cl_image_tag article.photo, width:"719", height: "246", alt:"", class:"img-responsive center-block"%>
+                      <% end %>
+                    </a></div>
+                  </div>
+                </div>
+                <div class="post-footer">
+                  <h4><a href="<%= profile_article_path(@profile.id, article.id) %>"><%=article.title%></a></h4>
+                  <div class="post-meta">
+                    <dl>
+                      <dt>Date</dt>
+                      <dd>
+                          <time datetime="2018-01-22"><%= article.created_at.strftime("%d.%m.%Y")%></time></dd>
+                    </dl>
+                    <dl>
+                      <dt>Posté par</dt>
+                      <dd><%=@profile.pseudo.capitalize%></dd>
+                    </dl>
+                    <dl>
+                      <dt>Commentaires</dt>
+                      <% @comments = Articlecommit.where(article_id: article.id).length%>
+
+                      <dd><%=@comments%></dd>
+                    </dl>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <% end %>
+
+          </div>
+        </div>
+      </section>
+      <!-- Page Footer-->
+      <section class="section section-sm bg-white-lighter">
+        <div class="shell shell-out">
+          <div class="range range-30">
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Quelques chiffres</h6>
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-phone"></span></div>
+                      <div class="unit-body"><i class="link-gray-darker" href="tel:#">nb total d'articles = <%=@articles.length%></i></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs unit-horizontal unit-custom">
+                      <% @total = Articlecommit.all.length %>
+                      <div class="unit-left"><span class="icon icon-md icon-primary mdi-email-outline"></span></div>
+                      <div class="unit-body" style="position: relative; top: 1px"><i class="link-gray-darker" href="mailto:#">nb total de commentaire(s) = <%=@total%></i></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-3 cell-xs-5">
+              <div class="preffix-xl-70" style="max-width: 274px">
+                <h6 class="text-spacing-200 text-uppercase font-base">Dernier article posté</h6>
+
+                <div class="divider-modern"></div>
+                <ul class="list list-md">
+                  <li>
+                <% if @articles.length > 0 %>
+                <% @lastarticle = @articles.where(statut: 'yes').last(1) %>
+                <% @lastprofile = Profile.find(@lastarticle.last.profile_id)  %>
+                    <div class="unit unit-spacing-xs unit-horizontal">
+                      <div class="unit-left"><span class="icon icon-md-biger icon-primary mdi-map-marker"></span></div>
+                      <div class="unit-body" style="position: relative; top: -4px;"><%= link_to "#{@lastarticle.last.title} par #{@lastprofile.pseudo.capitalize}", profile_article_path(@lastprofile.id, @lastarticle.last.id), class:"link-default"%></div>
+
+
+                    </div>
+                  <% else %>
+                  <i>Aucun article</i>
+                  <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="preffix-xl-70" style="max-width: 433px">
+
+                <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                <%= link_to 'Ecrire un article', new_profile_article_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+

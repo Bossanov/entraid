@@ -1,0 +1,114 @@
+/*
+*
+* Pagination custom
+* --------------------------------------------------
+*/
+
+//== Pagination variables
+//
+
+$pagination-padding-vertical: 5px;
+$pagination-padding-horizontal: 5px;
+
+$pagination-font-size: 16px;
+$pagination-lh-size: 20px;
+$pagination-border-w: 0;
+
+$pagination-color:                     #aaaaaa;
+$pagination-bg:                        transparent;
+$pagination-border:                    transparent;
+
+$pagination-hover-color:               $white;
+$pagination-hover-bg:                  $primary;
+$pagination-hover-border:              $primary;
+
+$pagination-active-color:              $white;
+$pagination-active-bg:                 $primary;
+$pagination-active-border:             $primary;
+
+$pagination-disabled-color:            $gray-light;
+$pagination-disabled-bg:               #fff;
+$pagination-disabled-border:           #ddd;
+
+
+.pagination-custom {
+  font-size: 0;
+  text-align: center;
+
+  > li {
+    margin: 0 3px;
+
+    &,
+    > a,
+    > span{
+      display: inline-block;
+    }
+
+    > a,
+    > span {
+      padding: $pagination-padding-vertical $pagination-padding-horizontal;
+      font-size: $pagination-font-size;
+      line-height: $pagination-lh-size;
+    }
+  }
+
+  > li > a,
+  > li > span {
+    min-width: $pagination-padding-vertical*2 + $pagination-border-w*2 + $pagination-lh-size;
+    font-weight: 400;
+    transition: .3s;
+    text-align: center;
+    background-color: transparent;
+    color: $pagination-color;
+  }
+
+  > li:first-child,
+  > li:last-child {
+    @media (max-width: $screen-xs-min - 1) {
+      // display: none;
+    }
+
+    a, span {
+      span {
+        position: relative;
+        font-size: 11px;
+        line-height: 1;
+      }
+    }
+  }
+
+  > li > a,
+  > li > span:not(.no-hover) {
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus {
+      color: $pagination-hover-color;
+      background-color: $pagination-hover-bg;
+      border-color: $pagination-hover-border;
+      box-shadow: none;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus {
+      color: $pagination-active-color;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border;
+      box-shadow: none;
+    }
+  }
+  
+  * + & {
+    margin-top: 40px;
+    @media (min-width: $screen-lg-min) {
+      margin-top: 60px;
+    }
+  }
+}
+

@@ -1,0 +1,38 @@
+@mixin responsive-offset($offset) {
+    margin-bottom: -$offset;
+  > * {
+    margin-top: 0;
+    margin-bottom: $offset;
+  }
+}
+
+@mixin responsive-offset-media($offset) {
+  margin-bottom: -$offset;
+  > * {
+    margin-bottom: $offset;
+  }
+}
+
+@mixin custom-offset($offset, $item: '*') {
+  #{$item} + & {
+    
+    @if ($offset <= 30px) {
+      margin-top: 13px;
+    } @else {
+      margin-top: 20px;
+    }
+    
+    @media (min-width: $screen-sm-min) {
+      @if ($offset <= 50px) {
+        margin-top: 30px;
+      } @else {
+        margin-top: 30px;
+      }
+    }
+    
+    @media (min-width: $screen-lg-min) {
+      margin-top: $offset;
+    }
+    
+  }
+}

@@ -1,4 +1,5 @@
 class MessagecommitsController < ApplicationController
+
   def new
     @messagecommit = Messagecommit.new
     @message = Message.find(params[:message_id])
@@ -9,11 +10,13 @@ class MessagecommitsController < ApplicationController
     @messagecommit = Messagecommit.new(message_params)
     @message = Message.find(params[:message_id])
     @messagecommit.message = @message
-    @message.statut = "yes"
+    @messagecommit.statut = "yes"
+    @messagecommit.autor = current_user.email
 
-    if @message.save
+
+    if @messagecommit.save
       flash[:notice] = 'Votre message a été posté !'
-      redirect_to root_path
+      redirect_to message_path(@message.id)
 
     else
       render :new
@@ -25,7 +28,7 @@ class MessagecommitsController < ApplicationController
   private
 
   def message_params
-    params.require(:messagecommit).permit(:title, :theme, :content, :statut)
+    params.require(:messagecommit).permit(:title, :autor, :content, :statut)
 
   end
 end

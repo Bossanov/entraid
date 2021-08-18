@@ -1,7 +1,7 @@
 
 <div class="text-left page">
       <section class="section section-breadcrumb">
-        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="images/bg-01.jpg">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1525167753025-08f17bdddb7f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=679dd1936d7c0bdb8f3682cf4f98108c&auto=format&fit=crop&w=2850&q=80">
           <div class="parallax-content section-lg context-dark">
             <div class="shell context-dark">
 
@@ -43,7 +43,7 @@
 
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :city, label: "Portable", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :phone_number, label: "Portable", class: "form-input", id: "forms-name", required: true, autofocus: true %>
 
                     </div>
                   </div>
@@ -55,7 +55,7 @@
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :city, label: "Portable", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :pseudo, label: "Pseudo", class: "form-input", id: "forms-name", required: true, autofocus: true %>
 
                     </div>
                   </div>
@@ -65,8 +65,16 @@
                       <%= f.input :photo_cache, as: :hidden %>
                     </div>
                   </div>
+                        <div class="cell-sm-10">
+                    <div class="form-wrap form-wrap-validation">
+
+                        <%= f.input :biography , input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Biographie" %>
+                    </div>
+                  </div>
+
                   <div class="cell-sm-5">
                     <div class="form-button">
+                      <a href="<%=pages_mention_path%>" target="_blank">Merci de lire les mentions légales</a>
                       <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">enregistrer</button>
                     </div>
                   </div>

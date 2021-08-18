@@ -1,0 +1,128 @@
+<div class="text-left page">
+      <section class="section section-breadcrumb">
+        <div class="parallax-container breadcrumb-wrapper" data-parallax-img="https://images.unsplash.com/photo-1525167753025-08f17bdddb7f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=679dd1936d7c0bdb8f3682cf4f98108c&auto=format&fit=crop&w=2850&q=80">
+          <div class="parallax-content section-lg context-dark">
+            <div class="shell context-dark">
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section-lg bg-white text-center">
+        <div class="shell">
+          <div class="range range-xs-center range-60 range-lg-200">
+            <div class="cell-xs-12">
+              <div class="block-center" style="max-width: 520px">
+                <h3>Modifier mon profil</h3>
+                <p>Un profil enregistré permet de pouvoir communiquer avec les autres et ainsi profiter pleinement du site.</p>
+              <%= simple_form_for @profile do |f| %>
+              <form class="rd-mailform block-center" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" style="max-width: 584px">
+                <div class="range range-xs-center range-20 range-narrow">
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :last_name, label: "Nom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :first_name, label: "Prénom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :job, label: "Profession", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :city, label: "Ville", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+
+                    </div>
+                  </div>
+
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :phone_number, label: "Portable", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :birthday, as: :date, html5: true,  class: "form-input", id: "forms-name", label:"Date de naissance" %>
+
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :pseudo, label: "Pseudo", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+
+                    </div>
+                  </div>
+                  <div class="cell-sm-5">
+                    <div class="form-wrap form-wrap-validation">
+                      <%= f.input :photo, class: "form-control", label:"Photo"%>
+                      <%= f.input :photo_cache, as: :hidden %>
+                    </div>
+                  </div>
+                        <div class="cell-sm-10">
+                    <div class="form-wrap form-wrap-validation">
+
+                        <%= f.input :biography , input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Biographie" %>
+                    </div>
+                  </div>
+
+                  <div class="cell-sm-5">
+                    <div class="form-button">
+                      <a href="<%=pages_mention_path%>" target="_blank">Merci de lire les mentions légales</a>
+                      <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">modifier</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <% end %>
+
+              <!-- RD Mailform-->
+
+
+              <div class="block-center" style="max-width: 675px">
+
+              </div>
+
+              <div class="block-center" style="max-width: 675px">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-section"></div>
+      <!-- Page Footer-->
+
+      <footer class="page-footer section text-center">
+        <div class="shell shell-out">
+          <div class="range range-xs-reverse range-10">
+            <div class="cell-xs-4 cell-sm-4 text-xs-right">
+              <div class="preffix-xl-70" style="max-width: 433px">
+                <ul class="list-inline">
+                  <li><a class="icon icon-gray-darker fa-facebook" href="#"></a></li>
+                  <li><a class="icon icon-gray-darker fa-twitter" href="#"></a></li>
+                  <li><a class="icon icon-gray-darker fa-google-plus" href="#"></a></li>
+                  <li><a class="icon icon-gray-darker fa-pinterest-p" href="#"></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="cell-xs-6 cell-sm-6 text-xs-left">
+              <p class="copyright preffix-xl-70">Clinic &#169; <span class="copyright-year"></span>. <a href="privacy-policy.html">Privacy Policy</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- PANEL-->
+    <!-- END PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+

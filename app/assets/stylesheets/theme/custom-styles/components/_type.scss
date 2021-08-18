@@ -1,0 +1,189 @@
+/*
+*
+* Typography
+* ==================================================
+*/
+
+// Body
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  font-weight: $font-weight-base;
+  letter-spacing: $text-spacing;
+  color: $text-color;
+  background-color: $body-bg;
+}
+
+.font-sec {
+  font-family: $font-family-sec;
+}
+
+p {
+  margin: 0;
+}
+
+
+#{headings()} {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: $text-spacing;
+  color: $headings-color;
+  a {
+    @include link(inherit, $primary);
+  }
+}
+
+
+h1,
+.heading-1 {
+  font-size: 38px;
+  line-height: $font-lh-h1;
+  
+  @media (min-width: $screen-xl-min) {
+    font-size: $font-size-h1;
+  }
+}
+
+
+h2,
+.heading-2 {
+  font-size: 32px;
+  line-height: $font-lh-h2;
+  
+  @media (min-width: $screen-xl-min) {
+    font-size: $font-size-h2;
+  }
+  
+  .heading-4 {
+    display: block;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  
+  .heading-main-text {
+    display: inline-block;
+  }
+  
+  * + .heading-main-text {
+    margin-top: 5px;
+    @media (min-width: $screen-lg-min) {
+      margin-top: 19px;
+    }
+  }
+}
+
+
+h3,
+.heading-3 {
+  font-size: 24px;
+  line-height: $font-lh-h3;
+  
+  @media (min-width: $screen-xl-min) {
+    font-size: $font-size-h3;
+  }
+}
+
+
+h4,
+.heading-4 {
+  font-size: 20px;
+  line-height: $font-lh-h4;
+  
+  @media (min-width: $screen-xl-min) {
+    font-size: $font-size-h4;
+  }
+}
+
+
+h5,
+.heading-5 {
+  line-height: $font-lh-h5;
+  font-size: $font-size-h5;
+}
+
+
+h6,
+.heading-6 {
+  line-height: $font-lh-h6;
+  font-size: $font-size-h6;
+}
+
+
+.heading-7 {
+}
+
+
+// Big text
+.big {
+  font-size: 16px;
+}
+
+
+.large {
+  font-size: 18px;
+}
+
+
+/*
+ Mark
+  */
+.mark {
+  color: $white;
+  background-color: $primary;
+}
+
+
+// Small text
+small,
+.small {
+  display: block;
+  font-size: $font-size-small;
+}
+
+
+// Heading Type
+.heading-group-demo {
+  border-left: 1px solid $albus;
+  padding-left: 30px;
+  margin-left: -30px;
+  * + & { margin-left: 0; }
+  
+  @media (min-width: $screen-lg-min) {
+  }
+}
+
+
+/*
+* Heading Demo
+ */
+.head-demo {
+  
+  @at-root p + h4#{&} {
+    margin-top: 40px;
+  }
+  
+  @media (min-width: $screen-lg-min) {
+    @at-root h2#{&} + p {
+      margin-top: 15px;
+    }
+    @at-root h4#{&} + p {
+      margin-top: 20px;
+    }
+    @at-root h3#{&} + p {
+      margin-top: 30px;
+    }
+    @at-root p + h4#{&} {
+      margin-top: 65px;
+    }
+  }
+  
+  @media (min-width: $screen-xl-min) {
+    @at-root p + h4#{&} {
+      margin-top: 95px;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+/*
+*
+* Main layout
+* ==================================================
+*/
+
+// Page
+//
+
+.page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh !important;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: flex-start;
+  //align-items: center;
+  
+  > * {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+}
+
+// Page header
+//
+
+.page-header {
+  //Kill bootstrap style
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+}
+
+.ad-footer {
+  .shell {
+    padding-left: 15px;
+    padding-right: 15px;
+    @media (min-width: $screen-xl-min) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  &.bg-gray-bright {
+    .p-text {
+      color: #616c7b;
+      letter-spacing: $text-spacing;
+    }
+  }
+}
+
+// Page footer
+//
+
+.page-footer {
+  padding: 20px 0;
+  background-color: $white-light;
+}
+
+.page-footer-full {
+  padding: 30px 0;
+  background-color: #323942;
+  
+  .copyright {
+    color: #6a7688;
+  }
+  
+  a.icon {
+    @include link($white, $primary);
+  }
+}
+
+.page-footer-hi {
+  background-color: #323942;
+  
+  .copyright {
+    color: #6a7688;
+  }
+}
+
+.copyright {
+  font-size: 14px;
+  letter-spacing: 0;
+  color: $gray-lighter;
+  a {
+    text-decoration: underline;
+    @include link(inherit, $primary);
+  }
+}
