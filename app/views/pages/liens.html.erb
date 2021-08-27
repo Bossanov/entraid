@@ -128,15 +128,19 @@
                     <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
 
                   </li>
-                  <% if current_user %>
-                  <li>
-                    <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+                  <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
+                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
 
-                  </li>
-                  <% else %>
-                  <li>
-                    <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
-                  </li>
+                    <% elsif  current_user && current_user.profile.nil?%>
+                        <a class="button button-primary button-effect-ujarak" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
+
+                    <% else %>
+                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
+
                     <% end %>
                 </ul>
               </div>

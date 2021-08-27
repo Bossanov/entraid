@@ -77,9 +77,14 @@
                           <div class="unit unit-spacing-xs unit-horizontal">
 
                             <div class="unit-body">
-                              <% if current_user %>
-
+                              <% if current_user && current_user.profile && current_user.profile.statut == "yes" %>
                               <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
+                              <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
+                              <%= link_to 'Profil en attente', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                              <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué"%>
+                              <%= link_to 'Profil bloqué', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                              <% elsif current_user && current_user.profile.nil?%>
+                              <%= link_to 'Créer mon profil', new_profile_path, class:"button button-effect-ujarak button-primary button-block"%>
                               <% else %>
                               <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
                               <% end %>
