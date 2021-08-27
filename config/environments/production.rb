@@ -36,8 +36,8 @@ config.webpacker.check_yarn_integrity = false
 
 
   # ...
-  config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
+  config.action_mailer.delivery_method     = :smtp
+  #config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
   config.action_mailer.default_url_options = { host: "https://entraid.herokuapp.com" }
   # or your custom domain name eg. "www.yourdomain.com"
 
