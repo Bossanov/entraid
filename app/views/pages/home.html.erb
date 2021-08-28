@@ -137,13 +137,13 @@
                   <div class="rd-mailform-mini-left">
                     <div class="form-wrap form-wrap-validation">
 
-                      <%= f.input :content , id:"forms-message-footer", type:"text", name:"Votre message", required: true, class: "form-input", label:"Votre message"%>
+                      <%= f.input :content , id:"forms-message-footer",label: false,  type:"text", name:"Votre message", required: true, class: "form-input", placeholder:"Votre message"%>
 
                     </div>
                   </div>
                   <div class="rd-mailform-mini-right">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :email , id:"forms-email-footer", type:"string", name:"Votre email", required: true, label:"Votre email"%>
+                      <%= f.input :email , id:"forms-email-footer",label: false,  type:"string", name:"Votre email", required: true, placeholder:"Votre email"%>
 
 
                     </div>
@@ -416,7 +416,7 @@
               </div>
             </div>
             <div class="cell-lg-2 wow fadeIn" data-wow-delay="1.2s">
-              <div class="demo-image-block"><img src="https://images.unsplash.com/photo-1526030071064-432feadf1c44?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a8caa51e02139c6e47a9bd0baecf730&auto=format&fit=crop&w=2850&q=80" alt="" width="268" height="483"/>
+              <div class="demo-image-block">
                   <div class="demo-image-block-link-text"></div></div>
             </div>
           </div>
@@ -498,14 +498,14 @@
                   <div class="rd-mailform-mini-left">
                     <div class="form-wrap form-wrap-validation">
 
-                      <%= f.input :content , id:"forms-message-footer", type:"text", name:"Votre message", required: true, class: "form-input", label:"Votre message"%>
+                      <%= f.input :content , id:"forms-message-footer",label: false, type:"text", name:"Votre message", required: true, class: "form-input", placeholder:"Votre message"%>
 
                     </div>
                   </div>
                   <div class="rd-mailform-mini-right">
                     <div class="form-wrap form-wrap-validation">
 
-                      <%= f.input :email , id:"forms-email-footer", type:"string", name:"Votre email", required: true, label:"Votre email", class:"form-input"%>
+                      <%= f.input :email , id:"forms-email-footer",label: false, type:"string", name:"Votre email", required: true, placeholder:"Votre email", class:"form-input"%>
 
                     </div>
                     <div class="form-button">

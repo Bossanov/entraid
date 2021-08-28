@@ -94,19 +94,19 @@
           <div class="range range-40">
             <div class="cell-lg-3 cell-sm-5">
               <div style="max-width: 274px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Qui suis-je</h6>
+                <h6 class="text-spacing-200 text-uppercase font-base">Infos Contacts</h6>
                 <div class="divider-default"></div>
                 <ul class="list list-lg">
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal unit-custom unit-middle">
                       <div class="unit-left"><span class="far fa-address-card"></span></div>
-                      <div class="unit-body">Antoine STAUMONT</div>
+                      <div class="unit-body">Médentraid</div>
                     </div>
                   </li>
                   <li>
                     <div class="unit unit-spacing-xs unit-horizontal unit-custom unit-middle">
                       <div class="unit-left"><span class="fas fa-at"></span></div>
-                      <div class="unit-body" style="position: relative; top: -1px">staumont.antoine@me.com</div>
+                      <div class="unit-body" style="position: relative; top: -1px">infos@medentraid.fr</div>
                     </div>
                   </li>
                   <li>
@@ -120,27 +120,34 @@
             </div>
             <div class="cell-lg-3 cell-sm-5">
               <div style="max-width: 283px">
-                <h6 class="text-spacing-200 text-uppercase font-base">Dernières infos</h6>
+                <h6 class="text-spacing-200 text-uppercase font-base"></h6>
+                <br/>
                 <div class="divider-default"></div>
                 <ul class="list list-lg">
 
+
+                  <% if current_user &&  current_user.profile &&  current_user.profile.statut == "yes" %>
                   <li>
-                    <%= link_to 'Accueil', root_path, class:"button button-effect-ujarak button-primary button-block"%>
+                    <%= link_to 'Mon profil', profile_path(current_user.profile.id), class:"button button-effect-ujarak button-primary button-block"%>
 
                   </li>
-                  <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
-                      <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
-                    <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
-                    <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil bloqué, veuillez contacter l'équipe.</a>
+                  <% elsif current_user &&  current_user.profile &&  current_user.profile.statut == "no" %>
+                  <li>
+                    <i>Profil en cours de validation</i>
+                  </li>
 
-                    <% elsif  current_user && current_user.profile.nil?%>
-                        <a class="button button-primary button-effect-ujarak" href="<%=new_profile_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Créer mon profil</a>
-
-                    <% else %>
-                    <a class="button button-primary button-effect-ujarak" href="<%=new_user_session_path %>" data-caption-animate="fadeInUp" data-caption-delay="450">S'inscrire</a>
-
+                  <% elsif current_user &&  current_user.profile &&  current_user.profile.statut == "bloqué" %>
+                  <li>
+                    <i>Votre compte est bloqué, veuillez contacter l'équipe</i>
+                  </li>
+                  <%elsif current_user &&  current_user.profile.nil? %>
+                  <li>
+                    <%= link_to "Créer mon profil", new_profile_path, class:"button button-effect-ujarak button-primary button-block"%>
+                  </li>
+                  <% else %>
+                  <li>
+                    <%= link_to "S'inscrire", new_user_session_path, class:"button button-effect-ujarak button-primary button-block"%>
+                  </li>
                     <% end %>
                 </ul>
               </div>
@@ -156,14 +163,14 @@
                   <div class="rd-mailform-mini-left">
                     <div class="form-wrap form-wrap-validation">
 
-                      <%= f.input :content , id:"forms-message-footer", type:"text", name:"Votre message", required: true, class: "form-input", label:"Votre message"%>
+                      <%= f.input :content , id:"forms-message-footer",label: false, type:"text", name:"Votre message", required: true, class: "form-input", placeholder:"Votre message"%>
 
                     </div>
                   </div>
                   <div class="rd-mailform-mini-right">
                     <div class="form-wrap form-wrap-validation">
 
-                      <%= f.input :email , id:"forms-email-footer", type:"string", name:"Votre email", required: true, label:"Votre email", class:"form-input"%>
+                      <%= f.input :email , id:"forms-email-footer",label: false, type:"string", name:"Votre email", required: true, placeholder:"Votre email", class:"form-input"%>
 
                     </div>
                     <div class="form-button">

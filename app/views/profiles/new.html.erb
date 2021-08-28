@@ -21,41 +21,41 @@
                 <div class="range range-xs-center range-20 range-narrow">
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :last_name, label: "Nom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :last_name, label: false, placeholder:"Votre nom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
                     </div>
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :first_name, label: "Prénom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :first_name, label: false, placeholder:"Votre prénom", class: "form-input", id: "forms-name", required: true, autofocus: true %>
                     </div>
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :job, label: "Profession", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :job, label: false, placeholder:"Votre profession", class: "form-input", id: "forms-name", required: true, autofocus: true %>
                     </div>
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :city, label: "Ville", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :city, label: false, placeholder:"Votre ville", class: "form-input", id: "forms-name", required: true, autofocus: true %>
 
                     </div>
                   </div>
 
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :phone_number, label: "Portable", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :phone_number, label: false, placeholder:"Votre téléphone", class: "form-input", id: "forms-name", required: true, autofocus: true %>
 
                     </div>
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :birthday, as: :date, html5: true,  class: "form-input", id: "forms-name", label:"Date de naissance" %>
+                      <%= f.input :birthday, as: :date, label: false, html5: true,  class: "form-input", id: "forms-name", placeholder: "Date de naissance" %>
 
                     </div>
                   </div>
                   <div class="cell-sm-5">
                     <div class="form-wrap form-wrap-validation">
-                      <%= f.input :pseudo, label: "Pseudo", class: "form-input", id: "forms-name", required: true, autofocus: true %>
+                      <%= f.input :pseudo, label: false, placeholder:"Votre pseudo", class: "form-input", id: "forms-name", required: true, autofocus: true %>
 
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                         <div class="cell-sm-10">
                     <div class="form-wrap form-wrap-validation">
 
-                        <%= f.input :biography , input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Biographie" %>
+                        <%= f.input :biography , label: false, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", placeholder:"Biographie" %>
                     </div>
                   </div>
 
@@ -100,26 +100,6 @@
       <div class="divider-section"></div>
       <!-- Page Footer-->
 
-      <footer class="page-footer section text-center">
-        <div class="shell shell-out">
-          <div class="range range-xs-reverse range-10">
-            <div class="cell-xs-4 cell-sm-4 text-xs-right">
-              <div class="preffix-xl-70" style="max-width: 433px">
-                <ul class="list-inline">
-                  <li><a class="icon icon-gray-darker fa-facebook" href="#"></a></li>
-                  <li><a class="icon icon-gray-darker fa-twitter" href="#"></a></li>
-                  <li><a class="icon icon-gray-darker fa-google-plus" href="#"></a></li>
-                  <li><a class="icon icon-gray-darker fa-pinterest-p" href="#"></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="cell-xs-6 cell-sm-6 text-xs-left">
-              <p class="copyright preffix-xl-70">Clinic &#169; <span class="copyright-year"></span>. <a href="privacy-policy.html">Privacy Policy</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
     <!-- PANEL-->
     <!-- END PANEL-->
