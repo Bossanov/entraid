@@ -12,12 +12,16 @@ class ContactsController < ApplicationController
 
 
 
+    #if NewGoogleRecaptcha.human?(
+    #  params[:new_google_recaptcha_token],
+     # "checkout"
+    #) && @contact.save
     if @contact.save
       flash[:notice] = 'Votre demande a été envoyée, merci !'
       redirect_to root_path
 
     else
-      render :new
+      redirect_to root_path
       flash[:notice] = 'Une erreur est survenue, veuillez recommencer ...'
 
     end

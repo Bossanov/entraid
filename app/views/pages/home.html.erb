@@ -492,6 +492,12 @@
                 <h6 class="text-spacing-200 text-uppercase font-base">Une question ? Contactez nous !</h6>
                 <p>Vos messages seront supprimés automatiquement après lecture .</p>
                 <div class="divider-default"></div>
+
+                <%#= content_for :recaptcha_js do %>
+                <%#= include_recaptcha_js %>
+                <%# end %>
+
+
                 <% @contact = Contact.new %>
                 <%= simple_form_for [@contact] do |f| %>
                 <form class="rd-mailform rd-mailform-mini" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
@@ -508,6 +514,10 @@
                       <%= f.input :email , id:"forms-email-footer",label: false, type:"string", name:"Votre email", required: true, placeholder:"Votre email", class:"form-input"%>
 
                     </div>
+
+                    <%#= 'checkout' is action name to be verified later %>
+                    <%#= recaptcha_action('checkout') %>
+
                     <div class="form-button">
                       <button class="button button-effect-ujarak button-primary button-block button-square" type="submit">envoyer</button>
                     </div>
