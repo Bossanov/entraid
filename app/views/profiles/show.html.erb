@@ -19,10 +19,10 @@
           <div class="range range-30">
             <div class="cell-sm-5">
               <% if @profile.photo_url.nil? %>
-              <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" alt="" width="720" height="529"/>
-              <% else %>
-              <%= cl_image_tag @profile.photo, width:"320", height: "320", alt:"", class:"img-responsive center-block"%>
-              <% end %>
+                      <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="300*250" crop="fill" alt="" />
+                      <% else %>
+                      <%= cl_image_tag @profile.photo, size:"300x250", crop:"fill", alt:""%>
+                      <% end %>
               <div class="block-text-width-divider">
                 <div class="block-text-width-divider-content">
                   <p class="text-gray-darker"><%= @profile.biography %></p>

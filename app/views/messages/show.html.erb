@@ -65,10 +65,11 @@
                   <div class="comment-inner">
                     <div class="comment-left">
                       <% if @profilecommit.last.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                        <img class ="img-circle" src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="300*300" crop="fill" alt="" />
                       <% else %>
-                        <%= cl_image_tag @profilecommit.last.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag @profilecommit.last.photo, class:"img-circle", size:"300x300", crop:"fill", alt:""%>
                       <% end %>
+
 
                     </div>
                     <div class="comment-body">

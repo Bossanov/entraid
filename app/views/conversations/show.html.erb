@@ -69,12 +69,10 @@
                     <div class="comment-left">
 
                       <% if @profilecommit.last.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                        <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="80x80" crop="fill" alt="" />
                       <% else %>
-                        <%= cl_image_tag @profilecommit.last.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag @profilecommit.last.photo, size:"80x80", crop:"fill", alt:"", class:"img-circle"%>
                       <% end %>
-
-                      <img class="img-circle" src="images/blog-post-01-65x65.jpg" alt="" width="65" height="65"/>
                     </div>
                     <div class="comment-body">
                       <div class="comment-body-header">
@@ -103,10 +101,12 @@
                   <div class="comment-inner">
                     <div class="comment-left">
                       <% if current_user.profile.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                        <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="80x80" crop="fill" alt="" />
                       <% else %>
-                        <%= cl_image_tag current_user.profile.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag current_user.profile.photo, size:"80x80", crop:"fill", alt:"", class:"img-circle"%>
                       <% end %>
+
+
                     </div>
                     <div class="comment-body" style="width: 100%">
                       <div class="comment-body-header">
@@ -118,7 +118,7 @@
                         <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post">
                           <div class="form-wrap form-wrap-validation">
 
-                            <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Contenu du message" %>
+                            <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, label: false,  class: "form-control form-control-last-child", placeholder:"Écrivez ici" %>
 
                           </div>
                           <div class="form-button">
