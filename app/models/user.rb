@@ -7,7 +7,7 @@ class User < ApplicationRecord
   after_create :subscribe_to_newsletter
   after_create :send_welcome_email
 
-  # after_create :send_welcome_email
+
 
   private
 

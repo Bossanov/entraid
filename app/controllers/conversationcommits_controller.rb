@@ -14,6 +14,13 @@ class ConversationcommitsController < ApplicationController
 
     if @conversationcommit.save
       flash[:notice] = 'Votre message a été posté !'
+
+      if @current_user.email == @conversation.autor
+
+        UserMailer.notificationcommit(@conversation.dest).deliver_now
+        else
+        UserMailer.notificationcommit(@conversation.autor).deliver_now
+       end
       redirect_to conversation_path(@conversation.id)
 
     else

@@ -30,6 +30,7 @@ class ConversationsController < ApplicationController
 
     if @conversation.save
       flash[:notice] = 'Votre message a été transmis !'
+      UserMailer.notification(@conversation).deliver_now
       redirect_to conversations_path
 
     else
