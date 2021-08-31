@@ -42,10 +42,13 @@
                 <div class="block-info-inner">
 
                       <% if @profile.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="91" height="91"/>
+                        <img class ="img-circle" src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="300*300" crop="fill" alt=""/>
                       <% else %>
-                        <%= cl_image_tag @profile.photo, width:"91", height: "91", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag @profile.photo, class:"img-circle", size:"300x300", crop:"fill", alt:""%>
                       <% end %>
+
+
+
                   <i>Thème : <%=message.theme.capitalize%></i>
                   <H5><%=message.title%></H5>
 
