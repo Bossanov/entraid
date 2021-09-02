@@ -15,9 +15,9 @@ class ConversationsController < ApplicationController
     @profiledest = Profile.where(user_id: @userdest.last.id)
     @conversationcommits = Conversationcommit.where(conversation_id: @conversation.id)
   end
+
   def index
     @conversations = Conversation.all
-
   end
 
   def create
@@ -26,17 +26,21 @@ class ConversationsController < ApplicationController
     @conversation.profile = @profile
     @conversation.autor = current_user.email
 
-
-
     if @conversation.save
       flash[:notice] = 'Votre message a été transmis !'
       UserMailer.notification(@conversation).deliver_now
-      redirect_to conversations_path
 
+      @notification = Notification.new
+      @notification.content = "Vous avez reçu un message dans votre messagerie privée venant de " + @profile.first_name
+      @notification.autor = @conversation.autor
+      @notification.dest = @conversation.dest
+      @notification.save
+
+
+      redirect_to conversations_path
     else
       render :new
       flash[:notice] = 'Une erreur est survenue, veuillez recommencer ...'
-
     end
   end
 
@@ -51,6 +55,5 @@ class ConversationsController < ApplicationController
 
   def conversation_params
     params.require(:conversation).permit(:content, :autor, :dest)
-
   end
 end

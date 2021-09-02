@@ -40,19 +40,19 @@
                   <div class="range range-xs-center range-20 range-narrow">
                     <div class="cell-sm-5">
                       <div class="form-wrap form-wrap-validation">
-                         <%= f.input :theme, collection: ["Travail", "Famille", "Mes difficultés", "Mes solutions", "Culture", "Vie associative"], class: "form-control form-control-last-child", label:"Choisissez votre Thème" %>
+                         <%= f.input :theme, collection: ["Travail", "Famille", "Mes difficultés", "Mes solutions", "Culture", "Vie associative"], class: "form-control form-control-last-child", label: false, placeholder:"Choisissez votre Thème" %>
                       </div>
                     </div>
                     <div class="cell-sm-5">
                       <div class="form-wrap form-wrap-validation">
 
-                        <%= f.input :title , id:"contacts-last-name", type:"text", name:"Adresse", required: true, class: "form-control form-control-last-child", label:"Titre du message"%>
+                        <%= f.input :title , id:"contacts-last-name", type:"text", name:"Adresse", required: true, class: "form-control form-control-last-child", label: false, placeholder:"Titre du message"%>
 
                       </div>
                     </div>
                     <div class="cell-sm-10">
                       <div class="form-wrap form-wrap-validation">
-                    <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Contenu du message" %>
+                    <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label: false, placeholder:"Écrivez ici" %>
 
                       </div>
                     </div>

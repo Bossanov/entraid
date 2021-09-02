@@ -10,16 +10,11 @@ class UserMailer < ApplicationMailer
     @user = user  # Instance variable => available in view
 
     mail(to: @user.dest, subject: 'Médentraid : Vous avez reçu un message ! ')
-
   end
 
-def notificationcommit(user)
+  def notificationcommit(user)
     @user = user  # Instance variable => available in view
 
     mail(to: @user, subject: 'Médentraid : Vous avez reçu un message ! ')
-
   end
-
-
-
 end

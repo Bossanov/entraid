@@ -43,9 +43,9 @@
                 <div class="post-header">
                   <div class="post-header-inner">
                     <div class="post-header-inner-img"><a href="<%= profile_article_path(@profile.id, article.id) %>">
-                      <img src="images/news-01-719x246.jpg" alt="" width="719" height="246"/>
-                      <% if article.photo.nil? %>
-                        <img src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="719" height="246"/>
+
+                      <% if article.photo_url.nil? %>
+                        <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1630570695/6276688407_28fb0d1b04_o_c3ydng.jpg" alt="" width="719" height="246"/>
                       <% else %>
                         <%= cl_image_tag article.photo, width:"719", height: "246", alt:"", class:"img-responsive center-block"%>
                       <% end %>

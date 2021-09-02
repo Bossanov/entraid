@@ -37,7 +37,7 @@
                     <div class="image-skew-inner">
                       <div class="image-skew-inner-img">
                         <% if @article.photo_url.nil? %>
-                          <img src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="599" height="458"/>
+                          <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1630570695/6276688407_28fb0d1b04_o_c3ydng.jpg" alt="" width="599" height="458"/>
                         <% else %>
                           <%= cl_image_tag @article.photo, width:"599", height: "458", alt:"", class:"img-responsive center-block"%>
                         <% end %>
@@ -79,12 +79,11 @@
                     <div class="comment-left">
 
                       <% if @profilecommit.last.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                        <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="80x80" crop="fill" alt="" />
                       <% else %>
-                        <%= cl_image_tag @profilecommit.last.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag @profilecommit.last.photo, size:"80x80", crop:"fill", alt:"", class:"img-circle"%>
                       <% end %>
 
-                      <img class="img-circle" src="images/blog-post-01-65x65.jpg" alt="" width="65" height="65"/>
                     </div>
                     <div class="comment-body">
                       <div class="comment-body-header">
@@ -113,9 +112,9 @@
                   <div class="comment-inner">
                     <div class="comment-left">
                       <% if current_user.profile.photo.nil? %>
-                        <img class ="img-circle" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="65" height="65"/>
+                        <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1517825470/images_z0whi1.png" size="80x80" crop="fill" alt="" />
                       <% else %>
-                        <%= cl_image_tag current_user.profile.photo, width:"65", height: "65", alt:"", class:"img-circle"%>
+                        <%= cl_image_tag current_user.profile.photo, size:"80x80", crop:"fill", alt:"", class:"img-circle"%>
                       <% end %>
                     </div>
                     <div class="comment-body" style="width: 100%">
@@ -128,7 +127,7 @@
                         <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post">
                           <div class="form-wrap form-wrap-validation">
 
-                            <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:"Contenu du message" %>
+                            <%= f.input :content , :as => :text, input_html: {style: 'max-height:1500px;'}, required: true, class: "form-control form-control-last-child", label:false, placeholder:"Écrivez ici" %>
 
                           </div>
                           <div class="form-button">
@@ -163,11 +162,15 @@
 
                             <div class="unit unit-spacing-xs unit-horizontal">
                               <div class="unit-left">
-                                <% if @article.photo_url.nil? %>
-                                  <img src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4628f78ca574b3507071057c7041660c&auto=format&fit=crop&w=2850&q=80" alt="" width="92" height="78"/>
+
+
+
+                                <% if @article.photo_url.nil?  %>
+                                  <img src="https://res.cloudinary.com/dz83jh064/image/upload/v1630570695/6276688407_28fb0d1b04_o_c3ydng.jpg" size="90x100" crop="fill" alt="" />
                                 <% else %>
-                                   <%= cl_image_tag @article.photo, width:"92", height: "78", alt:"", class:"img-responsive center-block"%>
+                                  <%= cl_image_tag @article.photo, size:"90x100", crop:"fill", alt:"" %>
                                 <% end %>
+
                               </div>
                               <div class="unit-body">
                                 <p><%= link_to article.title, profile_article_path(@profile, article)%> <span><%= article.created_at.strftime("%d.%m.%Y")%> / <%=@articlecommits.length%> commentaire(s)</span></p>

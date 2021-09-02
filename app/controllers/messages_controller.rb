@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
     @messages = Message.all
     @profile = Profile.find(@message.profile_id)
   end
+
   def index
     @messages =Message.all
   end
@@ -22,12 +23,10 @@ class MessagesController < ApplicationController
 
     if @message.save
       flash[:notice] = 'Votre message a été envoyé !'
-      redirect_to root_path
-
+      redirect_to message_path(@message.id)
     else
       render :new
       flash[:notice] = 'Une erreur est survenue, veuillez recommencer ...'
-
     end
   end
 
@@ -35,6 +34,5 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:title, :theme, :content, :statut)
-
   end
 end
