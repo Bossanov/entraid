@@ -1,3 +1,4 @@
+<div class="page" >
 <table>
   <style type="text/css">
 * {
@@ -20,6 +21,7 @@ table {
   width: 500px;
   margin: 50px auto;
   border-radius: .25rem;
+
 }
 
 thead tr:first-child {
@@ -82,24 +84,22 @@ td:last-child {
   <tbody>
     <% @notifications = Notification.where(dest: current_user.email) %>
     <% n = 1 %>
-    <% if @notifications.length == 0%>
+    <%if @notifications.length == 0%>
       <tr>
-        <td>1</td>
+        <td>==></td>
         <td>Vous n'avez aucune notification</td>
-        <td>
-        </td>
+        <td></td>
       </tr>
-    <% else%>
-      <% @notifications.each do |notif|%>
+    <%else%>
+      <%@notifications.each do |notif|%>
         <tr>
           <td><%=n%></td>
           <td><%= notif.content%></td>
-          <td>
-           <%= link_to 'Effacer', supprimer_notification_path(notif.id), class:"material-icons button delete"%>
-          </td>
+          <td><%= link_to 'Effacer', supprimer_notification_path(notif.id), class:"material-icons button delete"%></td>
         </tr>
         <% n = n+1 %>
-     <%end%>
-  <%end%>
+      <%end%>
+    <%end%>
   </tbody>
 </table>
+</div>
