@@ -1,3 +1,4 @@
+
 <header class="page-header">
         <!-- RD Navbar-->
         <div class="rd-navbar-wrap">
@@ -30,13 +31,14 @@
                           <div class="rd-navbar-megamenu-item-inner">
                             <h6 class="rd-navbar-megamenu-title">Mes options</h6>
                             <div class="rd-navbar-megamenu-divider"></div>
-                            <ul>
+                            <ul class="notification-badges">
                               <li><%= link_to 'Mon profil', profile_path(current_user.profile.id)%></li>
                               <li><%= link_to 'Le forum', messages_path%></li>
                               <li><%= link_to 'Les articles', articles_path%></li>
                               <li><%= link_to 'Les inscrits', profiles_path%></li>
                               <li><%= link_to 'Ma messagerie privée', conversations_path%></li>
-                              <li><%= link_to 'Mes notifications', pages_notification_path%></li>
+                              <% @nombre = Notification.where(dest: current_user.email)%>
+                              <li data-badge="<%=@nombre.count%>"><%= link_to 'Mes notifications', pages_notification_path%></li>
 
 
                               <li> <%= link_to destroy_user_session_path, method: :get do %>

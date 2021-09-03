@@ -6,4 +6,10 @@ class NotificationsController < ApplicationController
 
   def create
   end
+
+  def supprimer_notification
+    @notification = Notification.find(params[:format])
+    @notification.destroy
+    redirect_to pages_notification_path
+  end
 end

@@ -95,8 +95,7 @@ td:last-child {
           <td><%=n%></td>
           <td><%= notif.content%></td>
           <td>
-            <i class="material-icons button edit">voir</i>
-            <i class="material-icons button delete">effacer</i>
+           <%= link_to 'Effacer', supprimer_notification_path(notif.id), class:"material-icons button delete"%>
           </td>
         </tr>
         <% n = n+1 %>

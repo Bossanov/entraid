@@ -35,6 +35,8 @@ resources :conversations do
   get 'supprimer_profile', to: 'profiles#supprimer_profile'
   get 'debloquer_profile', to: 'profiles#debloquer_profile'
   get 'supprimer_conversation', to: 'conversations#supprimer_conversation'
+  get 'supprimer_notification', to: 'notifications#supprimer_notification'
+
   get 'pages/notification'
 
 end
