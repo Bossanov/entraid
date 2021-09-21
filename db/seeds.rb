@@ -10,7 +10,7 @@ Conversationcommit.destroy_all
 
 puts "***--- ADMIN #1 CREATION ---***"
 user = User.create!(
-    email: "staumont.antoine@icloud.com",
+    email: "staumont.antoine@me.com",
     password: "Bossanova1",
 
 
@@ -18,29 +18,15 @@ user = User.create!(
   prof = Profile.create!(
     first_name: "Antoine",
     last_name: "STAUMONT",
-    job: "Chirurgien dentiste",
-    phone_number: "0661526441",
+    job: "Chirurgien-dentiste",
+    phone_number: "0660954702",
     birthday: "07/04/1977",
     city: "Hardelot",
-    pseudo: "Bossanova1",
+    pseudo: "Admin",
     statut: "yes",
     admin: "yes",
-    biography: "",
+    biography: "Ancien burnouté et chirurgien-dentiste. Je suis actuellement entrepreneur et libre de concrétiser mes idées et mes pensées.",
     user_id: user.id,
   )
 
-#@corrige1 = User.find(23)
-#@corrige1.email = "corinne.sence@sfr.fr"
-#@corrige1.save
-#@corrige2 = User.find(56)
-#@corrige2.email = "helgaboukan@hotmail.fr"
-#@corrige2.save
-#result = []
-#@users = User.all
-#@users.each do |user|
-#  until result.include?(user.email)
- #   SubscribeToNewsletterService.new(user).call
- #   result << user.email
-#  end
-#end
 
