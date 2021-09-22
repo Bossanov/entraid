@@ -32,6 +32,11 @@ resources :conversations do
   get 'refuser_article', to: 'articles#refuser_article'
   get 'effacer_contact', to: 'contacts#effacer_contact'
   get 'bloquer_profile', to: 'profiles#bloquer_profile'
+
+  get 'rendre_admin', to: 'profiles#rendre_admin'
+  get 'rendre_nonadmin', to: 'profiles#rendre_nonadmin'
+
+
   get 'supprimer_profile', to: 'profiles#supprimer_profile'
   get 'debloquer_profile', to: 'profiles#debloquer_profile'
   get 'supprimer_conversation', to: 'conversations#supprimer_conversation'

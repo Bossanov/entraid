@@ -67,9 +67,10 @@
                     <a href="<%=new_profile_conversation_path(current_user.profile.id, dest: userprofile.last.email)%>"%><button class="button button-effect-ujarak button-primary button-shadow button-circle">Contacter</button></a>
                     <% if current_user && current_user.profile && current_user.profile.admin == "yes" && profile.admin != "yes"%>
                       <%= link_to 'Bloquer', bloquer_profile_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
-
+                      <%= link_to 'Rendre Admin', rendre_admin_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
                       <%= link_to 'Supprimer', supprimer_profile_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
-
+                    <% elsif current_user && current_user.profile && current_user.profile.admin == "yes" && profile.admin != "no"%>
+                      <%= link_to 'Enlever Admin', rendre_nonadmin_path(profileid: profile.id), class:"button button-effect-ujarak button-primary button-block"%>
 
                     <% end %>
 

@@ -71,7 +71,7 @@ class ProfilesController < ApplicationController
     @user = User.find(@profile.user_id)
     @user.destroy
     flash[:alert] = "Le profil a été effacé de la base de donnée ainsi que son contenu."
-    redirect_to pages_admin_path
+    redirect_to profiles_path
   end
 
   def debloquer_profile
@@ -79,8 +79,29 @@ class ProfilesController < ApplicationController
     @profile.statut = "yes"
     @profile.save
     flash[:notice] = "Le profil a été débloqué. Merci."
-    redirect_to pages_admin_path
+    redirect_to profiles_path
   end
+
+  def rendre_admin
+
+    @profile = Profile.find(params[:profileid])
+    @profile.admin = "yes"
+    @profile.save
+    flash[:notice] = "Le profil a mis en admin. Merci."
+    redirect_to profiles_path
+
+  end
+
+  def rendre_nonadmin
+
+    @profile = Profile.find(params[:profileid])
+    @profile.admin = "no"
+    @profile.save
+    flash[:notice] = "Le profil a mis en admin. Merci."
+    redirect_to profiles_path
+
+  end
+
   private
 
   def profile_params
