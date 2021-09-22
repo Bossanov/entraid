@@ -13,6 +13,7 @@
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">MÉDENTRAID</h1>
                     <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
                       <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                      <a class="button button-primary button-effect-ujarak" href="<%=messages_path%>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer dans le forum</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
                     <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
@@ -38,6 +39,7 @@
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">MÉDENTRAID</h1>
                     <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
                       <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                      <a class="button button-primary button-effect-ujarak" href="<%=messages_path%>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer dans le forum</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
                     <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
@@ -62,6 +64,7 @@
                     <h1 data-caption-animate="fadeInUp" data-caption-delay="100">MÉDENTRAID</h1>
                     <% if  current_user && current_user.profile && current_user.profile.statut == "yes" %>
                       <a class="button button-primary button-effect-ujarak" href="<%=profile_path(current_user.profile.id)%>" data-caption-animate="fadeInUp" data-caption-delay="450">Mon profil</a>
+                      <a class="button button-primary button-effect-ujarak" href="<%=messages_path%>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer dans le forum</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "no" %>
                     <a class="button button-primary button-effect-ujarak" href="<%=root_path%>" data-caption-animate="fadeInUp" data-caption-delay="450"> Profil en attente</a>
                     <% elsif current_user && current_user.profile && current_user.profile.statut == "bloqué" %>
