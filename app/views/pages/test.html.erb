@@ -1,7 +1,10 @@
 <% @users = User.all%>
 <% @users.each do |user|%>
+
   <p># <%=user.id%>  Email= <%=user.email%> </p>
   <% if user.profile %>
   <p><%=user.profile.id%></p>
+  <p><%=user.profile.pseudo%></p>
+
   <% end %>
 <% end %>
