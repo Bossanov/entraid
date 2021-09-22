@@ -297,6 +297,9 @@
                   <div class="thumb-default"><img src="https://images.unsplash.com/photo-1507208773393-40d9fc670acf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b6768885e6bbb2cef343010ce679b6d0&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
                     <h4 class="thumb-default-title">Un forum</h4>
                     <p>Un forum de discussion moderne et sécurisé comportant différents thèmes</p>
+                    <% if current_user &&  current_user.profile &&  current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=messages_path%>" data-caption-animate="fadeInUp" data-caption-delay="450">Entrer dans le forum</a>
+                    <%end%>
                   </div>
                 </div>
 
@@ -304,6 +307,9 @@
                   <div class="thumb-default"><img src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c58a85b749adc0e09b49a2133a33e264&auto=format&fit=crop&w=1234&q=80" alt="" width="267" height="229"/>
                     <h4 class="thumb-default-title">Des articles</h4>
                     <p>Aux thèmes variés. Ceux-ci pourront nous informer, nous aider et nous protéger. Chacun pourra proposer son récit et ainsi en faire profiter les autres .</p>
+                    <% if current_user &&  current_user.profile &&  current_user.profile.statut == "yes" %>
+                      <a class="button button-primary button-effect-ujarak" href="<%=articles_path%>" data-caption-animate="fadeInUp" data-caption-delay="450">Voir les articles</a>
+                    <%end%>
                   </div>
                 </div>
 
