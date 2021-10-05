@@ -23,6 +23,7 @@ gem 'webpacker'
 gem 'carrierwave'
 gem 'cookies_eu'
 gem 'new_google_recaptcha'
+
 group :development do
   gem 'web-console'
 end
